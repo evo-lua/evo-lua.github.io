@@ -30,6 +30,10 @@ body {
   background-color: var(--ifm-color-primary);
 }
 
+.footer__copyright {
+  font-size: 0.95rem;
+}
+
 a {
   padding: 5px;
   transition: all 0.35s ease;
