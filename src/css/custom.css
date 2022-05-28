@@ -17,6 +17,7 @@
 
 body {
   font-family: "Source Sans Pro", "Open Sans", Roboto, "San Francisco", Helvetica, Arial, sans-serif;
+  font-size: larger;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
