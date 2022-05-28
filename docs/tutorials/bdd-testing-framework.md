@@ -100,7 +100,9 @@ Here's a simple script that defines a test suite with just one scenario and imme
 	Example:Execute()
 ```
 
-You can run your tests like any other Lua code, by typing ``evo bdd-demo.lua``. Output of the above script:
+You can run your tests like any other script, by invoking the interpreter on your scenario file: ``evo bdd-demo.lua``
+
+The displayed summary of the above script should read as follows:
 
 ![Screenshot of the BDD test output](bdd-test-output-example.png)
 
