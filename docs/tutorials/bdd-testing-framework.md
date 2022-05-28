@@ -112,7 +112,7 @@ You can also create a ``specs.json`` file that stores the layout of one or multi
 					"given": "I have established the pre-conditions",
 					"when": "I run the test code",
 					"then": "The post-conditions hold true",
-					"path": "Tests/BasicDemonstration/TestingTheFramework.lua"
+					"script": "Tests/BasicDemonstration/TestingTheFramework.lua"
 				}
 			]
 		}
