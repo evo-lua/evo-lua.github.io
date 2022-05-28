@@ -55,48 +55,56 @@ Most of these should be self-explanatory, but let's check out a short example ne
 
 ## Writing and Running Tests
 
-Here's a simple script that defines a test suite with just one scenario:
+Here's a simple script that defines a test suite with just one scenario and immediately executes the spec:
 
 ```lua title="bdd-demo.lua"
-	local testSuite = TestSuite:Construct("Basic demonstration")
-	local scenario = Scenario:Construct("Testing the framework")
+    local Example = {}
 
-	scenario:GIVEN(
-		"I have established the pre-conditions",
-		function()
-			-- This function should run all setup code ("establish preconditions" for the test)
-		end
-	)
+	function Example:Execute()
 
-	scenario:WHEN(
-		"I run the test code",
-		function()
-			-- This function should run the code under test
-			self.someValue = 42
-		end
-	)
+		local testSuite = TestSuite:Construct("Basic demonstration")
+		local scenario = Scenario:Construct("Testing the framework")
 
-	scenario:THEN(
-		"The post-conditions hold true",
-		function()
-			-- This function should assert the expected post-conditions
-			assert(self.someValue == 42, "Some value is set correctly")
-		end
-	)
+		scenario:GIVEN(
+			"I have established the pre-conditions",
+			function()
+				-- This function should run all setup code ("establish preconditions" for the test)
+			end
+		)
 
-	scenario:FINALLY(function()
-		-- Cleanup tasks; this won't be displayed in the final report
-	end)
+		scenario:WHEN(
+			"I run the test code",
+			function()
+				-- This function should run the code under test
+				self.someValue = 42
+			end
+		)
 
-	testSuite:AddScenario(scenario)
-	testSuite:RunAllScenarios()
+		scenario:THEN(
+			"The post-conditions hold true",
+			function()
+				-- This function should assert the expected post-conditions
+				assert(self.someValue == 42, "Some value is set correctly")
+			end
+		)
+
+		scenario:FINALLY(function()
+			-- Cleanup tasks; this won't be displayed in the final report
+		end)
+
+		testSuite:AddScenario(scenario)
+		testSuite:RunAllScenarios()
+
+	end
+
+	Example:Execute()
 ```
 
-You can execute your tests like any other Lua code, by running ``evo myTestFile.lua``. Running the above script:
+You can run your tests like any other Lua code, by typing ``evo bdd-demo.lua``. Output of the above script:
 
 ![Screenshot of the BDD test output](bdd-test-output-example.png)
 
-The input format is somewhat verbose on purpose. Don't worry, there's an easier way to create these kinds of tests!
+The API is optimized for readability and quite verbose. Don't worry, there's an easier way to create these kinds of tests!
 
 ## JSON Spec Files
 
