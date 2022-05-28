@@ -1,0 +1,8 @@
+{
+  "label": "HOWTO Guides",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Here you'll find instructions to help you make use of the most important Evo.lua features."
+  }
+}
