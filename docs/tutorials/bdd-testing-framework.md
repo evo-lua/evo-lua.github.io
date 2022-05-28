@@ -13,6 +13,7 @@ Learn how to use the builtin BDD-style testing framework to test your app.
 * Link to downloadable example repository
 * Actually embed ``RedGreenRefactor`` into the ``evo`` runtime
 * Implement the spec file parser and embed it, too
+* Implement the assertion library
 
 :::
 
@@ -142,6 +143,24 @@ Now, simply create a file ``Tests/BasicDemonstration/TestingTheFramework.lua`` (
 Once done, you can run test suites via ``epo test <TestSuite> <Scenario>``, where the angle brackets denote placeholders that refer to the ``name`` field in ``specs.json``. Omitting the scenario name will run all scenarios for the suite, and omitting the suite will run all tests found in the spec file. Use quotes if needed: ``epo test "Basic demonstration"``
 
 Unfortunately, there's no getting around writing *some* code here. But hopefully, eliminating boilerplate and gathering all test specs in a standardized location will take some of the pain out of writing well-structured, readable tests.
+
+## Assertion Library
+
+As part of the ``bdd`` library, commonly-used assertions are also exported globally:
+
+* ``assertTrue``
+* ``assertFalse``
+* ``assertEquals``
+* ``assertNotEquals``
+* ``assertDeepEquals``
+* ``assertNil``
+* ``assertNotNil``
+* ``assertTypeOf``
+* ``assertThrows``
+* ``assertApproximatelyEquals`` (for float comparisons)
+* ``assertNotApproximatelyEquals`` (for float comparisons)
+
+These are just shorthands, but they work with the testing framework to produce human-readable error messages.
 
 ## Alternatives
 
