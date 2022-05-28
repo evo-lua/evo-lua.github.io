@@ -99,7 +99,7 @@ The input format is somewhat verbose on purpose. Don't worry, there's an easier 
 
 ## JSON Spec Files
 
-You can also create a ``specs.json`` file that stores the layout of one or multiple test suites, with all scenarios and descriptions and absolutely none of the boilerplate code. Here's how this would look for the above example:
+You can also create a ``specs.json`` file that stores the layout of one or multiple test suites, with all scenarios and descriptions but absolutely none of the boilerplate code. Here's how this would look for the above example:
 
 ```json title="specs.json"
 	[
