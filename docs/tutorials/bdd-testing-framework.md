@@ -25,6 +25,8 @@ The ``evo`` runtime ships with a builtin testing framework. You don't have to in
 
 As the name ``bdd`` might suggest, the framework roughly follows the [behavior-driven development](https://en.wikipedia.org/wiki/Behavior-driven_development) philosophy.
 
+With this style of testing, you can create test suites for each component or subsystem under test. Then, you can add one more scenarios that represent actual use cases (from an end-user perspective) to the test suite and run them all.
+
 ## Global Testing Primitives
 
 The following testing primitives are exported to the global environment:
