@@ -27,12 +27,12 @@ body {
 a {
   padding: 5px;
   transition: all 0.35s ease;
+  border-radius: 4px;
 }
 
 a:link:hover, a:visited:hover {
   background-color: #D0D0FF;
   color: #000080;
-  border-radius: 4px;
   transition: all 0.35s ease;
 }
 
