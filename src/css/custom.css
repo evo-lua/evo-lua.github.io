@@ -13,6 +13,8 @@
   --ifm-color-primary-light: #03038d;
   --ifm-color-primary-lighter: #030393;
   --ifm-color-primary-lightest: #0404a6;
+
+  --ifm-footer-padding-vertical: 0.5rem;
 }
 
 body {
