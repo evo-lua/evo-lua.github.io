@@ -20,6 +20,10 @@ body {
   font-size: larger;
 }
 
+.footer {
+  background-color: var(--ifm-color-primary);
+}
+
 a {
   padding: 5px;
   transition: all 0.35s ease;
