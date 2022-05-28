@@ -60,10 +60,10 @@ const config = {
         disableSwitch: true
       },
       navbar: {
-        title: 'My Site',
+        title: 'Evo.lua',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Evo.lua Logo',
+          src: 'img/caterpillar.png',
         },
         items: [
           {
