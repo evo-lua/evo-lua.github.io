@@ -20,6 +20,18 @@ body {
   font-size: larger;
 }
 
+a {
+  padding: 5px;
+  transition: all 0.35s ease;
+}
+
+a:link:hover, a:visited:hover {
+  background-color: #D0D0FF;
+  color: #000080;
+  border-radius: 4px;
+  transition: all 0.35s ease;
+}
+
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-color-primary: #25c2a0;
