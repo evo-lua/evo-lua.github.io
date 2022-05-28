@@ -101,7 +101,7 @@ The input format is somewhat verbose on purpose. Don't worry, there's an easier 
 
 ## Alternatives
 
-There's obviously no need to use the provided ``bdd`` framework if you don't want to. Any standard Lua testing framework, such as [busted](https://github.com/Olivine-Labs/busted) or [LuaUnit](https://luarocks.org/modules/bluebird75/luaunit), should work as long as it only uses Lua 5.1 or [supported Lua 5.2 features](https://luajit.org/extensions.html). You could even create your own test runner, or use a native (C/C++) framework via LuaJIT's [foreign function interface (FFI)](https://luajit.org/ext_ffi.html).
+There's obviously no need to use the provided ``bdd`` framework if you don't want to. Any standard Lua testing framework, such as [busted](https://github.com/Olivine-Labs/busted) or [LuaUnit](https://luarocks.org/modules/bluebird75/luaunit), should work as long as it only uses Lua 5.1 and [supported Lua 5.2 features](https://luajit.org/extensions.html). You could even create your own test runner, or use a native (C/C++) framework via LuaJIT's [foreign function interface (FFI)](https://luajit.org/ext_ffi.html).
 
 However, only the ``bdd`` library is officially maintained. It's guaranteed to see updates when changes to the runtime and the environment necessitate it, while all other solutions are likely to require some maintenance on your part.
 
