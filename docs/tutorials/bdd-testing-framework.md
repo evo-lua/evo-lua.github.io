@@ -13,7 +13,6 @@ Learn how to use the builtin BDD-style testing framework to test your app.
 * Link to downloadable example repository
 * Actually embed ``RedGreenRefactor`` into the ``evo`` runtime
 * Implement the spec file parser and embed it, too
-* Add docs for the spec file format (JSON)
 
 :::
 
@@ -93,11 +92,56 @@ You can execute your tests like any other Lua code, by running ``evo myTestFile.
 
 ![Screenshot of the BDD test output](bdd-test-output-example.png)
 
-The input format is somewhat verbose on purpose. Don't worry, there's an easier way.
+The input format is somewhat verbose on purpose. Don't worry, there's an easier way to create these kinds of tests!
 
-## Running Tests
+## JSON Spec Files
 
+You can also create a ``specs.json`` file that stores the layout of one or multiple test suites, with all scenarios and descriptions and absolutely none of the boilerplate code. Here's how this would look for the above example:
 
+```json title="specs.json"
+	[
+		{
+			"name": "Basic demonstration",
+			"scenarios": [
+				{
+					"name": "Testing the framework",
+					"given": "I have established the pre-conditions",
+					"when": "I run the test code",
+					"then": "The post-conditions hold true",
+					"path": "Tests/BasicDemonstration/TestingTheFramework.lua"
+				}
+			]
+		}
+	]
+```
+
+Now, simply create a file ``Tests/BasicDemonstration/TestingTheFramework.lua`` (starting **at the root directory of your package**, i.e., where ``specs.json`` should be located) and add the actual test code that is to be executed:
+
+```lua title="Tests/BasicDemonstration/TestingTheFramework.lua"
+
+	function GIVEN()
+		-- This function should run all setup code ("establish preconditions" for the test)
+	end
+
+	function WHEN()
+		-- This function should run the code under test
+		self.someValue = 42
+	end
+
+	function THEN()
+		-- This function should assert the expected post-conditions
+		assert(self.someValue == 42, "Some value is set correctly")
+	end
+
+	function FINALLY()
+		-- Cleanup tasks; this won't be displayed in the final report
+	end
+
+```
+
+Once done, you can run test suites via ``epo test <TestSuite> <Scenario>``, where the angle brackets denote placeholders that refer to the ``name`` field in ``specs.json``. Omitting the scenario name will run all scenarios for the suite, and omitting the suite will run all tests found in the spec file. Use quotes if needed: ``epo test "Basic demonstration"``
+
+Unfortunately, there's no getting around writing *some* code here. But hopefully, eliminating boilerplate and gathering all test specs in a standardized location will take some of the pain out of writing well-structured, readable tests.
 
 ## Alternatives
 
