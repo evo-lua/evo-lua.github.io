@@ -14,6 +14,7 @@ Learn how to use the builtin BDD-style testing framework to test your app.
 * Actually embed ``RedGreenRefactor`` into the ``evo`` runtime
 * Implement the spec file parser and embed it, too
 * Implement the assertion library
+* Split into multiple docs, one per docType
 
 :::
 
