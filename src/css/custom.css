@@ -12,7 +12,7 @@
   --ifm-color-primary-darkest: #02025a;
   --ifm-color-primary-light: #03038d;
   --ifm-color-primary-lighter: #030393;
-  --ifm-color-primary-lightest: #0404a6;
+  --ifm-color-primary-lightest: #2424c6;
 
   --ifm-footer-padding-vertical: 0.5rem;
 }
@@ -38,11 +38,12 @@ a {
   padding: 5px;
   transition: all 0.35s ease;
   border-radius: 4px;
+  color: var(--ifm-color-primary-lightest);
 }
 
 a:link:hover, a:visited:hover {
   background-color: #D0D0FF;
-  color: #000080;
+  color: var(--ifm-color-primary-lighter);
   transition: all 0.35s ease;
 }
 
