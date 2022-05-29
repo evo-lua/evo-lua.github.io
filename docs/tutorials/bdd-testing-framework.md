@@ -2,7 +2,7 @@
 title: Test your Evo.lua application
 ---
 
-Learn how to use the builtin BDD-style testing framework to test your app.
+Learn how to use the builtin testing framework in your application.
 
 ## TODOs
 
@@ -24,9 +24,7 @@ The ``evo`` runtime ships with a builtin testing framework. You don't have to in
 
 ## Testing Methodology
 
-As the name ``bdd`` might suggest, the framework roughly follows the [behavior-driven development](https://en.wikipedia.org/wiki/Behavior-driven_development) philosophy.
-
-With this style of testing, you can create test suites for each component or subsystem under test. Then, you can add one more scenarios that represent actual use cases (from an end-user perspective) to the test suite and run them all.
+The framework roughly follows the [behavior-driven development](https://en.wikipedia.org/wiki/Behavior-driven_development) philosophy. With this style of testing, you can create test suites for each component or subsystem under test. Then, you can add one more scenarios that represent actual use cases (from an end-user perspective) to the test suite and run them all. All of this happens in code; there's no [DSL](https://en.wikipedia.org/wiki/Domain-specific_language).
 
 ## Global Testing Primitives
 
@@ -51,7 +49,7 @@ The following testing primitives are exported to the global environment:
   * ``THEN(description, assertPostconditions)``
   * ``FINALLY(cleanupCode)``
 
-Most of these should be self-explanatory, but let's check out a short example next.
+Capitalized functions are the [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) primitives. Most should be self-explanatory, but let's check out a short example next.
 
 ## Writing and Running Tests
 
@@ -155,7 +153,8 @@ Now, simply create a file ``Tests/BasicDemonstration/TestingTheFramework.lua`` (
 
 Once done, you can run test suites via ``epo test <TestSuite> <Scenario>``, where the angle brackets denote placeholders that refer to the ``name`` field in ``specs.json``. Omitting the scenario name will run all scenarios for the suite, and omitting the suite will run all tests found in the spec file. Use quotes if needed: ``epo test "Basic demonstration"``
 
-Unfortunately, there's no getting around writing *some* code here. But hopefully, eliminating boilerplate and gathering all test specs in a standardized location will take some of the pain out of writing well-structured, readable tests.
+Unfortunately, there's no getting around writing *some* code here. But hopefully, minimizing boilerplate and gathering all test specs in a standardized location will take some of the pain out of writing well-structured, readable tests.
+
 
 ## Assertion Library
 
@@ -174,6 +173,16 @@ As part of the ``bdd`` library, commonly-used assertions are also exported globa
 * ``assertNotApproximatelyEquals`` (for float comparisons)
 
 These are just shorthands, but they work with the testing framework to produce human-readable error messages.
+
+## Limitations
+
+As with every other design for a testing framework, there are some drawbacks:
+
+* Nested hierarchies of tests are not supported, although you can of course organize each ``Scenario`` however you like
+* You must write textual descriptions for all test suites and scenarios and their ``name`` must must be unique
+* Asynchronous tests (using callbacks) aren't currently supported, though you can use [coroutines](https://www.lua.org/pil/9.1.html) if you need this
+
+If you need more features or you dislike the structure that writing BDD-style tests imposes, consider some other options.
 
 ## Alternatives
 
