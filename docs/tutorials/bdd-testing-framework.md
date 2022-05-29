@@ -186,8 +186,8 @@ If you need more features or you dislike the structure that writing BDD-style te
 
 ## Alternatives
 
-There's obviously no need to use the provided ``bdd`` framework if you don't want to. Any standard Lua testing framework, such as [busted](https://github.com/Olivine-Labs/busted) or [LuaUnit](https://luarocks.org/modules/bluebird75/luaunit), should work as long as it only uses Lua 5.1 and [supported Lua 5.2 features](https://luajit.org/extensions.html). You could even create your own test runner, or use a native (C/C++) framework via LuaJIT's [foreign function interface (FFI)](https://luajit.org/ext_ffi.html).
+There's obviously no need to use the provided testing primitives if you don't want to. Any standard Lua testing framework, such as [busted](https://github.com/Olivine-Labs/busted) or [LuaUnit](https://luarocks.org/modules/bluebird75/luaunit), should work as long as it only uses Lua 5.1 and [supported Lua 5.2 features](https://luajit.org/extensions.html). You could even create your own test runner, or use a native (C/C++) framework via LuaJIT's [foreign function interface (FFI)](https://luajit.org/ext_ffi.html).
 
-However, only the ``bdd`` library is officially maintained. It's guaranteed to see updates when changes to the runtime and the environment necessitate it, while all other solutions are likely to require some maintenance on your part.
+However, the builtins described here are "officially" maintained. They're guaranteed to see updates when changes to the runtime and the environment necessitate it, while all other solutions are likely to require maintenance on your part.
 
-If you're unhappy with ``bdd``, please consider opening an issue or otherwise giving feedback to help make it better!
+If you're unhappy with the framework, please open an issue or otherwise give feedback to help make it better!
