@@ -176,13 +176,13 @@ These are just shorthands, but they work with the testing framework to produce h
 
 ## Limitations
 
-As with every other design for a testing framework, there are some drawbacks:
+As with every other design for a testing framework, there are some drawbacks to consider:
 
 * Nested hierarchies of tests are not supported, although you can of course organize each ``Scenario`` however you like
 * You must write textual descriptions for all test suites and scenarios and their ``name`` must must be unique
 * Asynchronous tests (using callbacks) aren't currently supported, though you can use [coroutines](https://www.lua.org/pil/9.1.html) if you need this
 
-If you need more features or you dislike the structure that writing BDD-style tests imposes, consider some other options.
+If you need more features or you dislike the structure that writing BDD-style tests imposes, there may be other options.
 
 ## Alternatives
 
