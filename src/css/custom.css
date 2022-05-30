@@ -15,10 +15,12 @@
   --ifm-color-primary-lightest: #2424c6;
 
   --ifm-footer-padding-vertical: 0.5rem;
+  --ifm-font-family-base: "Source Sans Pro", "Open Sans", Roboto, "San Francisco", Helvetica, Arial, sans-serif;
+  /* --ifm-heading-font-family: "Open Sans"; */
+  --ifm-font-family-monospace: "DejaVu Sans", "Consolas", monospace;
 }
 
 body {
-  font-family: "Source Sans Pro", "Open Sans", Roboto, "San Francisco", Helvetica, Arial, sans-serif;
   font-size: larger;
 }
 
@@ -41,7 +43,8 @@ code {
   border-radius: 0;
   padding: 2px;
   vertical-align: baseline;
-  font-family: "Consolas", monospace
+  font-family: "Deja Vu Sans";
+  font-family: "Source Sans Pro", "Open Sans", Roboto, "San Francisco", Helvetica, Arial, sans-serif;
 }
 
 a {
