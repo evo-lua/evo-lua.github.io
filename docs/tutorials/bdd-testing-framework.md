@@ -2,7 +2,7 @@
 title: Test your Evo.lua application
 ---
 
-Learn how to use the builtin testing framework in your application.
+Learn how to use the builtin testing facilities in your application.
 
 ## TODOs
 
@@ -18,85 +18,122 @@ Learn how to use the builtin testing framework in your application.
 
 :::
 
-## Installation
+## Testing Primitives
 
-The ``evo`` runtime ships with a builtin testing framework. You don't have to install anything to use it; it's just there.
+The ``evo`` runtime ships with builtin testing primitives that allow you to hierarchically organize your tests:
 
-## Testing Methodology
+* Create top-level containers for use-cases in the form of a ``TestSuite``
+* Define the environment for a single test case in a ``Scenario``
+* Add any number of scenarios to a given test suite to "queue" them up
+* Run any number of test suites to execute the scenarios and display a report
 
-The framework roughly follows the [behavior-driven development](https://en.wikipedia.org/wiki/Behavior-driven_development) philosophy. With this style of testing, you can create test suites for each component or subsystem under test. Then, you can add one more scenarios that represent actual use cases (from an end-user perspective) to the test suite and run them all. All of this happens in code; there's no [DSL](https://en.wikipedia.org/wiki/Domain-specific_language).
+You don't have to install anything to use them in your application; they're made available to all scripts out of the box.
 
-## Global Testing Primitives
+## Methodology
 
-The following testing primitives are exported to the global environment:
+The reports generated roughly adhere to the [behavior-driven development](https://en.wikipedia.org/wiki/Behavior-driven_development) philosophy. You can define an executable specification for your program's behaviour in a ``Scenario``, and (optionally) label it with standardized keywords:
 
-* ``TestSuite`` with the following API:
-  * ``Construct(name)``
-  * ``AddScenario(scenario)``
-  * ``RunScenario(scenario)``
-  * ``RunAllScenarios()``
-  * ``PrintSummary()``
-* ``Scenario`` with the following API:
-  * ``Construct(name)``
-  * ``Run()``
-  * ``PrintResults()``
-  * ``GetName()``
-  * ``GetResultsText()``
-  * ``GetNumFailedAssertions()``
-  * ``HasFailed()``
-  * ``GIVEN(description, establishPreconditions)``
-  * ``WHEN(description, runTestCode)``
-  * ``THEN(description, assertPostconditions)``
-  * ``FINALLY(cleanupCode)``
+* ``GIVEN``: Describes the state of the environment that enables the scenario ("pre-conditions")
+* ``WHEN``: Describes the steps that your program is taking in the given scenario, i.e., its actual, programmed behaviour
+* ``THEN``: Describes the state of the environment that you expect after running the code under test ("post-conditions")
 
-Capitalized functions are the [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) primitives. Most should be self-explanatory, but let's check out a short example next.
+The above terminology loosely maps to the typical flow of setup - test - teardown you'd encounter in [xUnit](https://en.wikipedia.org/wiki/XUnit) style tests.
 
-## Writing and Running Tests
+## Running Tests
 
-Here's a simple script that defines a test suite with just one scenario and immediately executes the spec:
+The test runner is built into the ``evo`` runtime. All you have to do is create a file that defines one or multiple test suites:
 
-```lua title="bdd-demo.lua"
-    local Example = {}
+```lua title="my-test-suite.lua"
+	local testSuite = TestSuite:Construct("Name or description (displayed in the final report)")
 
-	function Example:Execute()
+	local listOfScenarioFilesToLoad = {
+		"./example-scenario.lua"
+	}
 
-		local testSuite = TestSuite:Construct("Basic demonstration")
-		local scenario = Scenario:Construct("Testing the framework")
+	testSuite:AddScenarios(listOfScenarioFilesToLoad)
 
-		scenario:GIVEN(
-			"I have established the pre-conditions",
-			function()
-				-- This function should run all setup code ("establish preconditions" for the test)
-			end
-		)
+	-- Return test suite instance as a Lua module
+	return testSuite
+```
 
-		scenario:WHEN(
-			"I run the test code",
-			function()
-				-- This function should run the code under test
-				self.someValue = 42
-			end
-		)
+Any test suite consist of a module that returns the ``TestSuite`` instance, which loads ``Scenario`` instances like this one:
 
-		scenario:THEN(
-			"The post-conditions hold true",
-			function()
-				-- This function should assert the expected post-conditions
-				assert(self.someValue == 42, "Some value is set correctly")
-			end
-		)
 
-		scenario:FINALLY(function()
-			-- Cleanup tasks; this won't be displayed in the final report
-		end)
+```lua title="example-scenario.lua"
+	local scenario = Scenario:Construct("Testing the framework")
 
-		testSuite:AddScenario(scenario)
-		testSuite:RunAllScenarios()
+	-- Labelling the individual phases is optional, but highly recommended
+	-- This simply replaces the placeholder descriptions displayed in the final output
+	scenario:GIVEN("I have established the pre-conditions")
+	scenario:WHEN("I run the test code")
+	scenario:THEN("The post-conditions hold true")
 
+	-- Event handlers can be overridden to implement a simulation of the scenario you're testing
+	function scenario:OnSetup()
+			-- This function should run all setup code and establish the preconditions you expect
 	end
 
-	Example:Execute()
+	function scenario:OnRun()
+			-- This function should run the code that you want to test
+			self.someValue = 42
+	end
+
+	function scenario:OnEvaluate()
+		-- This function should assert the expected post-conditions, using standard assertions
+			assert(self.someValue == 42, "Some value is set correctly")
+	end
+
+	function scenario:OnCleanup()
+		-- This should undo any setup you've had to do to establish the pre-conditions
+	end
+
+	-- Return scenario instance as a Lua module
+	return scenario
 ```
+
+You can then create and invoke a script that loads and runs a test suite normally, the "test runner":
+
+```lua title="run-my-tests.lua"
+	local testSuite = import("./my-test-suite.lua")
+	testSuite:Run()
+```
+
+Executing this with ``evo run-my-tests.lua`` should result in the following report being displayed:
+
+TODO: Image
+
+You can also import multiple test suites here, and run them with a simple for loop instead:
+
+```lua title="run-ALL-the-tests.lua"
+	local testSuites = {
+		"./my-test-suite.lua",
+		"./another-test-suite.lua"
+	}
+
+	for _, filePath in pairs(testSuites) do
+		local testSuite = import(filePath)
+		testSuite:Run()
+	end
+```
+
+Each test suite will run all of its scenarios and display a report before the next one is started, then the next, and so on.
+
+## Event Handlers
+
+Test suites trigger event handlers when running scenarios. This happens in a well-defined order:
+
+1. ``SCENARIO_LOAD``: Event is fired when the test suite first imports the scenario, and triggers its ``OnLoad`` handler
+2. ``SCENARIO_SETUP``: Event is fired when the scenario runs its ``OnSetup`` method, after the test suite was started
+3. ``SCENARIO_RUN``: Event is fired when the scenario executes its main body, the ``OnRun`` method, after the setup
+4. ``SCENARIO_EVALUATE``: Event is fired when post-conditions are evaluated, before ``OnEvaluate`` is triggered
+5. ``SCENARIO_CLEANUP``: Event is fired when the scenario was run, before the ``OnCleanup`` method is called
+6. ``SCENARIO_REPORT``: Event is fired at the very end, before the results of the test run for this scenario are displayed
+
+These events are what causes the runtime to execute the various event handlers you can register in a scenario file (``OnSetup``, ``OnRun``, ``OnEvaluate``, ``OnCleanup``, etc.). By default, an empty placeholder is used, and by overriding it with your own implementation you're telling ``evo`` what should be happening in each of the tested scenarios.
+
+---
+
+TODO: Remove, probably?
 
 You can run your tests like any other script, by invoking the interpreter on your scenario file: ``evo bdd-demo.lua``
 
@@ -107,6 +144,8 @@ The displayed summary of the above script should read as follows:
 The API is optimized for readability and quite verbose. Don't worry, there's an easier way to create these kinds of tests!
 
 ## JSON Spec Files
+
+TODO: Remove, obsolete?
 
 You can also create a ``specs.json`` file that stores the layout of one or multiple test suites, with all scenarios and descriptions but absolutely none of the boilerplate code. Here's how this would look for the above example:
 
@@ -158,6 +197,8 @@ Unfortunately, there's no getting around writing *some* code here. But hopefully
 
 ## Assertion Library
 
+ TODO: Remove, NYI (separate feature/issue/doc article)
+
 As part of the ``bdd`` library, commonly-used assertions are also exported globally:
 
 * ``assertTrue``
@@ -176,9 +217,12 @@ These are just shorthands, but they work with the testing framework to produce h
 
 ## Limitations
 
+TODO Review. It's likely outdated?
+
 As with every other design for a testing framework, there are some drawbacks to consider:
 
 * Nested hierarchies of tests are not supported, although you can of course organize each ``Scenario`` however you like
+* Only ``assert`` function can currently be used to label assertions in the final report
 * You must write textual descriptions for all test suites and scenarios and their ``name`` must must be unique
 * Asynchronous tests (using callbacks) aren't currently supported, though you can use [coroutines](https://www.lua.org/pil/9.1.html) if you need this
 
@@ -186,7 +230,7 @@ If you need more features or you dislike the structure that writing BDD-style te
 
 ## Alternatives
 
-Naturally, you don't need to use the provided testing primitives if you don't want to. Any standard Lua testing framework, such as [busted](https://github.com/Olivine-Labs/busted) or [LuaUnit](https://luarocks.org/modules/bluebird75/luaunit), should work as long as it only uses Lua 5.1 and [supported Lua 5.2 features](https://luajit.org/extensions.html). You could even create your own test runner, or use a native (C/C++) framework via LuaJIT's [foreign function interface (FFI)](https://luajit.org/ext_ffi.html).
+Naturally, you don't need to use the provided testing primitives if you don't want to. Any standard Lua testing framework, such as [busted](https://github.com/Olivine-Labs/busted) or [LuaUnit](https://luarocks.org/modules/bluebird75/luaunit), should work as long as it only uses Lua 5.1 and [supported Lua 5.2 features](https://luajit.org/extensions.html). You could even create your own test runner, or use a native (C/C++) library via LuaJIT's [foreign function interface (FFI)](https://luajit.org/ext_ffi.html).
 
 However, the builtins described here are "officially" maintained. They're guaranteed to see updates when changes to the runtime and the environment necessitate it, while all other solutions are likely to require maintenance on your part.
 
