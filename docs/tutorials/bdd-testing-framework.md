@@ -33,15 +33,15 @@ You don't have to install anything to use them in your application; they're made
 
 The reports generated roughly adhere to the [behavior-driven development](https://en.wikipedia.org/wiki/Behavior-driven_development) philosophy. You can define an executable specification for your program's behaviour in a ``Scenario``, and (optionally) label it with standardized keywords:
 
-* ``GIVEN``: Describes the state of the environment that enables the scenario ("pre-conditions")
-* ``WHEN``: Describes the steps that your program is taking in the given scenario, i.e., its actual, programmed behaviour
+* ``GIVEN``: Describes the state of the environment before executing the code under test ("pre-conditions")
+* ``WHEN``: The code you want to test goes here
 * ``THEN``: Describes the state of the environment that you expect after running the code under test ("post-conditions")
 
-The above terminology loosely maps to the typical flow of setup - test - teardown you'd encounter in [xUnit](https://en.wikipedia.org/wiki/XUnit) style tests.
+The above terminology loosely maps to the typical flow of ``setup`` - ``test`` - ``teardown`` you'd encounter in [xUnit](https://en.wikipedia.org/wiki/XUnit) style tests.
 
 ## Running Tests
 
-The test runner is built into the ``evo`` runtime. All you have to do is create a file that defines one or multiple test suites:
+All you have to do is create a file that defines one or multiple test suites:
 
 ```lua title="my-test-suite.lua"
 	local testSuite = TestSuite:Construct("Name or description (displayed in the final report)")
@@ -57,7 +57,6 @@ The test runner is built into the ``evo`` runtime. All you have to do is create 
 ```
 
 Any test suite consist of a module that returns the ``TestSuite`` instance, which loads ``Scenario`` instances like this one:
-
 
 ```lua title="example-scenario.lua"
 	local scenario = Scenario:Construct("Testing the framework")
@@ -91,7 +90,7 @@ Any test suite consist of a module that returns the ``TestSuite`` instance, whic
 	return scenario
 ```
 
-You can then create and invoke a script that loads and runs a test suite normally, the "test runner":
+You can then create and invoke a script that loads and runs a test suite normally, the so-called "test runner":
 
 ```lua title="run-my-tests.lua"
 	local testSuite = import("./my-test-suite.lua")
