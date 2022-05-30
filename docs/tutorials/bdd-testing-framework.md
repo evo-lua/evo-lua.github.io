@@ -44,7 +44,8 @@ The above terminology loosely maps to the typical flow of ``setup`` - ``test`` -
 All you have to do is create a file that defines one or multiple test suites:
 
 ```lua title="my-test-suite.lua"
-	local testSuite = TestSuite:Construct("Name or description (displayed in the final report)")
+	-- Whatever name or description you set here will be displayed in the final report
+	local testSuite = TestSuite:Construct("Basic demonstration")
 
 	local listOfScenarioFilesToLoad = {
 		"./example-scenario.lua"
@@ -59,10 +60,11 @@ All you have to do is create a file that defines one or multiple test suites:
 Any test suite consist of a module that returns the ``TestSuite`` instance, which loads ``Scenario`` instances like this one:
 
 ```lua title="example-scenario.lua"
+	-- Whatever name or description you set here will be displayed in the final report
 	local scenario = Scenario:Construct("Testing the framework")
 
+	-- Whatever name or description you set here will be displayed in the final report
 	-- Labelling the individual phases is optional, but highly recommended
-	-- This simply replaces the placeholder descriptions displayed in the final output
 	-- You can think of this notation as a shortcut for something like scenario:SetLabel("GIVEN", "Your text")
 	scenario:GIVEN("I have established the pre-conditions")
 	scenario:WHEN("I run the test code")
@@ -100,7 +102,7 @@ You can then create and invoke a script that loads and runs a test suite normall
 
 Executing this with ``evo run-my-tests.lua`` should result in the following report being displayed:
 
-TODO: Image
+![Screenshot of the BDD test output](bdd-test-output-example.png)
 
 You can also import multiple test suites here, and run them with a simple for loop instead:
 
@@ -126,7 +128,6 @@ You can run your tests like any other script, by invoking the interpreter on you
 
 The displayed summary of the above script should read as follows:
 
-![Screenshot of the BDD test output](bdd-test-output-example.png)
 
 The API is optimized for readability and quite verbose. Don't worry, there's an easier way to create these kinds of tests!
 
