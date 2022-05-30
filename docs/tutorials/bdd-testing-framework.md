@@ -117,19 +117,6 @@ You can also import multiple test suites here, and run them with a simple for lo
 
 Each test suite will run all of its scenarios and display a report before the next one is started, then the next, and so on.
 
-## Event Handlers
-
-Test suites trigger event handlers when running scenarios. This happens in a well-defined order:
-
-1. ``SCENARIO_LOAD``: Event is fired when the test suite first imports the scenario, and triggers its ``OnLoad`` handler
-2. ``SCENARIO_SETUP``: Event is fired when the scenario runs its ``OnSetup`` method, after the test suite was started
-3. ``SCENARIO_RUN``: Event is fired when the scenario executes its main body, the ``OnRun`` method, after the setup
-4. ``SCENARIO_EVALUATE``: Event is fired when post-conditions are evaluated, before ``OnEvaluate`` is triggered
-5. ``SCENARIO_CLEANUP``: Event is fired when the scenario was run, before the ``OnCleanup`` method is called
-6. ``SCENARIO_REPORT``: Event is fired at the very end, before the results of the test run for this scenario are displayed
-
-These events are what causes the runtime to execute the various event handlers you can register in a scenario file (``OnSetup``, ``OnRun``, ``OnEvaluate``, ``OnCleanup``, etc.). By default, an empty placeholder is used, and by overriding it with your own implementation you're telling ``evo`` what should be happening in each of the tested scenarios.
-
 ---
 
 TODO: Remove, probably?
