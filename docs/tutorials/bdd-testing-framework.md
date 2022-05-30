@@ -63,6 +63,7 @@ Any test suite consist of a module that returns the ``TestSuite`` instance, whic
 
 	-- Labelling the individual phases is optional, but highly recommended
 	-- This simply replaces the placeholder descriptions displayed in the final output
+	-- You can think of this notation as a shortcut for something like scenario:SetLabel("GIVEN", "Your text")
 	scenario:GIVEN("I have established the pre-conditions")
 	scenario:WHEN("I run the test code")
 	scenario:THEN("The post-conditions hold true")
