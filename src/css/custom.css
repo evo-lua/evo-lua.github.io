@@ -16,8 +16,10 @@
 
   --ifm-footer-padding-vertical: 0.5rem;
   --ifm-font-family-base: "Source Sans Pro", "Open Sans", Roboto, "San Francisco", Helvetica, Arial, sans-serif;
+  /* --ifm-font-family-base: "Noto Sans", "Source Sans Pro", "Open Sans", Roboto, "San Francisco", Helvetica, Arial, sans-serif; */
   /* --ifm-heading-font-family: "Open Sans"; */
-  --ifm-font-family-monospace: "DejaVu Sans", "Consolas", monospace;
+  --ifm-font-family-monospace: "Open Sans", "DejaVu Sans", "Consolas", monospace;
+  /* --ifm-font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
 }
 
 body {
@@ -43,7 +45,10 @@ code {
   border-radius: 0;
   padding: 2px;
   vertical-align: baseline;
-  font-family: "Deja Vu Sans";
+  /* vertical-align: top; */
+  /* font-weight: 400; */
+  /* font-family: "DejaVu Sans"; */
+  /* font-size: 0.90rem; */
   font-family: "Source Sans Pro", "Open Sans", Roboto, "San Francisco", Helvetica, Arial, sans-serif;
 }
 
