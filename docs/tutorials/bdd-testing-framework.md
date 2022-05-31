@@ -2,7 +2,7 @@
 title: Test your Evo.lua application
 ---
 
-Learn how to use the builtin testing facilities in your application.
+Learn how to specify and test the behavior of your application.
 
 ## TODOs
 
@@ -18,12 +18,12 @@ Learn how to use the builtin testing facilities in your application.
 
 :::
 
-## Testing Primitives
+## Testing Workflow
 
 The ``evo`` runtime ships with builtin testing primitives that allow you to hierarchically organize your tests:
 
-* Create top-level containers for use-cases in the form of a ``TestSuite``
-* Define the environment for a single test case in a ``Scenario``
+* Create top-level containers for use-cases in the form of one or many ``TestSuite`` instances
+* Define the specification for each test case as a ``Scenario`` instance
 * Add any number of scenarios to a given test suite to "queue" them up
 * Run any number of test suites to execute the scenarios and display a report
 
@@ -35,7 +35,7 @@ The reports generated roughly adhere to the [behavior-driven development](https:
 
 * ``GIVEN``: Describes the state of the environment before executing the code under test ("pre-conditions")
 * ``WHEN``: The code you want to test goes here
-* ``THEN``: Describes the state of the environment that you expect after running the code under test ("post-conditions")
+* ``THEN``: Describes the expected state of the environment after running the code under test ("post-conditions")
 
 The above terminology loosely maps to the typical flow of ``setup`` - ``test`` - ``teardown`` you'd encounter in [xUnit](https://en.wikipedia.org/wiki/XUnit) style tests.
 
@@ -104,12 +104,13 @@ Executing this with ``evo run-my-tests.lua`` should result in the following repo
 
 ![Screenshot of the BDD test output](bdd-test-output-example.png)
 
-You can also import multiple test suites here, and run them with a simple for loop instead:
+You can also import multiple test suites, and run them with a simple for loop instead:
 
 ```lua title="run-ALL-the-tests.lua"
 	local testSuites = {
 		"./my-test-suite.lua",
 		"./another-test-suite.lua"
+		-- You can add as many entries as you like here
 	}
 
 	for _, filePath in pairs(testSuites) do
@@ -120,99 +121,13 @@ You can also import multiple test suites here, and run them with a simple for lo
 
 Each test suite will run all of its scenarios and display a report before the next one is started, then the next, and so on.
 
----
-
-TODO: Remove, probably?
-
-You can run your tests like any other script, by invoking the interpreter on your scenario file: ``evo bdd-demo.lua``
-
-The displayed summary of the above script should read as follows:
-
-
-The API is optimized for readability and quite verbose. Don't worry, there's an easier way to create these kinds of tests!
-
-## JSON Spec Files
-
-TODO: Remove, obsolete?
-
-You can also create a ``specs.json`` file that stores the layout of one or multiple test suites, with all scenarios and descriptions but absolutely none of the boilerplate code. Here's how this would look for the above example:
-
-```json title="specs.json"
-	[
-		{
-			"name": "Basic demonstration",
-			"scenarios": [
-				{
-					"name": "Testing the framework",
-					"given": "I have established the pre-conditions",
-					"when": "I run the test code",
-					"then": "The post-conditions hold true",
-					"script": "Tests/BasicDemonstration/TestingTheFramework.lua"
-				}
-			]
-		}
-	]
-```
-
-Now, simply create a file ``Tests/BasicDemonstration/TestingTheFramework.lua`` (starting **at the root directory of your package**, i.e., where ``specs.json`` should be located) and add the actual test code that is to be executed:
-
-```lua title="Tests/BasicDemonstration/TestingTheFramework.lua"
-
-	function GIVEN()
-		-- This function should run all setup code ("establish preconditions" for the test)
-	end
-
-	function WHEN()
-		-- This function should run the code under test
-		self.someValue = 42
-	end
-
-	function THEN()
-		-- This function should assert the expected post-conditions
-		assert(self.someValue == 42, "Some value is set correctly")
-	end
-
-	function FINALLY()
-		-- Cleanup tasks; this won't be displayed in the final report
-	end
-
-```
-
-Once done, you can run test suites via ``epo test <TestSuite> <Scenario>``, where the angle brackets denote placeholders that refer to the ``name`` field in ``specs.json``. Omitting the scenario name will run all scenarios for the suite, and omitting the suite will run all tests found in the spec file. Use quotes if needed: ``epo test "Basic demonstration"``
-
-Unfortunately, there's no getting around writing *some* code here. But hopefully, minimizing boilerplate and gathering all test specs in a standardized location will take some of the pain out of writing well-structured, readable tests.
-
-
-## Assertion Library
-
- TODO: Remove, NYI (separate feature/issue/doc article)
-
-As part of the ``bdd`` library, commonly-used assertions are also exported globally:
-
-* ``assertTrue``
-* ``assertFalse``
-* ``assertEquals``
-* ``assertNotEquals``
-* ``assertDeepEquals``
-* ``assertNil``
-* ``assertNotNil``
-* ``assertTypeOf``
-* ``assertThrows``
-* ``assertApproximatelyEquals`` (for float comparisons)
-* ``assertNotApproximatelyEquals`` (for float comparisons)
-
-These are just shorthands, but they work with the testing framework to produce human-readable error messages.
-
 ## Limitations
 
-TODO Review. It's likely outdated?
-
-As with every other design for a testing framework, there are some drawbacks to consider:
+Since the approach to testing described here is simple by design, there are some limitations:
 
 * Nested hierarchies of tests are not supported, although you can of course organize each ``Scenario`` however you like
-* Only ``assert`` function can currently be used to label assertions in the final report
-* You must write textual descriptions for all test suites and scenarios and their ``name`` must must be unique
-* Asynchronous tests (using callbacks) aren't currently supported, though you can use [coroutines](https://www.lua.org/pil/9.1.html) if you need this
+* Only the standard Lua  ``assert`` function can currently be used to label assertions in the final report (for now)
+* Asynchronous tests (using callbacks) aren't currently supported, though you can use [coroutines](https://www.lua.org/pil/9.1.html) if you want this
 
 If you need more features or you dislike the structure that writing BDD-style tests imposes, there may be other options.
 
@@ -220,6 +135,6 @@ If you need more features or you dislike the structure that writing BDD-style te
 
 Naturally, you don't need to use the provided testing primitives if you don't want to. Any standard Lua testing framework, such as [busted](https://github.com/Olivine-Labs/busted) or [LuaUnit](https://luarocks.org/modules/bluebird75/luaunit), should work as long as it only uses Lua 5.1 and [supported Lua 5.2 features](https://luajit.org/extensions.html). You could even create your own test runner, or use a native (C/C++) library via LuaJIT's [foreign function interface (FFI)](https://luajit.org/ext_ffi.html).
 
-However, the builtins described here are "officially" maintained. They're guaranteed to see updates when changes to the runtime and the environment necessitate it, while all other solutions are likely to require maintenance on your part.
+However, the facilities described here are "officially" maintained. They're guaranteed to see updates when changes to the runtime and the environment necessitate it, while all other solutions are likely to require maintenance on your part.
 
-If you're unhappy with the framework, please open an issue or otherwise give feedback to help make it better!
+If you're unhappy with the way that tests work, please open an issue or otherwise give feedback to help make it better!
