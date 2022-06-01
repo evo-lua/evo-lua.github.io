@@ -1,28 +1,18 @@
 ---
-title: Use the assertion library
+title: Use complex assertions
 ---
 
-Learn how to use complex assertions to make testing easier.
+Learn how to use the assertion library to verify invariants in your code.
 
 ## Assertion Library
-
- TODO: Remove, NYI (separate feature/issue/doc article)
 
 To complement the standard ``assert`` function, complex assertions  for common use cases are also exported globally:
 
 * ``assertTrue``
 * ``assertFalse``
 * ``assertEquals``
-* ``assertNotEquals``
-* ``assertDeepEquals``
-* ``assertNil``
-* ``assertNotNil``
-* ``assertTypeOf``
-* ``assertThrows``
-* ``assertApproximatelyEquals``
-* ``assertNotApproximatelyEquals``
 
-These are just shorthands,  they work exactly like assertions in other languages.
+These are just shorthands; they work exactly like assertions in other languages. More assertions will follow.
 
 ## Labelling Assertions for the Test Runner
 
@@ -37,7 +27,7 @@ All of the above assertions support labeling to produce human-readable error mes
 		assertTypeOf(print, "number", "Should be a number") -- false
 
 		assertEquals(0.1, 0.1000001, "Should ignore tiny differences in floating-point comparisons") -- false
-		assertApproximatelyEquals(0.1, 0.1000001, "Should ignore tiny differences in floating-point comparisons") -- true
+		assertApproximatelyEquals(0.1, 0.1000001, "Should ignore tiny differences in float comparisons") -- true
 
 		assertEquals({ test = { foo = {}}}, { test = {}}, "Should traverse nested tables") -- true
 		assertDeepEquals({ test = { foo = {}}}, { test = {}}, "Should traverse nested tables") -- false

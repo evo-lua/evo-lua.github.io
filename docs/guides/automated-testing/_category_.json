@@ -1,0 +1,8 @@
+{
+  "label": "Automated Testing",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Here you'll find guides for setting up automated tests covering your Evo.lua application."
+  }
+}
