@@ -19,7 +19,6 @@ These are just shorthands; they work exactly like assertions in other languages.
 All of the above assertions support labeling to produce human-readable error messages on failure:
 
 ```lua title="assertions-usage-example.lua"
-
 	local scenario = Scenario:Construct("Using complex assertions")
 
 	function scenario:OnEvaluate()
