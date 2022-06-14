@@ -2,7 +2,7 @@
 title: Intercept console output
 ---
 
-Learn how to intercept console outputs and verify them in your tests.
+Learn how to intercept console outputs and access them in your tests.
 
 ## Motivation
 
@@ -10,16 +10,16 @@ Testing at the edges of any system is much more difficult than testing regular f
 
 ## Virtual Consoles
 
-A ``FauxConsole``, or "virtual console", is an in-memory representation of a console buffer with behavior akin to ``stdout``. Instead of printing text to the console environment that your application is running in, it simply "swallows" the output and stores it inside an internal buffer. This buffer can trivially be queried in your tests, allowing you to verify its contents.
+A ``FauxConsole``, or "virtual console", is an in-memory representation of a console buffer with behavior akin to ``stdout``. Instead of printing text to the console environment that your application is running in, it simply "swallows" the output and stores it inside an internal buffer. This buffer can trivially be queried in your tests, allowing you to inspect its contents.
 
 ## Forwarding Outputs
 
 In order to make your application's console output testable, you can do the following in your code:
 
 1. Create a virtual console, via ``C_Testing.CreateFauxConsole()``
-2. Pass the console into whatever function needs to output text
+2. Pass the console into the function, class, or module that needs to output text
 3. Internally, use the virtual console's ``print`` function if one was passed
-4. If no console was passed, simply output text as you would do normally (e.g., via ``print``)
+4. If no console was passed, simply output text as you would do normally (e.g., via the standard ``print``)
 5. You can then make assertions about the buffered contents, which you can retrieve via ``console:read()``
 
 ## Usage Example
@@ -32,8 +32,8 @@ local fauxConsole = C_Testing.CreateFauxConsole()
 assertEquals(fauxConsole.read(), "", "The console buffer should be empty before outputting any text")
 
 fauxConsole.print("This text will never see the light of day!")
--- Beware: A newline (\n) symbol is added to the end, just like in a real console!
 assertEquals(fauxConsole.read(), "This text will never see the light of day!\n", "The console should buffer all outputs")
+-- Beware: A newline (\n) symbol is added to the end, just like printing to a real console!
 
 fauxConsole.clear()
 
