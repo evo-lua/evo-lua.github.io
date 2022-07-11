@@ -31,46 +31,53 @@ This feature is experimental; it will likely be changed or removed in the future
 
 :::
 
-The following global functions are provided to write tests more easily:
-
-* [assertEquals(actual, expected, description?)](#assertEquals)
-* [assertFalse(conditionToCheck description?)](#assertFalse)
-* [assertTrue(conditionToCheck, description?)](#assertTrue)
-* [assertFunctionCalls(codeUnderTest, hostTable, targetFunctionName, numExpectedInvocations?, description?)](#assertFunctionCalls)
-
 ### assertEquals
 
-No information available.
+Asserts that ``actual`` equals ``expected``. Raises an error in case of failure, with ``description`` as the error message.
 
 <Function>
   <Parameters>
     <Parameter name="actual" />
     <Parameter name="expected" />
-    <Parameter name="description" optional="true" />
+    <Parameter name="description" type="string" optional />
   </Parameters>
 </Function>
 
 ### assertFalse
 
+Asserts that ``actual`` equals ``false``. Raises an error in case of failure, with ``description`` as the error message.
+
 <Function>
   <Parameters>
     <Parameter name="conditionToCheck" />
-    <Parameter name="description" optional="true" />
+    <Parameter name="description" type="string" optional />
     </Parameters>
 </Function>
 
 ### assertTrue
 
+Asserts that ``actual`` equals ``true``. Raises an error in case of failure, with ``description`` as the error message.
+
 <Function>
   <Parameters>
     <Parameter name="conditionToCheck" />
-    <Parameter name="description" optional="true" />
+    <Parameter name="description" type="string" optional />
     </Parameters>
 </Function>
 
 ### assertFunctionCalls
 
-TODO
+Asserts that when the function ``codeUnderTest``is executed, it calls the function referenced by the key  ``targetFunctionName`` in the table ``hostTable`` exactly ``numExpectedInvocations`` times. Raises an error in case of failure, with ``description`` as the error message. You can use ``_G`` as the ``hostTable`` if targetting a global function.
+
+<Function>
+  <Parameters>
+    <Parameter name="codeUnderTest" type="function" />
+    <Parameter name="hostTable" type="table" />
+    <Parameter name="targetFunctionName" type="string" />
+    <Parameter name="numExpectedInvocations" type="number" optional fallback="1" />
+    <Parameter name="description" type="string" optional />
+    </Parameters>
+</Function>
 
 Alias for ``string.format(...)``.
 
