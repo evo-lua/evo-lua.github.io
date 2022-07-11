@@ -1,4 +1,21 @@
+/* deprecated: Remove? */
 .api {
   display: flex;
   flex-direction: row;
+}
+
+/* This must be assigned to all table cells that should include the index counter (one per row) */
+.tdCounter::before {
+  counter-increment: parameter-index-counter;
+  content: counter(parameter-index-counter);
+}
+
+/* Whenever this tag is encountered, a new parameters table should be created (with new indices) */
+.tdCounterReset {
+  counter-reset: parameter-index-counter;
+}
+
+/* The counter needs to be at the highest level in order to work (no idea why; I didn't spend much time on this) */
+body {
+  counter-reset: parameter-index-counter;
 }

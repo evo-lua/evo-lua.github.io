@@ -2,21 +2,6 @@
 sidebar_position: 1
 ---
 
-export const Highlight = ({children, color}) => (
-  <span
-    style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-    {children}
-  </span>
-);
-
-<Highlight color="#25c2a0">Docusaurus green</Highlight> and <Highlight color="#1877F2">Facebook blue</Highlight> are my favorite colors.
-
-I can write **Markdown** alongside my _JSX_!
 
 # Standard Library Extensions
 
@@ -29,7 +14,7 @@ The following shorthands are provided purely for ease-of-use, with unchanged sem
 * ``format``: Alias for ``string.format(...)``
 * ``printf``: Alias for ``print(string.format(...))``
 
-## Assertion Library
+## Assertions
 
 :::info
 
@@ -41,14 +26,31 @@ This feature is experimental; it will likely be changed or removed in the future
 
 The following global functions are provided to write tests more easily:
 
-* [assertEquals(actual, expected, description)](#assertEquals)
+* [assertEquals(actual, expected[, description])](#assertEquals)
 * [assertFalse(conditionToCheck description)](#assertFalse)
 * [assertTrue(conditionToCheck, description)](#assertTrue)
-* [assertFunctionCalls(codeUnderTest, hostTable, targetFunctionName, numExpectedInvocations, description)](#assertFunctionCalls)
+* [assertFunctionCalls(codeUnderTest, hostTable, targetFunctionName[, numExpectedInvocations, description])](#assertFunctionCalls)
 
 ### assertEquals
 
+import { Function, Parameters, Parameter } from "/src/components/ApiDocumentation/API.jsx";
+
+<Function name="assertEquals">
+  <Parameters>
+    <Parameter name="actual" />
+    <Parameter name="expected" />
+    <Parameter name="description" optional="true" />
+    </Parameters>
+</Function>
+
 ### assertFalse
+
+<Function name="assertFalse">
+  <Parameters>
+    <Parameter name="conditionToCheck" />
+    <Parameter name="description" optional="true" />
+    </Parameters>
+</Function>
 
 ### assertTrue
 
