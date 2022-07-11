@@ -2,6 +2,7 @@
 sidebar_position: 1
 ---
 
+import { Function, Parameters, Parameter } from "@site/src/components/ApiDocumentation/API.jsx";
 
 # Standard Library Extensions
 
@@ -33,14 +34,12 @@ The following global functions are provided to write tests more easily:
 
 ### assertEquals
 
-import { Function, Parameters, Parameter } from "/src/components/ApiDocumentation/API.jsx";
-
 <Function name="assertEquals">
   <Parameters>
     <Parameter name="actual" />
     <Parameter name="expected" />
     <Parameter name="description" optional="true" />
-    </Parameters>
+  </Parameters>
 </Function>
 
 ### assertFalse
@@ -70,6 +69,4 @@ Returns:
 | :---: | :---: | :---: | :---: |
 | 1 | formattedString | ``string`` | The original string after all valid placeholder symbols have been resolved
 
-
 A failed assertion will raise an error identified by ``description``, and fail any test that is currently in progress.
-```
