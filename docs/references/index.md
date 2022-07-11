@@ -1,11 +1,11 @@
 ---
 sidebar_position: 4
-url: /references/
+url: /api-reference/
 ---
 
-# References
+# API Reference
 
-In this section, you'll find a comprehensive list of builtin functions and modules you can use in your ``evo`` application.
+Various third-party libraries that have been integrated into the runtime.
 
 ## Language Primitives
 
@@ -47,15 +47,15 @@ Cryptography primitives are exposed through [bindings](https://zhaozg.github.io/
 
 Preloaded package: ``ssl`` (access via ``require("ssl")``)
 
-### Windows System Services
+### Windows Services
 
-The Windows-only [Windows Service Functions](https://docs.microsoft.com/en-us/windows/win32/services/service-functions) library is exposed via two separate packages.
+The Windows-only [System Service Functions](https://docs.microsoft.com/en-us/windows/win32/services/service-functions) API is exposed via two separate packages.
 
 Preloaded package: ``winsvc``  and ``winsvcaux`` (access via ``require("winsvc")`` and ``require("winsvcaux")``)
 
 ### Parsing Expression Grammars (LPEG)
 
-Pattern-matching functionality is supplied by the standard [LPEG](http://www.inf.puc-rio.br/~roberto/lpeg/) library.
+Pattern-matching functionality is supplied by the [LPEG](http://www.inf.puc-rio.br/~roberto/lpeg/) library.
 
 Preloaded package: ``lpeg`` (access via ``require("lpeg")``)
 
