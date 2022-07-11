@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-import { Function, Parameters, Parameter } from "@site/src/components/ApiDocumentation/API.jsx";
+import { Function, Parameters, Parameter, Returns, Return } from "@site/src/components/ApiDocumentation/API.jsx";
 
 # Standard Library Extensions
 
@@ -71,4 +71,70 @@ Asserts that when the function ``codeUnderTest``is executed, it calls the functi
     <Parameter name="numExpectedInvocations" type="number" optional fallback="1" />
     <Parameter name="description" type="string" optional />
     </Parameters>
+</Function>
+
+## Event System
+
+:::info
+
+This feature is experimental; it will likely be changed or removed in future versions.
+
+*Developer's notes: A global event system is probably not useful enough to keep around. Use localized events instead?*
+
+:::
+
+The event registry is made available as a global ``event`` table.
+
+### event.register
+
+Registers a new event listener for the event identified by ``eventID``. Registering the same listener twice has no effect.
+
+<Function>
+  <Parameters>
+      <Parameter name="eventID" type="string" />
+      <Parameter name="listener" type="function" />
+    </Parameters>
+</Function>
+
+### event.unregister
+
+Attempts to remove a registered event listener for the event identified by ``eventID``. If no ``listener`` was passed, removes all event listeners that have previously been registered for this event.
+
+<Function>
+  <Parameters>
+      <Parameter name="eventID" type="string" />
+      <Parameter name="listener" type="function" optional />
+    </Parameters>
+  <Returns>
+    <Return name="success" type="boolean" optional />
+    <Return name="errorMessage" type="string" optional />
+  </Returns>
+</Function>
+
+### event.trigger
+
+Triggers all registered event listeners for the event identified by ``eventID``, forwarding it alongside any passed arguments. This is equivalent to manually calling ``OnEvent(eventID, ...)`` on a specific event target, which is preferable since it doesn't trigger other event listeners that may have been registered for the same event.
+
+<Function>
+  <Parameters>
+      <Parameter name="eventID" type="string" />
+      <Parameter varargs />
+    </Parameters>
+  <Returns>
+    <Return name="success" type="boolean" optional />
+    <Return name="errorMessage" type="string" optional />
+  </Returns>
+</Function>
+
+### event.list
+
+Returns a list of event listeners that have been registered for the event identified by ``eventID``.
+
+<Function>
+  <Parameters>
+      <Parameter name="eventID" type="string" />
+    </Parameters>
+  <Returns>
+    <Return name="listOfEventHandlers" type="table" optional />
+  </Returns>
 </Function>
