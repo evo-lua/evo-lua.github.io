@@ -4,6 +4,31 @@
   flex-direction: row;
 }
 
+/* Function */
+.apiDocumentationSection {
+  margin-left: 1em;
+  margin-bottom: 1em;
+  text-align: left;
+}
+
+/* Parameters */
+.functionParametersTable {
+  font-size: 0.85em;
+  border-collapse: collapse;
+  /* min-width: 40em; */
+  margin-bottom: 1em;
+}
+
+.functionParametersTableBody {
+  border-left: 0.5ex solid #00802B;
+}
+
+.functionParametersFirstRow {
+  background: #00802B;
+  text-align: center;
+  color: white;
+}
+
 /* This must be assigned to all table cells that should include the index counter (one per row) */
 .tdCounter::before {
   counter-increment: parameter-index-counter;
