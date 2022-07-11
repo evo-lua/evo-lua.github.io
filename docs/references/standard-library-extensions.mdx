@@ -2,11 +2,9 @@
 sidebar_position: 1
 ---
 
-import { Function, Parameters, Parameter, Returns, Return } from "@site/src/components/ApiDocumentation/API.jsx";
-
 # Standard Library Extensions
 
-This document lists all nonstandard library functions that are present in the ``evo`` runtime environment.
+This document lists all nonstandard library functions.
 
 ## Global Aliases
 
@@ -14,6 +12,8 @@ The following shorthands are provided purely for ease-of-use, with unchanged sem
 
 * ``format``: Alias for ``string.format(...)``
 * ``printf``: Alias for ``print(string.format(...))``
+
+import { Function, Parameters, Parameter, Returns, Return } from "@site/src/components/ApiDocumentation/API.jsx";
 
 ## Assertions
 
@@ -138,3 +138,169 @@ Returns a list of event listeners that have been registered for the event identi
     <Return name="listOfEventHandlers" type="table" optional />
   </Returns>
 </Function>
+
+## JSON
+
+function json.stringify(...)
+	return json.encode(...)
+end
+
+### json.stringify
+
+function json.parse(...)
+	return json.decode(...)
+end
+
+### json.parse
+
+## Mixins
+
+### mixin
+
+## Serialization
+
+function serialize(object)
+	return serpent_dump(object, dumpOptions)
+end
+
+NOT human readable, use dump/inspect instead
+
+## Text Transformations
+
+global ``transform``
+
+### transform.
+
+function transform.bold(text)
+	if type(text) ~= "string" then return nil, "Usage: bold(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_BOLD .. text .. RESET_SEQUENCE
+end
+
+function transform.underline(text)
+	if type(text) ~= "string" then return nil, "Usage: underline(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_UNDERLINE .. text .. RESET_SEQUENCE
+end
+
+function transform.black(text)
+	if type(text) ~= "string" then return nil, "Usage: black(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_BLACK .. text .. RESET_SEQUENCE
+ end
+
+function transform.blackBackground(text)
+	if type(text) ~= "string" then return nil, "Usage: blackBackground(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_BLACK_BACKGROUND .. text .. RESET_SEQUENCE
+end
+
+function transform.green(text)
+	if type(text) ~= "string" then return nil, "Usage: green(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_GREEN .. text .. RESET_SEQUENCE
+end
+
+function transform.gray(text)
+	if type(text) ~= "string" then return nil, "Usage: gray(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_GRAY .. text .. RESET_SEQUENCE
+end
+
+function transform.white(text)
+	if type(text) ~= "string" then return nil, "Usage: white(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_WHITE .. text .. RESET_SEQUENCE
+end
+
+function transform.red(text)
+	if type(text) ~= "string" then return nil, "Usage: red(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_RED .. text .. RESET_SEQUENCE
+end
+
+function transform.brightRed(text)
+	if type(text) ~= "string" then return nil, "Usage: red(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_BRIGHT_RED .. text .. RESET_SEQUENCE
+end
+
+function transform.cyan(text)
+	if type(text) ~= "string" then return nil, "Usage: cyan(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_CYAN .. text .. RESET_SEQUENCE
+end
+
+function transform.yellow(text)
+	if type(text) ~= "string" then return nil, "Usage: yellow(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_YELLOW .. text .. RESET_SEQUENCE
+end
+
+function transform.brightRedBackground(text)
+	if type(text) ~= "string" then return nil, "Usage: brightRedBackground(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_RED_BACKGROUND_BRIGHT .. text .. RESET_SEQUENCE
+end
+
+function transform.greenBackground(text)
+	if type(text) ~= "string" then return nil, "Usage: greenBackground(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_GREEN_BACKGROUND .. text .. RESET_SEQUENCE
+end
+
+function transform.whiteBackground(text)
+	if type(text) ~= "string" then return nil, "Usage: whiteBackground(text)" end
+
+	if not ENABLE_TEXT_TRANSFORMATIONS then return text end
+
+	return COLOR_START_SEQUENCE .. COLOR_CODE_WHITE_BACKGROUND .. text .. RESET_SEQUENCE
+end
+
+## Object Oriented Programming
+
+## construct
+
+Returns a Lua ``table`` object that stores the given ``className``, and a default ``__call`` metamethod that turns it into a callable constructor (similar to Python's OOP notation).
+
+## mixin
+
+Copies all functions from ``mixinObject`` to the``targetObject`` table. Does not alter existing metamethods or __className fields.
+
+### typeof
+
+Returns the Lua type of the given object, or class name if the object is a ``table`` with a ``__className`` meta field.
+
+local function typeof(object)
+	if type(object) ~= "table" then return type(object) end
+
+	if type(object.__className) ~= "string" then return type(object) end
+
+	return object.__className
+end
