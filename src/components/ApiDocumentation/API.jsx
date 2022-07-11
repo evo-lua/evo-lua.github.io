@@ -9,9 +9,6 @@ export const Function = ({children}) => (
   );
 
 class Parameter extends React.Component {
-	constructor(props) {
-		super(props);
-	}
 	render() {
 
 		let displayName = this.props.name;
@@ -34,12 +31,6 @@ class Parameter extends React.Component {
 }
 
 class Parameters extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state={
-			lastRenderedChildIndex: 0
-		}
-	}
 	render(){
 		return(
 			<table className={styles.functionParametersTable}>
@@ -64,27 +55,39 @@ class Parameters extends React.Component {
 	}
 }
 
-  export const Parameters2 = ({children}) => (
-	<table>
-		<thead>
+class Returns extends React.Component {
+	render() {
+		return(
+			<table className={styles.functionReturnValuesTable}>
+				<tbody className={[styles.tdCounterReset, styles.functionReturnValuesTableBody].join(" ")}>
+					<tr className={styles.functionReturnValuesFirstRow}>
+						<th colspan="3">
+							Return values
+						</th>
+					</tr>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Type</th>
+					</tr>
+					{
+						this.props.children
+					}
+				</tbody>
+			</table>
+		)
+	}
+}
+class Return extends React.Component {
+	render() {
+		return (
 			<tr>
-				<th colspan="4">
-					Arguments
-				</th>
+				<td className={styles.tdCounter}>{this.props.index}</td>
+				<td>{this.props.name}</td>
+				<td>{this.props.type ? this.props.type : "any"}{this.props.optional ? "?" : ""}</td>
 			</tr>
-			<tr>
-				<th>#</th>
-				<th>Name</th>
-				<th>Type</th>
-				<th>Fallback</th>
-			</tr>
-		</thead>
-		<tbody>
-			{
-				children
-			}
-		</tbody>
-	</table>
-  );
+		)
+	}
+}
 
-export { Parameters, Parameter};
+export { Parameters, Parameter, Returns, Return};
