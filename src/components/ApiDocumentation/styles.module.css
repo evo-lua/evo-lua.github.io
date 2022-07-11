@@ -12,7 +12,7 @@
 }
 
 /* Parameters */
-.functionParametersTable {
+.functionParametersTable, .functionReturnValuesTable {
   font-size: 0.85em;
   border-collapse: collapse;
   /* min-width: 40em; */
@@ -25,6 +25,17 @@
 
 .functionParametersFirstRow {
   background: #00802B;
+  text-align: center;
+  color: white;
+}
+
+
+.functionReturnValuesTableBody {
+  border-left: 0.5ex solid #006699;;
+}
+
+.functionReturnValuesFirstRow {
+  background: #006699;;
   text-align: center;
   color: white;
 }
