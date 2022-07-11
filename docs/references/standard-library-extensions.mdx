@@ -15,6 +15,12 @@ The following shorthands are provided purely for ease-of-use, with unchanged sem
 * ``format``: Alias for ``string.format(...)``
 * ``printf``: Alias for ``print(string.format(...))``
 
+<Function name="format">
+  <Parameters>
+    <Parameter varargs />
+  </Parameters>
+</Function>
+
 ## Assertions
 
 :::info
@@ -27,14 +33,16 @@ This feature is experimental; it will likely be changed or removed in the future
 
 The following global functions are provided to write tests more easily:
 
-* [assertEquals(actual, expected[, description])](#assertEquals)
-* [assertFalse(conditionToCheck description)](#assertFalse)
-* [assertTrue(conditionToCheck, description)](#assertTrue)
-* [assertFunctionCalls(codeUnderTest, hostTable, targetFunctionName[, numExpectedInvocations, description])](#assertFunctionCalls)
+* [assertEquals(actual, expected, description?)](#assertEquals)
+* [assertFalse(conditionToCheck description?)](#assertFalse)
+* [assertTrue(conditionToCheck, description?)](#assertTrue)
+* [assertFunctionCalls(codeUnderTest, hostTable, targetFunctionName, numExpectedInvocations?, description?)](#assertFunctionCalls)
 
 ### assertEquals
 
-<Function name="assertEquals">
+No information available.
+
+<Function>
   <Parameters>
     <Parameter name="actual" />
     <Parameter name="expected" />
@@ -44,7 +52,7 @@ The following global functions are provided to write tests more easily:
 
 ### assertFalse
 
-<Function name="assertFalse">
+<Function>
   <Parameters>
     <Parameter name="conditionToCheck" />
     <Parameter name="description" optional="true" />
@@ -53,7 +61,16 @@ The following global functions are provided to write tests more easily:
 
 ### assertTrue
 
+<Function>
+  <Parameters>
+    <Parameter name="conditionToCheck" />
+    <Parameter name="description" optional="true" />
+    </Parameters>
+</Function>
+
 ### assertFunctionCalls
+
+TODO
 
 Alias for ``string.format(...)``.
 
