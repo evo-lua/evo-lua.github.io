@@ -78,19 +78,3 @@ Asserts that when the function ``codeUnderTest``is executed, it calls the functi
     <Parameter name="description" type="string" optional />
     </Parameters>
 </Function>
-
-Alias for ``string.format(...)``.
-
-Arguments:
-
-| # | Name | Type | Description |
-| :---: | :---: | :---: | :---: |
-| 1 | ... | ``any`` | Variable arguments (``varargs``) |
-
-Returns:
-
-| # | Name | Type | Description |
-| :---: | :---: | :---: | :---: |
-| 1 | formattedString | ``string`` | The original string after all valid placeholder symbols have been resolved
-
-A failed assertion will raise an error identified by ``description``, and fail any test that is currently in progress.
