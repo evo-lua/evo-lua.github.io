@@ -8,15 +8,6 @@ export const Function = ({name, children}) => (
 	</p>
   );
 
-  export const Parameter2 = ({index, name, type, optional, fallback}) => (
-	  <tr>
-		<td>{1}</td>
-		<td>{name}</td>
-		<td>{type ? type : "any"}{optional ? "?" : ""}</td>
-		<td>{fallback}</td>
-	</tr>
-  );
-
 class Parameter extends React.Component {
 	constructor(props) {
 		super(props);
@@ -27,7 +18,7 @@ class Parameter extends React.Component {
 				<td className={styles.tdCounter}>{this.props.index}</td>
 				<td>{this.props.name}</td>
 				<td>{this.props.type ? this.props.type : "any"}{this.props.optional ? "?" : ""}</td>
-				<td>{this.props.fallback}</td>
+				<td>{this.props.fallback ? this.props.fallback : "---"}</td>
 			</tr>
 		)
 	}
