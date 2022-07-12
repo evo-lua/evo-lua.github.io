@@ -1,12 +1,13 @@
 ---
 sidebar_position: 1
+url: /api-reference/globals/
 ---
 
-# Standard Library Extensions
+# Global Namespace
 
-This document lists all nonstandard library functions.
+This document lists all nonstandard functions exported to the global environment.
 
-## Global Aliases
+## Aliases
 
 The following shorthands are provided purely for ease-of-use, with unchanged semantics:
 
@@ -24,6 +25,8 @@ This feature is experimental; it will likely be changed or removed in future ver
 *Developer's notes: It's probably better to use a standardized assertion library instead, like luassert?*
 
 :::
+
+Some utility functions that help with assertion testing are globally exported, for the time being.
 
 ### assertEquals
 
@@ -61,7 +64,9 @@ Asserts that ``actual`` equals ``true``. Raises an error in case of failure, wit
 
 ### assertFunctionCalls
 
-Asserts that when the function ``codeUnderTest``is executed, it calls the function referenced by the key  ``targetFunctionName`` in the table ``hostTable`` exactly ``numExpectedInvocations`` times. Raises an error in case of failure, with ``description`` as the error message. You can use ``_G`` as the ``hostTable`` if targetting a global function.
+Asserts that ``codeUnderTest`` calls  ``hostTable[targetFunctionName]`` (both must be functions) exactly ``numExpectedInvocations`` times. Raises an error in case of failure, with ``description`` as the error message.
+
+In order to target a global function, you can pass ``_G`` as the ``hostTable``.
 
 <Function>
   <Parameters>
@@ -128,42 +133,84 @@ Triggers all registered event listeners for the event identified by ``eventID``,
 
 ### event.list
 
-Returns a list of event listeners that have been registered for the event identified by ``eventID``.
+Returns a list of all event handlers that have been registered for the event identified by ``eventID``.
 
 <Function>
   <Parameters>
       <Parameter name="eventID" type="string" />
     </Parameters>
   <Returns>
-    <Return name="listOfEventHandlers" type="table" optional />
+    <Return name="eventHandlers" type="table" optional />
   </Returns>
 </Function>
 
 ## JSON
 
-function json.stringify(...)
-	return json.encode(...)
-end
+:::info
+
+This feature is experimental; it will likely be changed or removed in future versions.
+
+*Developer's notes: Since the JSON library used is slow and not maintainable, it will be replaced at some point.*
+
+:::
+
+An unoptimized JSON serialization API is exported via the global ``json`` table. It currently uses [dkjson](http://dkolf.de/src/dkjson-lua.fsl/home) internally.
 
 ### json.stringify
 
-function json.parse(...)
-	return json.decode(...)
-end
+Converts a Lua table to an equivalent JSON string, This is an alias for ``dkjson.encode``.
+
+<Function>
+  <Parameters>
+      <Parameter name="valueToEncode" type="table" />
+    </Parameters>
+  <Returns>
+    <Return name="stringifiedValue" type="string" optional />
+  </Returns>
+</Function>
 
 ### json.parse
 
-## Mixins
+Converts a JSON string to an equivalent Lua table. This is an alias for ``dkjson.decode``.
 
-### mixin
+<Function>
+  <Parameters>
+      <Parameter name="jsonStringToDecode" type="string" />
+    </Parameters>
+  <Returns>
+    <Return name="decodedTableObject" type="table" optional />
+  </Returns>
+</Function>
 
-## Serialization
+## Object Serialization
 
-function serialize(object)
-	return serpent_dump(object, dumpOptions)
-end
+[serpent](https://github.com/pkulchenko/serpent) can be used to serialize Lua objects. If performance is a concern, you may want to use LuaJIT's bytecode serialization instead.
 
-NOT human readable, use dump/inspect instead
+### dump
+
+Outputs a human-readable representation of the given Lua object. Can be used to pretty-print tables.
+
+<Function>
+  <Parameters>
+      <Parameter name="object" type="any" />
+    </Parameters>
+  <Returns>
+    <Return name="serializedObject" type="string" />
+  </Returns>
+</Function>
+
+### serialize
+
+Serializes a given Lua object. The output is NOT optimized for readability; for debugging purposes, use ``dump`` instead.
+
+<Function>
+  <Parameters>
+      <Parameter name="object" type="any" />
+    </Parameters>
+  <Returns>
+    <Return name="serializedObject" type="string" />
+  </Returns>
+</Function>
 
 ## Text Transformations
 
@@ -285,22 +332,46 @@ end
 
 ## Object Oriented Programming
 
-## construct
+### mixin
 
-Returns a Lua ``table`` object that stores the given ``className``, and a default ``__call`` metamethod that turns it into a callable constructor (similar to Python's OOP notation).
+Copies all functions from the provided mixins to ``target``. Ignores metatables and other value types.
 
-## mixin
-
-Copies all functions from ``mixinObject`` to the``targetObject`` table. Does not alter existing metamethods or __className fields.
+<Function>
+    <Parameters>
+        <Parameter name="target" type="table" />
+        <Parameter varargs />
+    </Parameters>
+</Function>
 
 ### typeof
 
+:::info
+
+This feature is experimental; it will likely be changed or removed in future versions.
+
+*Developer's notes: This isn't very useful, as there's no real class system. Will likely be removed, or at least reworked.*
+
+:::
+
 Returns the Lua type of the given object, or class name if the object is a ``table`` with a ``__className`` meta field.
 
-local function typeof(object)
-	if type(object) ~= "table" then return type(object) end
+<Function>
+    <Parameters>
+        <Parameter name="object" type="table" />
+    </Parameters>
+    <Returns>
+        <Return name="typeOrClassName" type="string" />
+    </Returns>
+</Function>
 
-	if type(object.__className) ~= "string" then return type(object) end
+## Path Resolution
 
-	return object.__className
-end
+NodeJS path library
+
+### path.resolve
+
+## Modules
+
+### import
+
+... string, table.count

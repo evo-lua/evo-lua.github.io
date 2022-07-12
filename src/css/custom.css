@@ -16,6 +16,8 @@
 
   --ifm-footer-padding-vertical: 0.5rem;
   --ifm-table-cell-padding: 0.5em;
+  /* --ifm-toc-padding-vertical: 0.25em; */
+  /* --ifm-toc-padding-horizontal: 0.75em; */
 }
 
 body {
@@ -45,6 +47,10 @@ a:link:hover, a:visited:hover {
   background-color: #D0D0FF;
   color: #000080;
   transition: all 0.35s ease;
+}
+
+.table-of-contents__link {
+  padding: 0;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
