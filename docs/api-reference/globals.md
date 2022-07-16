@@ -201,7 +201,9 @@ Outputs a human-readable representation of the given Lua object. Can be used to 
 
 ### serialize
 
-Serializes a given Lua object. The output is NOT optimized for readability; for debugging purposes, use ``dump`` instead.
+Serializes a given Lua object. You can use ``loadstring`` to parse the result and get the original data back.
+
+The output is NOT optimized for readability, but you can use ``dump`` instead.
 
 <Function>
   <Parameters>
