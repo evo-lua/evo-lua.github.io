@@ -59,6 +59,11 @@ const config = {
           src: 'img/caterpillar.png',
         },
         items: [
+			{
+				href: '/docs',
+				label: 'Documentation',
+				position: 'left',
+			  },
           {
             href: 'https://github.com/evo-lua',
             label: 'GitHub',
