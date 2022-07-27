@@ -1,0 +1,8 @@
+{
+	"label": "Drafts",
+	"position": 1,
+	"link": {
+	  "type": "generated-index",
+	  "description": "RFCs and other unfinished design documents"
+	}
+  }
