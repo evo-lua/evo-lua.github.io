@@ -60,12 +60,6 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {
             href: 'https://github.com/evo-lua',
             label: 'GitHub',
             position: 'right',
