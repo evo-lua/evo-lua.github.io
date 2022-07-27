@@ -1,5 +1,7 @@
 # RFC: Standardized Logging Framework
 
+This document describes the design goals for a libuv-compatible logging framework.
+
 ## Motivation
 
 There's only one (moderately) active logging framework for Lua, which uses standard Lua I/O (not async via libuv).
