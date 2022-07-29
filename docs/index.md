@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
 ---
 
 # Documentation Overview
@@ -7,7 +7,7 @@ sidebar_position: 1
 | Your goal | Where you should go |
 | :---: | :---: |
 | Getting started | Tutorials |
-| Solve a specific problem | How-to Guides |
+| Solve a specific problem | [How-to Guides](/docs/category/how-to-guides/) |
 | Look up technical information | References |
 | Understand how stuff works | [Background Information](/docs/background-information/) |
 | Report an issue, give feedback, or ask questions | [GitHub Issues](https://github.com/evo-lua/evo-lua.github.io/issues) |
