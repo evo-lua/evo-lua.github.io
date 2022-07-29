@@ -12,20 +12,9 @@ evo myApp.lua -- cli args go here
 
 ## Receiving CLI Arguments
 
-Scripts can fetch the arguments passed after ``--`` via Lua's [varargs](https://www.lua.org/pil/5.2.html) operator:
+Scripts can fetch the arguments added after ``--`` via Lua's [varargs](https://www.lua.org/pil/5.2.html) operator:
 
-```lua title=myApp.lua
-local arguments = { ... }
-
-print("Number of command-line arguments received:", #arguments)
-
-print("Dumping command-line arguments...")
-dump(commandLineArguments)
-
-print("Iterating over command-line arguments...")
-for index, argument in pairs(arguments) do
-	print(index, argument)
-end
+```lua title="Example: Arguments passed through varargs" source=cli-app-args.lua
 ```
 
 Expected output:
@@ -45,18 +34,7 @@ Iterating over command-line arguments...
 
 If you need the full ``argv`` array as received by the runtime, read the standard global array ``arg``:
 
-```lua title=receiving-command-line-arguments.lua
-local commandLineArguments = { ... }
-
-print("Number of command-line arguments received:", #commandLineArguments)
-
-print("Dumping command line arguments (only those after the -- delimiter)...")
-dump(commandLineArguments)
-
--- Alternatively, access the full arguments vector (argv in C) passed to the runtime
-print("Dumping command line arguments (the full C arguments vector)...")
-print("Full arguments count:", #arg)
-dump(arg)
+```lua title="Example: Reading argv from Lua scripts" source=cli-global-arg.lua
 ```
 
 This array includes all arguments, including those in front of the ``--`` delimiter. Running the above:
@@ -78,11 +56,9 @@ Full arguments count:     8
 
 ## Accessing the Runtime Path
 
-The executable name isn't present in the arguments vector. To retrieve it, you can use libuv instead:
+If you want to find out from where the interpreter is running, you can use libuv:
 
-```lua title=read-executable-path.lua
-local libuv = require("uv")
-print("The executable running this script is located here:", libuv.exepath())
+```lua title="Example: Retrieving the executable name" source=uv-exepath.lua
 ```
 
 The result will depend on where you've placed the ``evo`` binary on your system:
