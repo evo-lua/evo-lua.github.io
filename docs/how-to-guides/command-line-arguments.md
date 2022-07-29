@@ -40,7 +40,7 @@ If you need the full ``argv`` array as received by the runtime, read the standar
 This array includes all arguments, including those in front of the ``--`` delimiter. Running the above:
 
 ```bash
-evo receiving-command-line-options.lua --main ignored.lua -- cli args go here
+evo myApp.lua --main ignored.lua -- cli args go here
 ```
 
 The output shows the full list of arguments, including those already processed by the runtime:
@@ -51,7 +51,7 @@ Dumping command line arguments (only those after the -- delimiter)...
 { "cli", "args", "go", "here" }
 Dumping command line arguments (the full C arguments vector)...
 Full arguments count:     8
-{ "receiving-command-line-options.lua", "--main", "ignored.lua", "--", "cli", "args", "go", "here" }
+{ "myApp.lua", "--main", "ignored.lua", "--", "cli", "args", "go", "here" }
 ```
 
 ## Accessing the Runtime Path
