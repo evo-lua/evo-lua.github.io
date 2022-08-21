@@ -73,7 +73,7 @@ Event emitters in NodeJS are generally less readable than they could be (like mo
 
 ### Variable Number of Arguments
 
-In the original WOW API, event handlers would pass multiple values via varargs, like ``OnEvent(eventID, ...)``. This has proven to cause issues when signatures inevitably have to change, which is why arguments should be passed as an ``eventInfo`` table. Entries should be indexed with the argument name, so that accessing missing fields raise a script error, and no changes need to be made to legacy code when new ones are added or unused properties are removed.
+In the original WOW API, event handlers would pass multiple values via varargs, like ``OnEvent(eventID, ...)``. This has proven to cause issues when signatures inevitably have to change, which is why arguments should be passed as an ``payload`` table. Entries should be indexed with the argument name, so that accessing missing fields raise a script error, and no changes need to be made to legacy code when new ones are added or unused properties are removed.
 
 ### Network Messages and Events
 
