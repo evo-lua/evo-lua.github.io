@@ -33,17 +33,31 @@ Events are always written in capital letters, like ``APPLICATION_SHUTDOWN`` (WOW
 
 ### Event Listeners
 
-All event handlers should have a standard name and signature, following the following conventions:
+All event handlers should have a standard name and signature, and adhere to the following conventions.
 
-* The default event handler is always ``OnEvent(eventID, eventInfo)`` , where ``eventInfo`` is a table that contains the named keys and values of all passed arguments
-* The ``eventInfo`` table should *not* be an array, as that would defeat the point of making it easier to change the signature without having to update existing code that's unaffected by the changes
-* This handler serves as a catchall, forwarding events to more specialized handlers (it can be overridden as needed)
-* For each event, the name of its default handler is identical to the event ID written in PascalCase, with underscores removed and the event handler prefix ``On`` preprended
-* Example: ``APPLICATION_SHUTDOWN`` is forwarded to  ``MyObject:OnApplicationShutdown()`` by ``MyObject:OnEvent()``
+#### The OnEvent Catchall Handler
 
-Creating new ``eventInfo`` tables doesn't seem to add any overhead, [according to some very basic benchmarking](https://gist.github.com/Duckwhale/5685a0abe2930d563b4bc931a543b536).
+The primary event handler is always ``OnEvent(eventID, payload)`` , where ``payload`` is a table that contains the named keys and values of all passed arguments. This ``payload`` table should *not* be an array, as that would defeat the point of making it easier to change the signature without having to update existing code that's unaffected by the changes.
 
-Since accessing the ``eventInfo`` table *does* have a measurable performance impact, and many event handlers will only care about the ``eventID`` itself, it doesn't make sense to only pass an ``eventInfo`` table with a ``eventInfo.eventID`` field that would have to be read every time. When no arguments passed, there's also no table creation (possible GC churn).
+This handler serves as a catchall, forwarding events to more specialized handlers (ideally, it needn't be overridden).
+
+#### Standard Event Handlers
+
+For each event, the name of its default handler is identical to the event ID written in PascalCase, with underscores removed and the event handler prefix ``On`` preprended. Example: The ``APPLICATION_SHUTDOWN`` event is forwarded to  ``MyObject:OnApplicationShutdown()`` by the catchall handler ``MyObject:OnEvent()``, with all arguments intact.
+
+These handlers can be overridden if needed, but since they implement functionality doing so isn't generally advisable.
+
+#### Placeholder Event Handlers
+
+Events that have no implementation in the runtime, but might be of interest to consumers of the API, trigger empty placeholder event handlers. These are effectively no-ops that are intended to be overridden as needed. They always map 1:1 to the event name itself, in all capital letters and without the ``On`` prefix used by standard event listeners.
+
+Example: ``TcpClient.TCP_SESSION_ENDED``  is called whenever ``TCP_SESSION_ENDED`` fires, but it does nothing by default
+
+#### Optional Payloads
+
+Creating new ``payload`` tables doesn't seem to add any overhead, [according to some very basic benchmarking](https://gist.github.com/Duckwhale/5685a0abe2930d563b4bc931a543b536).
+
+Since accessing the ``payload`` table *does* have a measurable performance impact, and many event handlers will only care about the ``eventID`` itself, it doesn't make sense to only pass an ``payload`` table with a ``payload.eventID`` field that would have to be read every time. When no arguments passed, there's also no table creation (possible GC churn).
 
 ### Code Sharing
 
@@ -59,7 +73,7 @@ Event emitters in NodeJS are generally less readable than they could be (like mo
 
 ### Variable Number of Arguments
 
-In the original WOW API, event handlers would pass multiple values via varargs, like ``OnEvent(eventID, ...)``. This has proven to cause issues when signatures inevitably have to change, which is why arguments should be passed as an ``eventInfo`` table. Entries should be indexed with the argument name, so that accessing missing fields raise a script error, and no changes need to be made to legacy code when new ones are added or unused properties are removed.
+In the original WOW API, event handlers would pass multiple values via varargs, like ``OnEvent(eventID, ...)``. This has proven to cause issues when signatures inevitably have to change, which is why arguments should be passed as an ``payload`` table. Entries should be indexed with the argument name, so that accessing missing fields raise a script error, and no changes need to be made to legacy code when new ones are added or unused properties are removed.
 
 ### Network Messages and Events
 
