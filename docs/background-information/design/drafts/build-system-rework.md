@@ -11,9 +11,11 @@ Evo is based on Luvi, and as such uses the same build system (based on [CMake](h
 * The existing build system accounts for many unsupported use cases, unnecessarily increasing complexity further
 * It uses version 2 of CMake, which makes the code difficult to maintain and extend, or migrate to "modern" CMake
 * Builds using WSL can randomly fail with segmentation faults that I'd rather not spend more time debugging
+* CMake builds also frequently fail for obscure reasons, don't build what they're supposed to, or rebuild too many things (might be a configuration issue)
 * Speaking of which, debugging CMake files is not fun (it's not a fully-fledged language, with poor tooling)
 * Builds are somewhat slow when using the standard CMake generators, and Ninja support is experimental
 * In fact, the Ninja build files that CMake creates are huge and complicated, which doesn't bode well for their quality
+* The ability to create VS solutions (and use the VS debugger) aren't very valuable because the C code involved consists largely of glue code and Lua bindings
 
 After spending obscene amounts of time battling build-related problems, it may be time for a change of scenery.
 
@@ -56,6 +58,7 @@ The following alternatives have been considered and (at least partially) explore
 * Use another established (non-Lua-based) build system, like meson (Python-based syntax, limiting language)
 * Move to using Ninja build files directly (efficient, but difficult to maintain as they're glorified makefiles)
 * Build with [zig](https://ziglang.org/), which has been suggested by the luvi authors (requires rewriting external build scripts; not Lua)
+* Use regular build scripts (cannot do incremental builds, which significantly slows down development)
 
 None of these options really seems all that appealing, as they don't fully solve the outlined problems.
 
