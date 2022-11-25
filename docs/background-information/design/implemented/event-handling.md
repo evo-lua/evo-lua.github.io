@@ -29,7 +29,7 @@ A global event registry seems like it would be more flexible, simpler to impleme
 
 ### Event Names
 
-Events are always written in capital letters, like ``APPLICATION_SHUTDOWN`` (WOW API style). The Node.js style of lower-case single-word event names (e.g.,  ``shutdown``) seems less flexible and readable in comparison.
+Events are always written in capital letters, like ``APPLICATION_SHUTDOWN`` (C enum style). The Node.js style of lower-case single-word event names (e.g.,  ``shutdown``) seems less flexible and readable in comparison.
 
 ### Event Listeners
 
@@ -39,13 +39,17 @@ All event handlers should have a standard name and signature, and adhere to the 
 
 The primary event handler is always ``OnEvent(eventID, payload)`` , where ``payload`` is a table that contains the named keys and values of all passed arguments. This ``payload`` table should *not* be an array, as that would defeat the point of making it easier to change the signature without having to update existing code that's unaffected by the changes.
 
-This handler serves as a catchall, forwarding events to more specialized handlers (ideally, it needn't be overridden).
+This handler serves as a catchall, forwarding events to more specialized handlers. Ideally, it needn't be overridden.
 
 #### Standard Event Handlers
 
-For each event, the name of its default handler is identical to the event ID written in PascalCase, with underscores removed and the event handler prefix ``On`` preprended. Example: The ``APPLICATION_SHUTDOWN`` event is forwarded to  ``MyObject:OnApplicationShutdown()`` by the catchall handler ``MyObject:OnEvent()``, with all arguments intact.
+For each event, the name of its default handler is identical to the event ID written in PascalCase, with underscores removed and the word ``On`` preprended. Default event handlers may exist for only a subset of all possible event triggers.
 
-These handlers can be overridden if needed, but since they implement functionality doing so isn't generally advisable.
+Example: The ``APPLICATION_SHUTDOWN`` event is forwarded to  ``MyObject:OnApplicationShutdown()`` by the catchall handler ``MyObject:OnEvent()``, with all arguments intact (this is assuming that ``MyObject`` registered for the event first).
+
+These handlers are designed under the assumption that users won't generally override them, although it is possible.
+
+Example: ``TcpClient.OnClientReadError`` will call ``TcpClient.CLIENT_READ_ERROR`` and then disconnect the peer.
 
 #### Placeholder Event Handlers
 
@@ -57,7 +61,7 @@ Example: ``TcpClient.TCP_SESSION_ENDED``  is called whenever ``TCP_SESSION_ENDED
 
 Creating new ``payload`` tables doesn't seem to add any overhead, [according to some very basic benchmarking](https://gist.github.com/Duckwhale/5685a0abe2930d563b4bc931a543b536).
 
-Since accessing the ``payload`` table *does* have a measurable performance impact, and many event handlers will only care about the ``eventID`` itself, it doesn't make sense to only pass an ``payload`` table with a ``payload.eventID`` field that would have to be read every time. When no arguments passed, there's also no table creation (possible GC churn).
+Since accessing the ``payload`` table *does* have a measurable performance impact, and many event handlers will only care about the ``eventID`` itself, it doesn't make sense to only pass a ``payload`` table with a ``payload.eventID`` field that would have to be read every time. When no arguments are passed, there's also no table creation (possible [GC churn](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science))).
 
 ### Code Sharing
 
@@ -69,15 +73,17 @@ With a standardized approach to event handling, the core functionality can be ou
 
 ### Capitalized Event Names
 
-Event emitters in NodeJS are generally less readable than they could be (like most JavaScript code...). Therefore, a more flexible naming scheme that supports adding information without sacrificing readability should be adopted. Since event names are effectively constants (enum values), capitalizing them only seems consistent with established C/Lua programming practice.
-
-### Variable Number of Arguments
-
-In the original WOW API, event handlers would pass multiple values via varargs, like ``OnEvent(eventID, ...)``. This has proven to cause issues when signatures inevitably have to change, which is why arguments should be passed as an ``payload`` table. Entries should be indexed with the argument name, so that accessing missing fields raise a script error, and no changes need to be made to legacy code when new ones are added or unused properties are removed.
+Event emitters in NodeJS are generally less readable than they could be (like most JavaScript code...). Therefore, a more flexible naming scheme that supports adding information without sacrificing readability should be adopted. Since event names are effectively constants (i.e., enum values), capitalizing them only seems consistent with established C/Lua programming practice. It also allows a clear separation between user-implemented and standard event handlers.
 
 ### Network Messages and Events
 
-Messages received from a remote peer can trigger events directly, and messages to be sent can trivially be constructed from events. This is (presumably) what happens in the World of Warcraft client, which indicates that the model fits well with a networked application such as a server based on libuv. Hence both NodeJS and WOW API are referenced here, with the goal of finding a design that hopefully improves on their weaknesses. A similar thing happens in JavaScript.
+Messages received from a remote peer can trigger events directly, and messages to be sent can trivially be constructed from events. This is (presumably) what happens in the World of Warcraft client, and also in NodeJS, which indicates that the model fits well with a networked application such as a server based on libuv. Hence both NodeJS and the WOW API are referenced herein as case studies, with the goal of finding a design that hopefully improves on their weaknesses.
+
+### Variable Number of Arguments
+
+In the original WOW API, event handlers would pass multiple values via varargs, like ``OnEvent(eventID, ...)``. This has proven to cause issues when signatures inevitably have to change, which is why arguments should be passed as a ``payload`` table. Entries should be indexed with the argument name, so that accessing missing fields raise a script error, and no changes need to be made to legacy code when new ones are added or unused properties are removed.
+
+Events are objects in JavaScript as well, which may however be due to the lack of varargs in early versions.
 
 ## Technical Constraints
 
@@ -93,4 +99,4 @@ None, except using libuv callbacks exclusively. This results in somewhat unidiom
 
 * [Events in Node.js](https://nodejs.org/api/events.html) (uses local event emitters)
 * [Events in the World of Warcraft client](https://wowpedia.fandom.com/wiki/Events) (uses a global event registry bound to local objects)
-* The [libuv event loop](http://docs.libuv.org/en/v1.x/design.html) will be the cause of callback-induced events
+* The [libuv event loop](http://docs.libuv.org/en/v1.x/design.html) will be the facilitator of callback-induced events
