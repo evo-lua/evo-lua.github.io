@@ -33,7 +33,7 @@ To cut down on accidental complexity, the build system should only support a min
 
 * One "blessed" configuration, building the runtime as an executable that's linked with a minimal set of libraries
 * Only the GNU compiler toolchain should be supported, since it's free software available on all relevant systems
-* Incremental builds should be handled by Ninja, with support for gmake, MSVC and other CMake generator dropped
+* Incremental builds should be handled by Ninja, with support for gmake, MSVC and other CMake generators dropped
 * The build configuration (``ninja.build``) should be auto-generated in Lua, which is trivial given the restrictions above
 * Third-party libraries may use Makefiles, CMake or any other build script that can be integrated via ninja commands
 
