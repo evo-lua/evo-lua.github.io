@@ -1,6 +1,6 @@
 # RFC: Ninja-based Builds
 
-This document details the design goals behind overhauling the existing build system inherited from the [luvi](https://github.com/luvit/luvi) runtime.
+This document details the reasons for replacing Luvi's CMake build system.
 
 ## Motivation
 
