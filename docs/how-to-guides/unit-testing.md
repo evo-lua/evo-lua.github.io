@@ -61,9 +61,13 @@ And here, various examples for tests that pass (even if they're not necessarily 
 ```
 
 ```lua title=success-without-assertions.lua
--- This program doesn't raise any errors, but it's still not very useful
-local someNumber = 1 + 2 + 3
-print(someNumber)
+-- This program doesn't raise any errors, but it's still not very useful as a test
+local function sayHelloTo(name)
+	print("Hello, " .. name .. "!")
+end
+
+-- Passes, because the function prints the text and exits cleanly
+sayHelloTo("my little friend")
 ```
 
 ```lua title=success-with-assertions.lua
@@ -72,7 +76,7 @@ local function sayHelloTo(name)
 	print("Hello, " .. name .. "!")
 end
 
--- Passes, because the function prints the text and exits cleanly
+-- Passes, because the the assertion doesn't raise an error if the function exits cleanly
 assertDoesNotThrow(function()
 	sayHelloTo("my little friend")
 end)
