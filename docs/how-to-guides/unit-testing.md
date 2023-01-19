@@ -90,6 +90,29 @@ assertDoesNotThrow(function()
 end)
 ```
 
+Lastly, this example would be more useful as a "real" test, even if it's still somewhat incomplete:
+
+```lua title=test-with-assertions.lua
+local validation = require("validation")
+local validateString = validation.validateString
+
+local function sayHelloTo(name)
+	-- Validation functions will throw an error if the parameter isn't of the expected type
+	validateString(name, "name")
+
+	print("Hello, " .. name .. "!")
+end
+
+assertDoesNotThrow(function()
+	sayHelloTo("my little friend")
+end)
+
+assertThrows(function()
+	sayHelloTo(nil)
+end, "Expected argument name to be a string value, but received a nil value instead")
+```
+
+
 ## Organizing Tests
 
 Each file passed to `bdd.run` is considered a separate test. You can load other files to separate a larger test suite into smaller reusable components, and structure your test program any way you prefer. Conceptually, tests (and related scripts) are part of a project's architecture, so the `bdd` library doesn't impose artificial constraints on them.
