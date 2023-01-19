@@ -51,7 +51,15 @@ sayHelloTo(nil)
 ```
 
 ```lua title=failure-due-to-error-call.lua
+local function sayHelloTo(name)
+	if not name then
+		error("Usage: sayHelloTo(name)")
+	end
+	print("Hello, " .. name .. "!")
+end
 
+-- Fails, because Lua raises an error: "Usage: sayHelloTo(name)"
+sayHelloTo(nil)
 ```
 
 And here, various examples for tests that pass (even if they're not necessarily very useful):
