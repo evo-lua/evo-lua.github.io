@@ -108,7 +108,7 @@ Or you could move the executable to somewhere in your ``PATH``, and then omit th
 
 ## Troubleshooting
 
-### Windows Subsytem for Linux
+### Windows Subsystem for Linux
 
 If you just installed WSL and set things up, CMake may fail with an error:
 
