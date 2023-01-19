@@ -70,9 +70,9 @@ local function sayHelloTo(name)
 	print("Hello, " .. name .. "!")
 end
 
--- Fails, because Lua raises an error: "attempt to concatenate local 'name' (a nil value)"
+-- Passes, because the function prints the text and exits cleanly
 assertDoesNotThrow(function()
-	sayHelloTo(nil)
+	sayHelloTo("my little friend")
 end)
 ```
 
