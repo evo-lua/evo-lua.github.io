@@ -115,7 +115,7 @@ end, "Expected argument name to be a string value, but received a nil value inst
 
 ## Organizing Tests
 
-Each file passed to `bdd.run` is considered a separate test. You can load other files to separate a larger test suite into smaller reusable components, and structure your test program any way you prefer. Conceptually, tests (and related scripts) are part of a project's architecture, so the `bdd` library doesn't impose artificial constraints on them.
+Each file passed to the `run` method is considered a separate test. You can load other files to separate a larger test suite into smaller reusable components, and structure your test program any way you prefer. Conceptually, tests (and related scripts) are part of a project's architecture, so the `bdd` library doesn't impose artificial constraints on them.
 
 Here's a recommendation to serve as a starting point:
 
