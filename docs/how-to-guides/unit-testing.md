@@ -6,7 +6,7 @@ Learn how to employ the `bdd` library to run automated unit tests
 
 Simply write a Lua program that calls into the ``bdd`` library:
 
-```lua title=bdd-run.lua
+```lua title=run-some-tests.lua
 local bdd = require("bdd")
 
 -- All paths are relative to the current working directory, with POSIX-style path separators
@@ -18,6 +18,14 @@ local specFiles = {
 -- Tell the test runner to execute all of the passed tests (executable specifications)
 bdd.run(specFiles)
 ```
+
+You can then execute it like any other Lua script:
+
+`evo run-some-tests.lua`
+
+The expected output (assuming those test files exist and are passing):
+
+
 
 ## Writing Unit Tests
 
