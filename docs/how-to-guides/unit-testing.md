@@ -62,6 +62,8 @@ And here, various examples for tests that pass (even if they're not necessarily 
 
 ```lua title=success-without-assertions.lua
 -- This program doesn't raise any errors, but it's still not very useful
+local someNumber = 1 + 2 + 3
+print(someNumber)
 ```
 
 ```lua title=success-with-assertions.lua
