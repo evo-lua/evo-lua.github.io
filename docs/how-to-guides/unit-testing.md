@@ -2,7 +2,7 @@
 
 Learn how to employ the `bdd` library to run automated unit tests
 
-## Starting the Test Runner
+## Starting a Test Runner
 
 Simply write a Lua program that calls into the ``bdd`` library:
 
@@ -16,7 +16,7 @@ local specFiles = {
 }
 
 -- Tell the test runner to execute all of the passed tests (executable specifications)
-bdd.run(specFiles)
+bdd.startTestRunner(specFiles)
 ```
 
 You can then execute it like any other Lua script:
@@ -29,7 +29,7 @@ The expected output (assuming those test files exist and are passing):
 
 ## Writing Unit Tests
 
-Inside the files passed to the `run` method, you can implement your test code as a regular Lua program. The test runner will simply execute it and make sure all tests pass, reporting failures as soon as they pop up.
+Inside the files passed to the `startTestRunner` method, you can implement your test code as a regular Lua program. The test runner will simply execute it and make sure all tests pass, reporting failures as soon as they pop up.
 
 ### Passing and Failing Tests
 
@@ -123,13 +123,72 @@ end, "Expected argument name to be a string value, but received a nil value inst
 
 ## Organizing Tests
 
-Each file passed to the `run` method is considered a separate test. You can load other files to separate a larger test suite into smaller reusable components, and structure your test program any way you prefer. Conceptually, tests (and related scripts) are part of a project's architecture, so the `bdd` library doesn't impose artificial constraints on them.
+Each file passed to the `startTestRunner` method is considered a separate test. You can load other files to separate a larger test suite into smaller reusable components, and structure your test program any way you prefer. Conceptually, tests are part of a project's architecture, so the `bdd` library doesn't impose artificial constraints on them.
 
-Here's a recommendation to serve as a starting point:
+However, as the name `bdd` (for [behavior-driven development](https://en.wikipedia.org/wiki/Behavior-driven_development)) implies, there is support for executable specifications.
 
-* Create one `module.spec.lua` file for each module (where ``module`` is the name of the library or module under test)
-* Pass each of those executable specifications to the ``run`` method in order to create a separate test suite for it
+### Sections and Subsections
+
+Inside any given test file, you can use the following functions to create logically separate blocks:
+
+* `bdd.describe(label, testFunction)`: Alias for `bdd.createSection(label, testFunction)`
+* `bdd.it(label, testFunction)`: Alias for `bdd.createSubsection(label, testFunction)`
+
+Using `describe` and `it` can help you generate more useful reports, but there's no change to how tests are run.
+
+## Setup and Teardown Code
+
+If you need to run some code before or after your test, you can combine `describe` and `it` with these:
+
+* `bdd.before(setupFunction)`: Run `setupFunction` before each call to the `testFunction` in `describe`
+* `bdd.beforeEach(setupFunction)`: Run `setupFunction` before each call to the `testFunction` in `it`
+* `bdd.after(teardownFunction)`Run `teardownFunction` after each call to the `testFunction` in `describe`
+* `bdd.afterEach(teardownFunction)`: Run `teardownFunction` after each call to the `testFunction` in `it`
+
+The passed functions will run for all (sub)sections in the same test file after they've been registered.
+
+## Reporting Test Results
+
+Test reports can be generated in multiple formats:
+
+* Detailed: Displays a full status report containing all relevant information (this is the default)
+* Basic: Displays the number of test files, pass/fail status for each file, and the time taken
+* Minimal: Displays nothing, unless there are errors or test failures (Unix style)
+
+You can select the reporting mode before calling ``bdd.startTestRunner`` with the following APIs:
+
+* `bdd.setDetailedReportMode()`: Enables detailed reports (and disables all other report modes)
+* `bdd.setBasicReportMode()`: Enables basic reports (and disables all other report modes)
+* `bdd.setMinimalReportMode()`: Enables minimal reports (and disables all other report modes)
+
+Please note that sections and subsections (created with `describe` and `it`) *only* appear in detailed reports.
+
+### Minimal Reports
+
+Minimal (no failures):
+
+TODO
+
+### Basic Reports
+
+Basic (no failures):
+
+TODO
+
+Basic (with failures):
+
+TODO
+
+### Detailed Reports
+
+Detailed (no failures):
+
+TODO
+
+Detailed (with failures):
+
+TODO
 
 ## Alternatives
 
-You can use third-party libraries like [busted](https://github.com/Olivine-Labs/busted) or [luaunit](https://github.com/bluebird75/luaunit) if you need more advanced features.
+If you need more advanced features, consider using third-party libraries like [busted](https://github.com/Olivine-Labs/busted) or [luaunit](https://github.com/bluebird75/luaunit).
