@@ -22,6 +22,10 @@ Infeasible or impossible goals? Limitations and other technical considerations?
 
 Pros/cons, weighed arguments, conclusions?
 
+## Evaluation
+
+Does this design meet all the requirements? Is it the simplest possible design given all of the above?
+
 ## Alternatives
 
 Different approaches that were considered/not considered, (dis)advantages, matter of style?
