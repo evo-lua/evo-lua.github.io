@@ -167,6 +167,32 @@ You can select the reporting mode before calling ``bdd.startTestRunner`` with th
 
 Please note that sections and subsections (created with `describe` and `it`) *only* appear in detailed reports.
 
+## Error Propagation
+
+The test runner accumulates error messages and stack traces for each failing test (and section/subsection).
+
+You can fetch them by calling `bdd.getErrorDetails()` after the test runner has finished:
+
+```lua title=print-error-details.lua
+local specFiles = {
+	"some-test.spec.lua",
+	"another-test.spec.lua",
+}
+
+bdd.startTestRunner(specFiles)
+
+local errorDetails = bdd.getErrorDetails()
+for index, errorInfo in ipairs(errorDetails) do
+	print(index, errorInfo.specFile, errorInfo.errorMessage, errorInfo.stackTrace)
+end
+
+-- Alternatively, dump everything if you want more details (e.g., to log to a file)
+debug.dump(errorDetails)
+
+```
+
+Error details are collected regardless of reporting mode, but they aren't displayed automatically to reduce clutter.
+
 ### Minimal Reports
 
 Minimal (no failures):
