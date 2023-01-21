@@ -191,4 +191,4 @@ TODO
 
 ## Alternatives
 
-If you need more advanced features, consider using third-party libraries like [busted](https://github.com/Olivine-Labs/busted) or [luaunit](https://github.com/bluebird75/luaunit).
+If you need more advanced features, consider using libraries like [busted](https://github.com/Olivine-Labs/busted) or [luaunit](https://github.com/bluebird75/luaunit).
