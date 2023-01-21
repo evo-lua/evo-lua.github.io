@@ -4,7 +4,7 @@ Learn how to employ the `bdd` library to run automated unit tests
 
 ## Starting a Test Runner
 
-Simply write a Lua program that calls into the ``bdd`` library:
+Simply write a Lua program that passes the list of test files to the ``bdd`` library:
 
 ```lua title=run-some-tests.lua
 local bdd = require("bdd")
@@ -25,7 +25,7 @@ You can then execute it like any other Lua script:
 
 The expected output (assuming those test files exist and are passing):
 
-
+TODO
 
 ## Writing Unit Tests
 
