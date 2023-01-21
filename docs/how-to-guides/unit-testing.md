@@ -15,8 +15,11 @@ local specFiles = {
 	"specs/SomethingElse.spec.lua",
 }
 
--- Tell the test runner to execute all of the passed tests (executable specifications)
-bdd.startTestRunner(specFiles)
+-- Tell the test runner to execute all of the passed tests (spec = executable specifications)
+local numFailedTests = bdd.startTestRunner(specFiles)
+
+-- For CI pipelines: Ensure the return code indicates EXIT_FAILURE if any tests have failed
+os.exit(numFailedTests)
 ```
 
 You can then execute it like any other Lua script:
