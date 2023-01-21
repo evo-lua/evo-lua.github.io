@@ -120,6 +120,7 @@ assertThrows(function()
 end, "Expected argument name to be a string value, but received a nil value instead")
 ```
 
+These examples show that the test runner determines whether a given test failed or passed by checking for errors.
 
 ## Organizing Tests
 
