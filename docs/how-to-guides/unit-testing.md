@@ -183,7 +183,7 @@ bdd.startTestRunner(specFiles)
 
 local errorDetails = bdd.getErrorDetails()
 for index, errorInfo in ipairs(errorDetails) do
-	print(index, errorInfo.specFile, errorInfo.errorMessage, errorInfo.stackTrace)
+	print(index, errorInfo.specFile, errorInfo.message, errorInfo.stackTrace)
 end
 
 -- Alternatively, dump everything if you want more details (e.g., to log to a file)
