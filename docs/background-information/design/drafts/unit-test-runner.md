@@ -1,6 +1,6 @@
 # RFC: Standardized Unit Test Runner
 
-This document describes potential designs for a BDD-style test runner.
+This document describes potential designs for a BDD-style test runner
 
 ## Motivation
 
