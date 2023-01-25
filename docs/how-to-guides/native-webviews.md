@@ -68,7 +68,7 @@ On Windows 11 systems, the runtime should be installed (and updated) automatical
 
 You simply cannot run the Windows build here, because it relies on MS Edge (requires native Windows).
 
-If using the Linux build, some things may not work as expected since WSL isn't covered by any of the automated tests.
+If using the Linux build, some things may not work as expected (e.g, keybindings). WSL isn't covered by automated tests.
 
 ### Platform Capabilities
 
