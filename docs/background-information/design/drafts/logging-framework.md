@@ -1,6 +1,6 @@
 # RFC: Standardized Logging Framework
 
-This document describes design goals for libuv-compatible logging.
+This document describes design goals for libuv-compatible logging
 
 ## Motivation
 
