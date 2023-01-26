@@ -22,7 +22,7 @@ Guiding principle: Focus on what matters - fast feedback and iteration speed abo
 
 No concept of test suites and test cases should be implemented in code. Instead, Lua scripts (files) *are* test suites. Separations inside them are only relevant for the reporting stage (for readability's sake).
 
-The core idea here is that all those fancy bells and whistles detracts from the one (and only) thing developers care about when writing tests: Making sure that the code works, as fast as possible and with minimal headaches. No one enjoys writing tests, after all, and since test code needs to be maintained as part of the code base it might as well be "real code".
+The core idea here is that all those fancy bells and whistles detract from the one (and only) thing developers care about when writing tests: Making sure that the code works, as fast as possible and with minimal headaches. No one enjoys writing tests, after all, and since test code needs to be maintained as part of the code base it might as well be "real code".
 
 For the reporting step, and for backwards compatibility, using *describe* and *it* functions should be possible. However, these don't need to do anything other than visually indent the printed labels and are otherwise purely optional.
 
