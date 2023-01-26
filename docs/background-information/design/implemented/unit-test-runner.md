@@ -1,6 +1,6 @@
-# RFC: Standardized Unit Test Runner
+# RFC: Builtin Test Runner
 
-This document describes potential designs for a BDD-style test runner.
+This document describes design goals for a BDD-style unit test runner.
 
 ## Motivation
 
@@ -22,7 +22,7 @@ Guiding principle: Focus on what matters - fast feedback and iteration speed abo
 
 No concept of test suites and test cases should be implemented in code. Instead, Lua scripts (files) *are* test suites. Separations inside them are only relevant for the reporting stage (for readability's sake).
 
-The core idea here is that all those fancy bells and whistles detracts from the one (and only) thing developers care about when writing tests: Making sure that the code works, as fast as possible and with minimal headaches. No one enjoys writing tests, after all, and since test code needs to be maintained as part of the code base it might as well be "real code".
+The core idea here is that all those fancy bells and whistles detract from the one (and only) thing developers care about when writing tests: Making sure that the code works, as fast as possible and with minimal headaches. No one enjoys writing tests, after all, and since test code needs to be maintained as part of the code base it might as well be "real code".
 
 For the reporting step, and for backwards compatibility, using *describe* and *it* functions should be possible. However, these don't need to do anything other than visually indent the printed labels and are otherwise purely optional.
 
@@ -32,9 +32,9 @@ Various commonly-included features have been considered for an initial prototype
 
 ### Nonstandard Assertions
 
-Assertions are optionally provided via the *assertions* library which is built into the runtime itself.
+Assertions are optionally provided via the *assertions* library, which should be built into the runtime itself.
 
-Using the standard Lua *assert* or a third-party solution like *luassert* is also possible as long as failing tests throw.
+Using the standard Lua *assert* or a third-party solution (like *luassert*) is also possible as long as failing tests throw.
 
 ### Asynchronous Tests
 
@@ -42,7 +42,7 @@ Coroutines can trivially be used to implement asynchronous tests. There's really
 
 ### Setup and Teardown Code
 
-Setup and teardown should be implemented by each test, as appropriate. Special functions add very little here.
+Setup and teardown should be implemented by each test, as appropriate. Special functions could be added later.
 
 ### Test Retries and Pending Tests
 
