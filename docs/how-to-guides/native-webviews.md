@@ -53,6 +53,8 @@ local nativeWindowHandle = C_WebView.CreateBrowserWindow()
 
 Don't make assumptions about the handle's type; it's generally going to be dependent on what the OS uses internally.
 
+**TODO: That's terrible, it should be wrapped to provide a standardized interface...?**
+
 ### Loading JavaScript-based Web Apps
 
 You can use WebGL, WebGPU, WebAudio and all the other browser APIs inside the WebView:
@@ -60,9 +62,13 @@ You can use WebGL, WebGPU, WebAudio and all the other browser APIs inside the We
 * Load a website (HTML) that embeds JavaScript or CSS
 * Import JavaScript or CSS modules as usual
 
+**TODO: OK, but how do I load a website, or JS/CSS?**
+
 ### Creating Multiple WebViews
 
 You can create as many WebViews as you require. You'll have to update all of them, and manage their resources.
+
+**TODO: Great, and how exactly do I do that?**
 
 ### Shutting down a WebView
 
@@ -79,6 +85,8 @@ From inside the browser context, you can in turn send messages via **TODO** to r
 
 This protocol is unsuitable for large messages. Consider using regular HTTP requests or WebSockets instead.
 
+** TODO: Or maybe shared buffers? WebView2 only? Hmm...**
+
 ### Combine Webviews with Asynchronous I/O
 
 Your WebView-managing code must not block the event loop: Use ``webview.run_once()`` instead of ``webview.run()``
@@ -91,9 +99,11 @@ Simply register the WebView updates like any other asynchronous process, such as
 
 ### Mac OS
 
-You cannot run webviews without blocking on Mac OS X. This is because the `webview` library doesn't currently support it, and I don't have experience with Objective-C bindings, WebKit messaging, or a Mac OS machine to test potential implementations with. You can still run a WebView, but it will always block the event loop (main thread).
+You cannot run webviews without blocking the event loop on Mac OS X. This is because the `webview` library doesn't currently support it, and I don't have experience with Objective-C bindings, WebKit messaging, or a Mac OS machine to test potential implementations with. You can still run *one* WebView, but it will always block the event loop (main thread).
 
-There is probably a way to run only a single iteration and update the event loop, but I don't know how. PRs welcome!
+There is *probably* a way to run only a single iteration and update the event loop, but I don't know how. Send PRs?
+
+**TODO Link to contribution guide**
 
 ### Windows 10 and 11
 
@@ -106,6 +116,8 @@ On Windows 11 systems, the runtime should be installed (and updated) automatical
 You simply cannot run the Windows build here, because it relies on MS Edge (requires native Windows).
 
 If using the Linux build, you probably need to forward the UI to a local xserver, like [vcxserv](https://sourceforge.net/projects/vcxsrv/). You're on your own here.
+
+** TODO: Actually it seems to "just work" with the latest WSL2?**
 
 ### Platform Capabilities
 
