@@ -113,7 +113,7 @@ On Windows 11 systems, the runtime should be installed (and updated) automatical
 
 ### Windows Subsystem for Linux
 
-You simply cannot run the Windows build here, because it relies on MS Edge (requires native Windows).
+You can't run the Windows build here, because it relies on MS Edge (requires native Windows).
 
 If using the Linux build, you probably need to forward the UI to a local xserver, like [vcxserv](https://sourceforge.net/projects/vcxsrv/). You're on your own here.
 
