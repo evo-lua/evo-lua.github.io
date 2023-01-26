@@ -80,7 +80,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-		additionalLanguages: ['lua', 'c', 'bash', 'cmake'],
+		additionalLanguages: ['lua', 'c', 'cpp', 'bash', 'cmake'],
       },
     }),
 };
