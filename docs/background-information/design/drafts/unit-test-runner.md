@@ -1,6 +1,6 @@
 # RFC: Standardized Unit Test Runner
 
-This document describes potential designs for a BDD-style test runner.
+This document describes design goals for a BDD-style test runner.
 
 ## Motivation
 
@@ -32,9 +32,9 @@ Various commonly-included features have been considered for an initial prototype
 
 ### Nonstandard Assertions
 
-Assertions are optionally provided via the *assertions* library which is built into the runtime itself.
+Assertions are optionally provided via the *assertions* library, which should be built into the runtime itself.
 
-Using the standard Lua *assert* or a third-party solution like *luassert* is also possible as long as failing tests throw.
+Using the standard Lua *assert* or a third-party solution (like *luassert*) is also possible as long as failing tests throw.
 
 ### Asynchronous Tests
 
@@ -42,7 +42,7 @@ Coroutines can trivially be used to implement asynchronous tests. There's really
 
 ### Setup and Teardown Code
 
-Setup and teardown should be implemented by each test, as appropriate. Special functions add very little here.
+Setup and teardown should be implemented by each test, as appropriate. Special functions could be added later.
 
 ### Test Retries and Pending Tests
 
