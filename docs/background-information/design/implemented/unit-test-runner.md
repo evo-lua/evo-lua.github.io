@@ -1,6 +1,6 @@
-# RFC: Standardized Unit Test Runner
+# RFC: Builtin Test Runner
 
-This document describes design goals for a BDD-style test runner.
+This document describes design goals for a BDD-style unit test runner.
 
 ## Motivation
 
