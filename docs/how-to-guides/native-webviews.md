@@ -2,6 +2,43 @@
 
 Learn how to render web apps and UIs in a native browser window
 
+## Prerequisites
+
+### Compile-time Dependencies
+
+Evo embeds LuaJIT bindings to various native browser engines via static linkage. For that reason, they must be installed at compile time even if you don't actually want to use WebViews. While this is somewhat inconvenient on some platforms, the overhead is otherwise insignificant (a few seconds of extra link time and a slightly increased binary size).
+
+The browser engines used are those supported by the [webview](https://github.com/webview/webview) library:
+
+* Windows: [Microsoft Edge WebView2](https://developer.microsoft.com/en-us/microsoft-edge/webview2)
+* Linux: [WebKitGTK](https://webkitgtk.org)
+* Mac OS: [WebKit](https://developer.apple.com/documentation/webkit)
+
+Unlike other solutions (like [ElectronJS](https://www.electronjs.org)), the browser engines are NOT embedded in the runtime, only referenced.
+
+**TODO Move to build guide? Users don't care about this stuff?**
+
+### Development Headers (Linux only)
+
+Since the webview bindings are statically linked, you *must* have the development headers installed at compile time:
+
+* Ubuntu-likes: `sudo apt install libgtk-3-dev libwebkit2gtk-4.0-dev`
+
+These are *not* required to be present for end users, even if they want to use WebViews.
+
+**TODO Move to build guide? Users don't care about this stuff?**
+
+### Run-time Dependencies
+
+If WebViews are to be used, Linux and Windows 10 users must install a native browser engine to create WebViews:
+
+* `sudo apt install libgtk-3-0 libwebkit2gtk-4.0-37` (Ubuntu and derivatives)
+* [Download an installer from the Microsoft website](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section) (Windows 10)
+
+If WebViews *aren't* used, the browser engine doesn't need to be installed (it's included with Mac OS and Windows 11).
+
+In either case, Evo will run just fine if the browser engine isn't installed - but you won't be able to use WebViews.
+
 ## Standalone WebViews
 
 ### Creating WebViews
