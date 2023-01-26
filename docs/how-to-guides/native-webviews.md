@@ -127,7 +127,7 @@ This means that if the user's device doesn't support a given feature (such as We
 
 ### Security Sandboxing
 
-Browsers apply all sorts of restrictions to scripts that are running inside the sandbox. These do *not* apply to the Lua environment, but they *do* limit what can be done inside the actual WebView. Running the WebView from Lua gives you more control over the browser engine, but what you can do is still limited by the APIs that the OS vendor supplied.
+Browsers apply all sorts of restrictions to scripts that are running inside the sandbox. These do *not* apply to the Lua environment, but they *do* limit what can be done inside the actual WebView. Running a WebView from Lua gives you more control over the browser engine, but what you can do is still limited by the APIs that the engine's SDK provides.
 
 ## Examples
 
