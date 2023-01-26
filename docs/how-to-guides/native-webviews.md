@@ -117,7 +117,7 @@ You simply cannot run the Windows build here, because it relies on MS Edge (requ
 
 If using the Linux build, you probably need to forward the UI to a local xserver, like [vcxserv](https://sourceforge.net/projects/vcxsrv/). You're on your own here.
 
-** TODO: Actually it seems to "just work" with the latest WSL2?**
+** TODO: Actually it seems to "just work" with the latest WSL2? Link to Linux instructions then...**
 
 ### Platform Capabilities
 
