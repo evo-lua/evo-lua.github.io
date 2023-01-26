@@ -1,0 +1,8 @@
+{
+	"label": "Background Information",
+	"position": 3,
+	"link": {
+	  "type": "generated-index",
+	  "description": "Explanations and articles that may help you gain a deeper understanding of how things work behind the scenes"
+	}
+  }

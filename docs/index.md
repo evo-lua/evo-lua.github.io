@@ -9,7 +9,7 @@ sidebar_position: 0
 | Getting started | Tutorials |
 | Solve a specific problem | [How-to Guides](/docs/category/how-to-guides/) |
 | Look up technical information | References |
-| Understand how stuff works | [Background Information](/docs/background-information/) |
+| Understand how stuff works | [Background Information](/docs/category/background-information/) |
 | Report an issue, give feedback, or ask questions | [GitHub Issues](https://github.com/evo-lua/evo-lua.github.io/issues) |
 | Report a security vulnerability | Security Policy |
 | Contribute to the project | Developer Center |

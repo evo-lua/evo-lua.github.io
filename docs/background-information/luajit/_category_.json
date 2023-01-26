@@ -1,0 +1,8 @@
+{
+	"label": "LuaJIT Notes",
+	"position": 1,
+	"link": {
+	  "type": "generated-index",
+	  "description": "Describes how and why certain LuaJIT features are used in Evo"
+	}
+  }
