@@ -119,6 +119,10 @@ If using the Linux build, you probably need to forward the UI to a local xserver
 
 ** TODO: Actually it seems to "just work" with the latest WSL2? Link to Linux instructions then...**
 
+**TODO: Cannot determine primary monitor for fullscreen mode with Wayland**
+
+(TBD: See https://gitlab.gnome.org/GNOME/gtk/-/issues/1028 and https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/1279)
+
 ### Platform Capabilities
 
 Since you're running an actual browser engine, which is supplied by the OS, you don't have control over what is running.
