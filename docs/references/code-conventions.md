@@ -4,7 +4,7 @@ An overview of the stylistic conventions used in the codebase
 
 ## About this Document
 
-This is a reference, not an explanation. For the rationale behind these conventions, see [RFC: Code Conventions](/docs/background-information/design/drafts/code-conventions)
+This is a reference, not an explanation. For the rationale behind these conventions, see [RFC: Code Conventions](/docs/background-information/design/implemented/code-conventions)
 
 ## Lua Conventions
 
