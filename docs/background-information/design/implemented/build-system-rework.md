@@ -1,10 +1,10 @@
 # RFC: Ninja-based Builds
 
-This document details the reasons for replacing Luvi's CMake build system.
+This document lists reasons for replacing Luvi's CMake build system
 
 ## Motivation
 
-Evo is based on Luvi, and as such uses the same build system (based on [CMake](https://cmake.org/)). Multiple issues have surfaced:
+Evo-Luvi is based on Luvi, and as such uses the same build system (based on [CMake](https://cmake.org/)). Multiple issues have surfaced:
 
 * CMake adds an exceeding amount of complexity and an entirely new (poorly-designed) language to the stack
 * Integrating external dependencies in the build process has proven to be a huge pain in at least some cases
