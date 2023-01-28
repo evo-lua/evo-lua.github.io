@@ -10,6 +10,8 @@ You can provide additional arguments after the  ``--`` separator when invoking t
 evo myApp.lua -- cli args go here
 ```
 
+In this example, Evo itself will consume everything up until (and including) the ``--`` and your app receives the rest.
+
 ## Receiving CLI Arguments
 
 Scripts can fetch the arguments added after ``--`` via Lua's [varargs](https://www.lua.org/pil/5.2.html) operator:
