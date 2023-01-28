@@ -1,6 +1,6 @@
 # RFC: Event Handling
 
-This document details the design goals behind evo's event registry.
+This document details the design goals behind Evo's event registry
 
 ## Motivation
 
