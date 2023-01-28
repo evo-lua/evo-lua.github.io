@@ -39,7 +39,7 @@ simply reference them from the struct. E.g.:
 	local y = myfuncs.some_function_name(1, 2)
 ```
 
-Source: [Mike Pall, LuaJIT mailing list](https://www.freelists.org/post/luajit/How-to-call-functions-from-a-static-library-in-Luajit,11)(archived here, with minor formatting edits, in case it becomes unavailable)
+Source: [Mike Pall, LuaJIT mailing list](https://www.freelists.org/post/luajit/How-to-call-functions-from-a-static-library-in-Luajit,11) (archived here, with minor formatting edits, in case it becomes unavailable)
 
 ## Relevance and Advantages
 
