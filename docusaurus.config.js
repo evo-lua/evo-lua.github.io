@@ -75,7 +75,7 @@ const config = {
         style: 'dark',
         links: [
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Evo.lua project (authors and contributors).`,
+        copyright: `Copyright © 2021-${new Date().getFullYear()} · Evo.lua authors and contributors`,
       },
       prism: {
         theme: lightCodeTheme,
