@@ -38,6 +38,7 @@ To cut down on accidental complexity, the build system should only support a min
 * Incremental builds should be handled by Ninja, with support for gmake, MSVC and other CMake generators dropped
 * The build configuration (``ninja.build``) should be auto-generated in Lua, which is trivial given the restrictions above
 * Third-party libraries may use Makefiles, CMake or any other build script that can be integrated via ninja commands
+* Build tools must function with only standard LuaJIT functionality, i.e., be usable after compiling `luajit` and nothing else
 
 ## Evaluation
 
