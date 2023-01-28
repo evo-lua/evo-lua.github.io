@@ -11,13 +11,19 @@ Evo-Luvi is based on Luvi, and as such uses the same build system (based on [CMa
 * The existing build system accounts for many unsupported use cases, unnecessarily increasing complexity further
 * It uses version 2 of CMake, which makes the code difficult to maintain and extend, or migrate to "modern" CMake
 * Builds using WSL can randomly fail with segmentation faults that I'd rather not spend more time debugging
-* CMake builds also frequently fail for obscure reasons, don't build what they're supposed to, or rebuild too many things (might be a configuration issue)
+* CMake builds also frequently fail for obscure reasons, don't build what they're supposed to, or rebuild too many things [^1]
 * Speaking of which, debugging CMake files is not fun (it's not a fully-fledged language, with poor tooling)
 * Builds are somewhat slow when using the standard CMake generators, and Ninja support is experimental
 * In fact, the Ninja build files that CMake creates are huge and complicated, which doesn't bode well for their quality
-* The ability to create VS solutions (and use the VS debugger) aren't very valuable because the C code involved consists largely of glue code and Lua bindings
+* The ability to create VS solutions (and use the VS debugger) aren't very valuable, so I can do without [^2]
 
 After spending obscene amounts of time battling build-related problems, it may be time for a change of scenery.
+
+---
+
+[^1] *Perhaps that's a configuration issue, but given the state of the CMake "documentation" I'd rather not look into it further.*
+
+[^2] *This is mainly because the C code involved consists largely of glue code and Lua bindings, which is mostly boilerplate.*
 
 ## Goals
 
