@@ -4,53 +4,55 @@ import styles from "./styles.module.css";
 
 const FeatureList = [
   {
-    title: "Placeholder Title",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
-    description: (
-      <>
-        This documentation website is under construction. It's unfinished. A
-        work in progress. Not final. Subject to change. Incomplete. The contents
-        are a stand-in, a surrogate, a mere substitute for what is yet to come.
-        The documentation itself is also wholly undeveloped. It is simply not
-        ready. No matter how you put it, there's currently nothing on these
-        pages that would be worth looking at. Nada. Nil. Do you have too much
-        time? Why do you keep reading this silly and senseless paragraph? It
-        purely exists to fill the blank space. Sometimes I really don't
-        understand people on the internet.
-      </>
-    ),
-  },
-  {
-    title: "Placeholder Title",
+    title: "What can I do with Evo?",
     Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
     description: (
       <>
-        This documentation website is under construction. It's unfinished. A
-        work in progress. Not final. Subject to change. Incomplete. The contents
-        are a stand-in, a surrogate, a mere substitute for what is yet to come.
-        The documentation itself is also wholly undeveloped. It is simply not
-        ready. No matter how you put it, there's currently nothing on these
-        pages that would be worth looking at. Nada. Nil. Do you have too much
-        time? Why do you keep reading this silly and senseless paragraph? Did
-        you honestly think I would make up more than one of these? Well, I guess
-        persistence must be rewarded.
+        Evo functions as a substitute for the standard (PUC) Lua interpreter or
+        - more accurately - LuaJIT. It runs your Lua scripts in an enriched
+        environment, giving you access to powerful C and C++ libraries wrapped
+        in easy-to-use APIs. This makes it possible to do lots of things that
+        Lua can't usually do on its own. Of course there's still all of the Lua
+        standard libraries and LuaJIT features, such as the FFI (foreign
+        function interface) to easily call native libraries that aren't already
+        built in. You can even run a fully-fledged browser engine and execute
+        JavaScript (or load HTML and CSS) from within Lua - what a time to be
+        alive!
       </>
     ),
   },
   {
-    title: "Placeholder Title",
+    title: "How does Evo compare to other runtimes?",
     Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
     description: (
       <>
-        This documentation website is under construction. It's unfinished. A
-        work in progress. Not final. Subject to change. Incomplete. The contents
-        are a stand-in, a surrogate, a mere substitute for what is yet to come.
-        The documentation itself is also wholly undeveloped. It is simply not
-        ready. No matter how you put it, there's currently nothing on these
-        pages that would be worth looking at. Nada. Nil. Do you have too much
-        time? Oh, by the way: Did you hear that a long time ago, in 1998, The
-        Undertaker threw Mankind off Hell In A Cell, and plummeted 16 ft through
-        an announcer's table?
+        Evo may be seen as an extension of both the standard PUC-Lua interpreter
+        and LuaJIT, in the sense that it's more or less "LuaJIT with extra
+        libraries". This means it can do everything they can do, and more. Like
+        LuaPower, LuaDist, or Luvit (which Evo is directly inspired by) it's
+        intended as a "batteries included" runtime environment that's suitable
+        for many real-world applications - though it aims to be easy to use and
+        extend more than feature-complete. While the idea isn't new, a key
+        difference is probably that Evo focuses on sustaining its ability to
+        quickly evolve and meet new challenges head-on - hence the name.
+      </>
+    ),
+  },
+  {
+    title: "What's the project status?",
+    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+    description: (
+      <>
+        Evo is in its larval stage of development, although it isn't completely
+        new: The first prototypes were developed in 2021, eventually leading to
+        the current design. Even if the concept has more than proven itself, the
+        project is clearly far from being finished - and it likely never will,
+        since evolution is in its DNA. Right now, Evo is like a caterpillar -
+        which may yet turn into a butterfly. It hasn't had enough time to spin
+        its cocoon and is still actively being worked on, so it'll be quite a
+        while until all the planned features are in. If you'd like to take part
+        in the journey, feel free to stick around! Contributions or feedback are
+        welcome.
       </>
     ),
   },
