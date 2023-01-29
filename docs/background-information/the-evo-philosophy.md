@@ -4,7 +4,7 @@ This document specifies the general approach to development for Evo
 
 ## It's All About Evolutionary Design
 
-No one can predict the future, least of all me. It should therefore be considered of utmost priority to keep the code changeable at all times, and eliminate complexity that could prevent changes from accumulating whenever feasible. If code cannot evolve it's doomed to wither and die, just like biological organisms in nature do. Evo's logo is a caterpillar for this reason (if the name didn't give it away).
+No one can predict the future, least of all me. That's why it's important to keep the code changeable, iterate swiftly and implement a fast feedback cycle. This approach is supported by sticking to simple designs, so that making changes to the codebase doesn't become too difficult over time. Projects that can't evolve quickly are doomed to wither and die, just like biological organisms in nature do.
 
 ## Don't Be Clever, Be Clear
 
@@ -12,4 +12,4 @@ I'd rather have someone go through the codebase (or even documentation) and say,
 
 ## Quality MUST Be Built In
 
-In order to maintain a rapid pace of development, a reasonably high standard of quality must be maintained at all times. What exactly that means is of course up for debate, but the core idea is this: Poorly-done work must be done twice (or more), and that's to be avoided at all costs. This isn't to say every feature will turn out great, but *deliberately* taking shortcuts which *disproportionately* hinder future development, such as skimping on tests and/or documentation work, must be avoided - at least outside of prototyping phases.
+In order to maintain a rapid pace of development, a reasonably high standard of quality must be pursued at all times. What exactly that means is of course up for debate, but the core idea is this: Poorly-done work has to be done twice (or more), and that's to be avoided at all costs. This isn't to say every feature will turn out great, but *deliberately* taking shortcuts which will *disproportionately* hinder future development, such as skimping on tests and/or documentation updates, must be avoided - at least outside of prototyping phases.
