@@ -27,7 +27,7 @@ There's much more to discover, so feel free to take a look around!
 
 ## How can it be used?
 
-In the most simple case, you tell Evo to execute a Lua program (on the command line) and then it goes off and runs it. Realistically, you will quickly need more than just the standard Lua libraries and that's where it gets get interesting: If you're looking to implement more advanced program functionality, such as networking via sockets, reading/writing files, data compression or even 3D rendering, you can call into special Lua APIs to use the builtin libraries. All this becomes much simpler to do in Evo than standard Lua, but the most important benefit is that you can accomplish a lot of the above even with relatively little experience - entirely from Lua (and not C).
+In the most simple case, you tell Evo to execute a Lua program (on the command line) and then it goes off and runs it. Realistically, you will quickly need more than just the standard Lua libraries and that's where it gets interesting: If you're looking to implement more advanced program functionality, such as networking via sockets, reading/writing files, data compression or even 3D rendering, you can call into special Lua APIs to use the builtin libraries. All this becomes much simpler to do in Evo than standard Lua, but the most important benefit is that you can accomplish a lot of the above even with relatively little experience - entirely from Lua (and not C).
 
 ## Can it be integrated with other libraries?
 
