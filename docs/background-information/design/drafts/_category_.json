@@ -1,8 +1,8 @@
 {
-	"label": "Drafts",
-	"position": 1,
-	"link": {
-	  "type": "generated-index",
-	  "description": "Incubating RFCs and other unfinished design documents"
-	}
+  "label": "Drafts",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Incubating RFCs and other unfinished design documents"
   }
+}

@@ -8,7 +8,7 @@ Lua is an embedded scripting language, and doesn't have many features (to keep t
 
 ## How does it work?
 
-Evo is a standalone application written in C++, which embeds Mike Pall's [LuaJIT engine](http://luajit.org/) alongside a host of general-purpose C (and C++) libraries. Then it adds more tooling, custom Lua libraries and everything that the runtime doesn't already provide on top. This results in a fast, flexible, and powerful Lua interpreter (with included [just-in-time compiler](https://en.wikipedia.org/wiki/Just-in-time_compilation)) which can [only in principle, not in terms of maturity or features] be compared to runtimes for other languages, like [Node.js](https://en.wikipedia.org/wiki/Node.js) (JavaScript), [PyPy](https://en.wikipedia.org/wiki/PyPy) (Python), [Mono](https://en.wikipedia.org/wiki/Mono_(software)) (.NET), and the [JVM](https://en.wikipedia.org/wiki/Java_virtual_machine).
+Evo is a standalone application written in C++, which embeds Mike Pall's [LuaJIT engine](http://luajit.org/) alongside a host of general-purpose C (and C++) libraries. Then it adds more tooling, custom Lua libraries and everything that the runtime doesn't already provide on top. This results in a fast, flexible, and powerful Lua interpreter (with included [just-in-time compiler](https://en.wikipedia.org/wiki/Just-in-time_compilation)) which can [only in principle, not in terms of maturity or features] be compared to runtimes for other languages, like [Node.js](https://en.wikipedia.org/wiki/Node.js) (JavaScript), [PyPy](https://en.wikipedia.org/wiki/PyPy) (Python), [Mono](<https://en.wikipedia.org/wiki/Mono_(software)>) (.NET), and the [JVM](https://en.wikipedia.org/wiki/Java_virtual_machine).
 
 The above is only an approximation since all engines work differently and feature unique library systems. But generally, Evo is most closely related to NodeJS because it is based on the same event loop mechanism. It even uses the same C library, which is called [libuv](http://docs.libuv.org/en/v1.x/design.html).
 
@@ -16,12 +16,12 @@ The above is only an approximation since all engines work differently and featur
 
 Here is a short list covering some of the things that you can do with Evo:
 
-* Network programming ([DNS](https://en.wikipedia.org/wiki/Domain_Name_System), [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol), [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol), [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol), and [WebSockets](https://en.wikipedia.org/wiki/WebSocket))
-* File system access, both buffered and via data streaming
-* Multithreading, launching subshells, and [inter-process communication](https://en.wikipedia.org/wiki/Inter-process_communication)
-* Data compression, decompression, and integrity checks
-* Running web applications (in a separate browser window)
-* If all else fails: Integrate other C (and C++) libraries into your Lua program
+- Network programming ([DNS](https://en.wikipedia.org/wiki/Domain_Name_System), [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol), [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol), [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol), and [WebSockets](https://en.wikipedia.org/wiki/WebSocket))
+- File system access, both buffered and via data streaming
+- Multithreading, launching subshells, and [inter-process communication](https://en.wikipedia.org/wiki/Inter-process_communication)
+- Data compression, decompression, and integrity checks
+- Running web applications (in a separate browser window)
+- If all else fails: Integrate other C (and C++) libraries into your Lua program
 
 There's much more to discover, so feel free to take a look around!
 
@@ -45,7 +45,7 @@ The documentation is right here, so all that's left is to [download Evo](https:/
 
 ## How can users get support?
 
-Please open an issue describing your problem *in as much detail as possible*. If you don't provide enough context, I can't assist you.
+Please open an issue describing your problem _in as much detail as possible_. If you don't provide enough context, I can't assist you.
 
 ## How can users contribute?
 

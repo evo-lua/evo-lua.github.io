@@ -1,8 +1,8 @@
 {
-	"label": "How-to Guides",
-	"position": 2,
-	"link": {
-	  "type": "generated-index",
-	  "description": "Recipes and instructions for solving common problems you may encounter"
-	}
+  "label": "How-to Guides",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Recipes and instructions for solving common problems you may encounter"
   }
+}

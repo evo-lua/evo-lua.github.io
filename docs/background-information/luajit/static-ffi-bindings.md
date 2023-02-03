@@ -45,9 +45,9 @@ Source: [Mike Pall, LuaJIT mailing list](https://www.freelists.org/post/luajit/H
 
 The method described here is how all statically-linked library APIs are bound to Lua. Why do it this way?
 
-* It's faster than using the regular C API, more readable, and less error-prone too (no stack mis-alignment errors...)
-* This is important if new libraries need to be added and Lua bindings either don't exist or aren't well maintained
-* The FFI generally requires less glue code to be written when interfaces change, making maintenance easier
+- It's faster than using the regular C API, more readable, and less error-prone too (no stack mis-alignment errors...)
+- This is important if new libraries need to be added and Lua bindings either don't exist or aren't well maintained
+- The FFI generally requires less glue code to be written when interfaces change, making maintenance easier
 
 Because the approach may seem a bit convoluted at first, this note exists to provide the necessary background.
 
@@ -55,9 +55,9 @@ Because the approach may seem a bit convoluted at first, this note exists to pro
 
 There are several other ways that functionality from native libraries could be made available to Lua:
 
-* Regular Lua-C-API bindings (does not scale, cumbersome and error-prone)
-* Rewrite in Lua entirely (usually not feasable, can also be slow depending on the algorithm)
-* Shell out to a native host program (not usually portable, may invoke too much overhead at scale)
-* Just use dynamically-linked libraries with `ffi.load()` - this is indeed preferable IFF static linkage isn't desired
+- Regular Lua-C-API bindings (does not scale, cumbersome and error-prone)
+- Rewrite in Lua entirely (usually not feasable, can also be slow depending on the algorithm)
+- Shell out to a native host program (not usually portable, may invoke too much overhead at scale)
+- Just use dynamically-linked libraries with `ffi.load()` - this is indeed preferable IFF static linkage isn't desired
 
 Since LuaJIT is the only supported Lua engine, there's really no reason to use any of them (for embedded libraries).
