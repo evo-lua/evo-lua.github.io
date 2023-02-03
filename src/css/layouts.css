@@ -1,12 +1,12 @@
 .flexbox-centered {
-	display: flex;
-	align-items: center;
-	text-align: center;
-	align-content: center;
-	justify-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  align-content: center;
+  justify-items: center;
+  justify-content: center;
 }
 
 .zero-margin {
-	margin: 0;
+  margin: 0;
 }

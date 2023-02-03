@@ -14,22 +14,22 @@ Events can be handled with a global event registry ("event bus" pattern), or loc
 
 Implications of using a global event registry:
 
-* A global API namespace must be provided (neutral)
-* Every event emitter needs to hook into the registry (mild inconvenience)
-* All events that fire can be observed and handled from anywhere (maximum flexibility)
-* Can easily log events or otherwise track them, without missing any
+- A global API namespace must be provided (neutral)
+- Every event emitter needs to hook into the registry (mild inconvenience)
+- All events that fire can be observed and handled from anywhere (maximum flexibility)
+- Can easily log events or otherwise track them, without missing any
 
 Implications of sticking to local event emitters instead:
 
-* Each event emitter must handle its own events (neutral)
-* Events are not observable to unrelated code (less flexible)
-* Shared functionality needs to be outsourced to a mixin, or inherited (added complexity)
+- Each event emitter must handle its own events (neutral)
+- Events are not observable to unrelated code (less flexible)
+- Shared functionality needs to be outsourced to a mixin, or inherited (added complexity)
 
 A global event registry seems like it would be more flexible, simpler to implement, and easier to understand.
 
 ### Event Names
 
-Events are always written in capital letters, like ``APPLICATION_SHUTDOWN`` (C enum style). The Node.js style of lower-case single-word event names (e.g.,  ``shutdown``) seems less flexible and readable in comparison.
+Events are always written in capital letters, like `APPLICATION_SHUTDOWN` (C enum style). The Node.js style of lower-case single-word event names (e.g., `shutdown`) seems less flexible and readable in comparison.
 
 ### Event Listeners
 
@@ -37,31 +37,31 @@ All event handlers should have a standard name and signature, and adhere to the 
 
 #### The OnEvent Catchall Handler
 
-The primary event handler is always ``OnEvent(eventID, payload)`` , where ``payload`` is a table that contains the named keys and values of all passed arguments. This ``payload`` table should *not* be an array, as that would defeat the point of making it easier to change the signature without having to update existing code that's unaffected by the changes.
+The primary event handler is always `OnEvent(eventID, payload)` , where `payload` is a table that contains the named keys and values of all passed arguments. This `payload` table should _not_ be an array, as that would defeat the point of making it easier to change the signature without having to update existing code that's unaffected by the changes.
 
 This handler serves as a catchall, forwarding events to more specialized handlers. Ideally, it needn't be overridden.
 
 #### Standard Event Handlers
 
-For each event, the name of its default handler is identical to the event ID written in PascalCase, with underscores removed and the word ``On`` preprended. Default event handlers may exist for only a subset of all possible event triggers.
+For each event, the name of its default handler is identical to the event ID written in PascalCase, with underscores removed and the word `On` preprended. Default event handlers may exist for only a subset of all possible event triggers.
 
-Example: The ``APPLICATION_SHUTDOWN`` event is forwarded to  ``MyObject:OnApplicationShutdown()`` by the catchall handler ``MyObject:OnEvent()``, with all arguments intact (this is assuming that ``MyObject`` registered for the event first).
+Example: The `APPLICATION_SHUTDOWN` event is forwarded to `MyObject:OnApplicationShutdown()` by the catchall handler `MyObject:OnEvent()`, with all arguments intact (this is assuming that `MyObject` registered for the event first).
 
 These handlers are designed under the assumption that users won't generally override them, although it is possible.
 
-Example: ``TcpClient.OnClientReadError`` will call ``TcpClient.CLIENT_READ_ERROR`` and then disconnect the peer.
+Example: `TcpClient.OnClientReadError` will call `TcpClient.CLIENT_READ_ERROR` and then disconnect the peer.
 
 #### Placeholder Event Handlers
 
-Events that have no implementation in the runtime, but might be of interest to consumers of the API, trigger empty placeholder event handlers. These are effectively no-ops that are intended to be overridden as needed. They always map 1:1 to the event name itself, in all capital letters and without the ``On`` prefix used by standard event listeners.
+Events that have no implementation in the runtime, but might be of interest to consumers of the API, trigger empty placeholder event handlers. These are effectively no-ops that are intended to be overridden as needed. They always map 1:1 to the event name itself, in all capital letters and without the `On` prefix used by standard event listeners.
 
-Example: ``TcpClient.TCP_SESSION_ENDED``  is called whenever ``TCP_SESSION_ENDED`` fires, but it does nothing by default
+Example: `TcpClient.TCP_SESSION_ENDED` is called whenever `TCP_SESSION_ENDED` fires, but it does nothing by default
 
 #### Optional Payloads
 
-Creating new ``payload`` tables doesn't seem to add any overhead, [according to some very basic benchmarking](https://gist.github.com/Duckwhale/5685a0abe2930d563b4bc931a543b536).
+Creating new `payload` tables doesn't seem to add any overhead, [according to some very basic benchmarking](https://gist.github.com/Duckwhale/5685a0abe2930d563b4bc931a543b536).
 
-Since accessing the ``payload`` table *does* have a measurable performance impact, and many event handlers will only care about the ``eventID`` itself, it doesn't make sense to only pass a ``payload`` table with a ``payload.eventID`` field that would have to be read every time. When no arguments are passed, there's also no table creation (possible [GC churn](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science))).
+Since accessing the `payload` table _does_ have a measurable performance impact, and many event handlers will only care about the `eventID` itself, it doesn't make sense to only pass a `payload` table with a `payload.eventID` field that would have to be read every time. When no arguments are passed, there's also no table creation (possible [GC churn](<https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)>)).
 
 ### Code Sharing
 
@@ -81,7 +81,7 @@ Messages received from a remote peer can trigger events directly, and messages t
 
 ### Variable Number of Arguments
 
-In the original WOW API, event handlers would pass multiple values via varargs, like ``OnEvent(eventID, ...)``. This has proven to cause issues when signatures inevitably have to change, which is why arguments should be passed as a ``payload`` table. Entries should be indexed with the argument name, so that accessing missing fields raise a script error, and no changes need to be made to legacy code when new ones are added or unused properties are removed.
+In the original WOW API, event handlers would pass multiple values via varargs, like `OnEvent(eventID, ...)`. This has proven to cause issues when signatures inevitably have to change, which is why arguments should be passed as a `payload` table. Entries should be indexed with the argument name, so that accessing missing fields raise a script error, and no changes need to be made to legacy code when new ones are added or unused properties are removed.
 
 Events are objects in JavaScript as well, which may however be due to the lack of varargs in early versions.
 
@@ -97,6 +97,6 @@ None, except using libuv callbacks exclusively. This results in somewhat unidiom
 
 ## References
 
-* [Events in Node.js](https://nodejs.org/api/events.html) (uses local event emitters)
-* [Events in the World of Warcraft client](https://wowpedia.fandom.com/wiki/Events) (uses a global event registry bound to local objects)
-* The [libuv event loop](http://docs.libuv.org/en/v1.x/design.html) will be the facilitator of callback-induced events
+- [Events in Node.js](https://nodejs.org/api/events.html) (uses local event emitters)
+- [Events in the World of Warcraft client](https://wowpedia.fandom.com/wiki/Events) (uses a global event registry bound to local objects)
+- The [libuv event loop](http://docs.libuv.org/en/v1.x/design.html) will be the facilitator of callback-induced events

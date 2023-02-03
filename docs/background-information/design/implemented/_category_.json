@@ -1,8 +1,8 @@
 {
-	"label": "Implemented",
-	"position": 2,
-	"link": {
-	  "type": "generated-index",
-	  "description": "RFCs for features that are currently part of the runtime"
-	}
+  "label": "Implemented",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "RFCs for features that are currently part of the runtime"
   }
+}

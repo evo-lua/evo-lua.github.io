@@ -1,32 +1,36 @@
-
-
-a, a:hover, a:active, a:focus {
-	transition: all 0.35s;
-	text-decoration: none;
-	font-weight: normal;
+a,
+a:hover,
+a:active,
+a:focus {
+  transition: all 0.35s;
+  text-decoration: none;
+  font-weight: normal;
 }
 
-.markdown a, .theme-doc-footer a {
-	transition: all 0.5s;
-	text-decoration: underline;
+.markdown a,
+.theme-doc-footer a {
+  transition: all 0.5s;
+  text-decoration: underline;
 }
 
-.markdown a:hover, .theme-doc-footer a:hover {
-	text-decoration: none;
-	transition: all 0.5s;
+.markdown a:hover,
+.theme-doc-footer a:hover {
+  text-decoration: none;
+  transition: all 0.5s;
 }
 
-.markdown a:active, .theme-doc-footer a:active {
-	text-decoration: none;
-	 transition: all 0.5s;
-	background-color: var(--text-color-green);
-	color: white;
- }
+.markdown a:active,
+.theme-doc-footer a:active {
+  text-decoration: none;
+  transition: all 0.5s;
+  background-color: var(--text-color-green);
+  color: white;
+}
 
- a.footnote-ref::before {
-	content: '[';
+a.footnote-ref::before {
+  content: "[";
 }
 
 a.footnote-ref::after {
-	content: ']';
+  content: "]";
 }

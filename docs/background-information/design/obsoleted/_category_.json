@@ -1,8 +1,8 @@
 {
-	"label": "Obsoleted",
-	"position": 3,
-	"link": {
-	  "type": "generated-index",
-	  "description": "RFCs that now only serve for archival purposes"
-	}
+  "label": "Obsoleted",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "RFCs that now only serve for archival purposes"
   }
+}

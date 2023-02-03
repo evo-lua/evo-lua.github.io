@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "snippets:update": "node generate-snippets-db.js",
-	"checks": "npx prettier --check .",
-	"autoformat": "npx prettier --write .",
+    "checks": "npx prettier --check .",
+    "autoformat": "npx prettier --write .",
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",

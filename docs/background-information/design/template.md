@@ -32,6 +32,6 @@ Different approaches that were considered/not considered, (dis)advantages, matte
 
 ## See also
 
-* Link to tutorial
-* Link to how-to guides
-* Link to references
+- Link to tutorial
+- Link to how-to guides
+- Link to references

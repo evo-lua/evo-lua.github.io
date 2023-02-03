@@ -1,8 +1,8 @@
 {
-	"label": "Design Documents",
-	"position": 1,
-	"link": {
-	  "type": "generated-index",
-	  "description": "Architectural decisions and design goals, explained"
-	}
+  "label": "Design Documents",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Architectural decisions and design goals, explained"
   }
+}
