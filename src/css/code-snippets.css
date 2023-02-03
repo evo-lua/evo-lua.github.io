@@ -1,0 +1,12 @@
+.optional-snippet-source {
+	/* This is super hacky, but they need to be present in the DOM without affecting the layout... */
+	visibility: hidden;
+	position: absolute;
+}
+
+code {
+	padding: .125rem .25rem;
+	border-radius: 0.25rem;
+	background: #f2f1f1;
+	font-size: 0.8333rem;
+}

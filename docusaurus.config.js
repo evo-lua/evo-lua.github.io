@@ -38,7 +38,7 @@ const config = {
             'https://github.com/evo-lua/evo-lua.github.io/edit/main/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/caterpillar-theme.css'),
         },
       }),
     ],
