@@ -1,0 +1,7 @@
+  /* Can't override this in root since docusaurus defined it here... */
+.footer--dark {
+	--ifm-footer-background-color: var(--text-color-green);
+	--ifm-footer-color: white;
+	--ifm-footer-padding-vertical: 1em;
+	--ifm-footer-padding-horizontal: 1em;
+}

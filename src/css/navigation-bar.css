@@ -1,0 +1,62 @@
+:root {
+	--ifm-navbar-background-color: var(--text-color-green);
+	--ifm-navbar-link-color: white;
+}
+
+.navbar {
+	padding: 0;
+	border-bottom: 1px solid white;
+	align-items: center;
+}
+
+.navbar__brand {
+	flex-direction: row;
+	display: flex;
+	padding: 10px;
+
+	/* The navigation bar items shouldn't directly dock against the logo icon */
+	margin-right: 2.35rem;
+	width: 2.35rem;
+}
+
+.navbar__logo {
+	display: flex;
+	flex-direction: row;
+	align-items:center;
+}
+
+.navbar__logo img {
+	border-radius: 50%;
+	width: 2.35rem;
+	height: 2.35rem;
+	border: 1px solid white;
+	background-color: white;
+}
+
+.navbar__logo:hover {
+	filter: brightness(1.2);
+}
+
+.navbar__link:hover {
+	transition: all 0.5s ease;
+	border-color: var(--text-color-green);
+	border-width: 2px;
+	color: var(--text-color-green);
+	background-color: white;
+}
+
+.navbar__link {
+	transition: all 0.5s ease;
+	font-weight: normal;
+	text-transform: uppercase;
+	border: 2px solid white;
+	display: inline-block;
+	border-radius: 2px;
+	padding: 5px 10px;
+	margin: 0 0.5em;
+}
+
+.navbar__items--right > :last-child {
+	/* The default template removes it, but that doesn't work with borders at all... */
+	padding: 5px 10px;
+}
