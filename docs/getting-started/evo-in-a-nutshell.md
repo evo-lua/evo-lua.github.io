@@ -57,4 +57,4 @@ There isn't one. Evo is developed by a single developer (the humble author of th
 
 ## What are the license and terms of use?
 
-Evo is licensed under the [Mozilla Public License, Version 2](https://www.mozilla.org/en-US/MPL/2.0/FAQ/) (GPL-compatible). You can also [read the full license text on GitHub](https://github.com/evo-lua/evo-runtime/blob/main/LICENSE).
+Evo is licensed under the [Mozilla Public License, Version 2](https://www.mozilla.org/en-US/MPL/2.0/FAQ/) (GPL-compatible). You can [read the full license text on GitHub](https://github.com/evo-lua/evo-runtime/blob/main/LICENSE).
