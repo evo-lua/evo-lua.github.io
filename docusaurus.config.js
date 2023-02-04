@@ -62,6 +62,11 @@ const config = {
             position: "left",
           },
           {
+            href: "/docs/category/api",
+            label: "API Overview",
+            position: "left",
+          },
+          {
             href: "https://github.com/evo-lua",
             label: "GitHub",
             position: "right",
