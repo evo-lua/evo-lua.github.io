@@ -1,0 +1,244 @@
+import React from "react";
+
+import styles from "./styles.module.css";
+
+export const Function = ({ children }) => (
+  <div className={styles.function}>{children}</div>
+);
+
+class NilableInfo extends React.Component {
+  render() {
+    return <>?</>;
+  }
+}
+
+class OptionalInfo extends React.Component {
+  render() {
+    return <>?</>;
+  }
+}
+
+class Parameter extends React.Component {
+  render() {
+    let displayName = this.props.name;
+    let displayType = this.props.type;
+
+    if (this.props.varargs) {
+      displayName = "...";
+      displayType = (
+        <a
+          href="https://www.lua.org/pil/5.2.html"
+          target="_blank"
+          alt="Programming in Lua: Variable Arguments"
+        >
+          varargs
+        </a>
+      );
+    }
+
+    return (
+      <tr>
+        <td className={styles.tdCounter}>{this.props.index}</td>
+        <td>{displayName}</td>
+        <td>
+          {displayType ? displayType : "any"}
+          {this.props.optional ? <OptionalInfo /> : ""}
+        </td>
+        <td>{this.props.fallback ? this.props.fallback : ""}</td>
+      </tr>
+    );
+  }
+}
+
+class Parameters extends React.Component {
+  hasChildren() {
+    return this.props.children !== undefined;
+  }
+  render() {
+    return (
+      <table
+        className={[
+          styles.functionParametersTable,
+          this.hasChildren() ? "visible" : "hidden",
+        ].join(" ")}
+      >
+        <tbody
+          className={[
+            styles.tdCounterReset,
+            styles.functionParametersTableBody,
+          ].join(" ")}
+        >
+          <tr className={styles.functionParametersFirstRow}>
+            <th colspan="4">Arguments</th>
+          </tr>
+          <tr className={styles.functionParametersHeadRow}>
+            <th>#</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Fallback</th>
+          </tr>
+          {this.props.children}
+        </tbody>
+      </table>
+    );
+  }
+}
+
+class Returns extends React.Component {
+  render() {
+    return (
+      <table className={styles.functionReturnValuesTable}>
+        <tbody
+          className={[
+            styles.tdCounterReset,
+            styles.functionReturnValuesTableBody,
+          ].join(" ")}
+        >
+          <tr className={styles.functionReturnValuesFirstRow}>
+            <th colspan="3">Return values</th>
+          </tr>
+          <tr className={styles.functionReturnValuesHeadRow}>
+            <th>#</th>
+            <th>Name</th>
+            <th>Type</th>
+          </tr>
+          {this.props.children}
+        </tbody>
+      </table>
+    );
+  }
+}
+class Return extends React.Component {
+  render() {
+    return (
+      <tr>
+        <td className={styles.tdCounter}>{this.props.index}</td>
+        <td>{this.props.name}</td>
+        <td>
+          {this.props.type ? this.props.type : "any"}
+          {this.props.optional ? <NilableInfo /> : ""}
+        </td>
+      </tr>
+    );
+  }
+}
+
+class Struct extends React.Component {
+  render() {
+    return (
+      <>
+        <table className={styles.structMembersTable}>
+          <tbody
+            className={[
+              styles.tdCounterReset,
+              styles.structMembersTableBody,
+            ].join(" ")}
+          >
+            <tr className={styles.structMembersFirstRow}>
+              <th colspan="3">{this.props.name}</th>
+            </tr>
+            <tr className={styles.structMembersHeadRow}>
+              <th>Field</th>
+              <th>Type</th>
+            </tr>
+            {this.props.children}
+          </tbody>
+        </table>
+      </>
+    );
+  }
+}
+
+class Member extends React.Component {
+  render() {
+    return (
+      <tr>
+        <td>{this.props.name}</td>
+        <td>
+          {this.props.type ? this.props.type : "any"}
+          {this.props.optional ? <NilableInfo /> : ""}
+        </td>
+      </tr>
+    );
+  }
+}
+
+class Experimental extends React.Component {
+  render() {
+    return (
+      <>
+        <div className={styles.experimental}>
+          Experimental: Functionality may change for any reason, without
+          semantic versioning guarantees
+        </div>
+      </>
+    );
+  }
+}
+
+class Stable extends React.Component {
+  render() {
+    return (
+      <>
+        <div className={styles.stable}>
+          Stable: Functionality is covered by semantic versioning guarantees and
+          unlikely to see breaking changes
+        </div>
+      </>
+    );
+  }
+}
+
+class Deprecated extends React.Component {
+  render() {
+    return (
+      <>
+        <div className={styles.deprecated}>
+          Deprecated: Functionality is maintained for backwards compatibility
+          only, but covered by semantic versioning guarantees
+        </div>
+      </>
+    );
+  }
+}
+
+class External extends React.Component {
+  render() {
+    return (
+      <>
+        <div className={styles.external}>
+          External: Functionality is provided by a third-party library, which
+          may or may not give semantic versioning guarantees
+        </div>
+      </>
+    );
+  }
+}
+
+import Admonition from "@theme/Admonition";
+
+class FFI extends React.Component {
+  render() {
+    return (
+      <>
+        <Admonition type="danger" title="Foreign Function Interface">
+          This is a low-level module; misuse can easily crash the runtime!
+        </Admonition>
+      </>
+    );
+  }
+}
+
+export {
+  Parameters,
+  Parameter,
+  Returns,
+  Return,
+  Struct,
+  Member,
+  Experimental,
+  Stable,
+  Deprecated,
+  External,
+  FFI,
+};
