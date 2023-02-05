@@ -8,6 +8,21 @@ import MDXHeading from "@theme/MDXComponents/Heading";
 import MDXUl from "@theme/MDXComponents/Ul";
 import MDXImg from "@theme/MDXComponents/Img";
 
+import {
+  Function,
+  Parameters,
+  Parameter,
+  Returns,
+  Return,
+  Struct,
+  Member,
+  Experimental,
+  Stable,
+  Deprecated,
+  External,
+  FFI,
+} from "@site/src/components/API/API";
+
 import Admonition from "@theme/Admonition";
 import Mermaid from "@theme/Mermaid";
 const MDXComponents = {
@@ -26,5 +41,19 @@ const MDXComponents = {
   h6: (props) => <MDXHeading as="h6" {...props} />,
   admonition: Admonition,
   mermaid: Mermaid,
+
+  // Extensions go here
+  Function: Function,
+  Parameters: Parameters,
+  Parameter: Parameter,
+  Returns: Returns,
+  Return: Return,
+  Struct: Struct,
+  Member: Member,
+  Experimental: Experimental,
+  Stable: Stable,
+  Deprecated: Deprecated,
+  External: External,
+  FFI: FFI,
 };
 export default MDXComponents;

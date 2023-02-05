@@ -1,0 +1,112 @@
+.function {
+  display: flex;
+}
+
+.functionParametersTable,
+.functionReturnValuesTable,
+.structMembersTable {
+  font-size: 0.85em;
+  border-collapse: collapse;
+  display: inline-block;
+  margin: 0;
+  margin-right: 1.5em;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+/* Assumes these won't ever occur without a return or args table*/
+.structMembersTable {
+  margin-top: 1.5em;
+  margin-bottom: 0;
+}
+
+.functionParametersTable * td,
+.functionReturnValuesTable * td,
+.structMembersTable * td {
+  padding: 0.25rem;
+  text-align: center;
+  width: 7.5rem;
+}
+
+.functionParametersTableBody {
+  border-left: 0.5ex solid #00802b;
+}
+
+.functionParametersFirstRow {
+  background: #00802b;
+  text-align: center;
+  color: white;
+}
+
+.functionReturnValuesTableBody {
+  border-left: 0.5ex solid #006699;
+}
+
+.functionReturnValuesFirstRow {
+  background: #006699;
+  text-align: center;
+  color: white;
+}
+
+.structMembersTableBody {
+  border-left: 0.5ex solid #b38600;
+}
+
+.structMembersFirstRow {
+  background: #b38600;
+  text-align: center;
+  color: white;
+}
+
+.functionParametersFirstRow th,
+.functionParametersHeadRow th,
+.functionReturnValuesFirstRow th,
+.functionReturnValuesHeadRow th,
+.structMembersFirstRow th,
+.structMembersHeadRow th {
+  padding: 0.25rem;
+  text-align: center;
+}
+
+/* This must be assigned to all table cells that should include the index counter (one per row) */
+.tdCounter::before {
+  counter-increment: parameter-index-counter;
+  content: counter(parameter-index-counter);
+}
+
+/* Whenever this tag is encountered, a new parameters table should be created (with new indices) */
+.tdCounterReset {
+  counter-reset: parameter-index-counter;
+}
+
+/* The counter needs to be at the highest level in order to work (no idea why; I didn't spend much time on this) */
+body {
+  counter-reset: parameter-index-counter;
+}
+
+.experimental {
+  border: 3px solid #d60026;
+  padding: 0.5rem;
+  color: #d60026;
+  font-weight: 600;
+}
+
+.stable {
+  border: 3px solid #0060ff;
+  padding: 0.5rem;
+  color: #0060ff;
+  font-weight: 600;
+}
+
+.deprecated {
+  border: 3px solid #888800;
+  padding: 0.5rem;
+  color: #888800;
+  font-weight: 600;
+}
+
+.external {
+  border: 3px solid black;
+  padding: 0.5rem;
+  color: black;
+  font-weight: 600;
+}
