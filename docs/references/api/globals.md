@@ -26,7 +26,7 @@ Alias for [debug.dump(...)](/docs/references/api/extensions#debugdump).
 
 ### format
 
-Alias for `string.format(...)`.
+Alias for [string.format(...)](https://www.lua.org/manual/5.1/manual.html#pdf-string.format).
 
 ### it
 
