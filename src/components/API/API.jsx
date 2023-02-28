@@ -229,6 +229,19 @@ class FFI extends React.Component {
   }
 }
 
+class Placeholder extends React.Component {
+  render() {
+    return (
+      <>
+        <Admonition type="info">
+          This section is a placeholder. If you know anything about the topic,
+          please help fill it with content!
+        </Admonition>
+      </>
+    );
+  }
+}
+
 export {
   Parameters,
   Parameter,
@@ -241,4 +254,5 @@ export {
   Deprecated,
   External,
   FFI,
+  Placeholder,
 };
