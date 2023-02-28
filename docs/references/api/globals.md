@@ -14,6 +14,12 @@ All functions are made available in the global environment and can be accessed d
 printf("Hello %s", world) -- Implied global lookup: _G.printf
 ```
 
+## Constants
+
+### EVO_VERSION
+
+The build version embedded into the native C++ runtime at compile time, given as a [semantic version](https://semver.org/) string in [git describe](https://git-scm.com/docs/git-describe) format.
+
 ## Functions
 
 ### describe
