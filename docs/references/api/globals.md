@@ -6,6 +6,14 @@ sidebar_position: 20
 
 Convenient shorthands for some frequently-used functionality
 
+## Availability
+
+All functions are made available in the global environment and can be accessed directly:
+
+```lua
+printf("Hello %s", world) -- Implied global lookup: _G.printf
+```
+
 ## Functions
 
 ### describe
