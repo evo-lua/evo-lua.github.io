@@ -8,6 +8,10 @@ Convenient shorthands for some frequently-used functionality
 
 ## Functions
 
+### describe
+
+Alias for [bdd.describe(...)](/docs/references/api/bdd#describe).
+
 ### dump
 
 Alias for [debug.dump(...)](/docs/references/api/extensions#debugdump).
@@ -15,6 +19,10 @@ Alias for [debug.dump(...)](/docs/references/api/extensions#debugdump).
 ### format
 
 Alias for `string.format(...)`.
+
+### it
+
+Alias for [bdd.it(...)](/docs/references/api/bdd#it).
 
 ### printf
 
