@@ -1,6 +1,6 @@
 # webview
 
-LuaJIT bindings for the embedded webview library
+LuaJIT bindings for the embedded [webview](https://github.com/webview/webview) library
 
 <FFI/>
 
