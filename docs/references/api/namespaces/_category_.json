@@ -1,0 +1,8 @@
+{
+  "label": "Namespaces",
+  "position": 0,
+  "link": {
+    "type": "generated-index",
+    "description": "High-level API namespaces intended to cover standard use cases"
+  }
+}
