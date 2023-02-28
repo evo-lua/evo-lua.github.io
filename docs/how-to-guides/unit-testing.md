@@ -4,7 +4,7 @@ Learn how to employ the `bdd` library to run automated unit tests
 
 ## The Easy Way
 
-If you don't care about the particulars and just want to run some tests quickly, you can just use the same format as the runtime itself:
+If you don't care about the particulars and just want to run some tests quickly, you can use the same format as the runtime itself:
 
 ```lua title=runtime-test-shorthands.lua
 local specFiles = {
