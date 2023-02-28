@@ -21,6 +21,7 @@ import {
   Deprecated,
   External,
   FFI,
+  Placeholder,
 } from "@site/src/components/API/API";
 
 import Admonition from "@theme/Admonition";
@@ -55,5 +56,6 @@ const MDXComponents = {
   Deprecated: Deprecated,
   External: External,
   FFI: FFI,
+  Placeholder: Placeholder,
 };
 export default MDXComponents;
