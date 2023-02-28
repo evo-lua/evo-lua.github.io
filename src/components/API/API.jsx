@@ -110,6 +110,33 @@ class Returns extends React.Component {
 }
 class Return extends React.Component {
   render() {
+    let displayName = this.props.name;
+    let displayType = this.props.type;
+
+    if (this.props.varargs) {
+      displayName = "...";
+      displayType = (
+        <a
+          href="https://www.lua.org/pil/5.2.html"
+          target="_blank"
+          alt="Programming in Lua: Variable Arguments"
+        >
+          varargs
+        </a>
+      );
+    }
+
+    return (
+      <tr>
+        <td className={styles.tdCounter}>{this.props.index}</td>
+        <td>{displayName}</td>
+        <td>
+          {displayType ? displayType : "any"}
+          {this.props.optional ? <OptionalInfo /> : ""}
+        </td>
+      </tr>
+    );
+
     return (
       <tr>
         <td className={styles.tdCounter}>{this.props.index}</td>
