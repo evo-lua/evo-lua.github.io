@@ -147,7 +147,7 @@ Enables the [minimal reporting mode](/docs/how-to-guides/unit-testing#minimal-re
 
 Starts a new test runner for the given list of test files. It will merely execute the tests, without reporting results or error details[^1]. After a test run has completed, any errors that occured during it can be queried via [getErrorDetails](#geterrordetails), and reports via [getReport](#getreport).
 
-[^1] _The exact behavior depends on the [reporting mode](/docs/how-to-guides/unit-testing#reporting-modes) used. In some modes, the runner will fail loudly when encountering an error._
+[^1] _The exact behavior depends on the [reporting mode](/docs/how-to-guides/unit-testing#reporting-test-results) used. In some modes, the runner will fail loudly when encountering an error._
 
 :::caution
 
