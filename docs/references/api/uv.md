@@ -1,6 +1,6 @@
 # uv
 
-Lua bindings for the embedded libuv library
+Lua bindings for the embedded [libuv](https://github.com/libuv/libuv) library
 
 ## Status
 
