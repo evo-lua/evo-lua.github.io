@@ -20,6 +20,23 @@ printf("Hello %s", world) -- Implied global lookup: _G.printf
 
 The build version embedded into the native C++ runtime at compile time, given as a [semantic version](https://semver.org/) string in [git describe](https://git-scm.com/docs/git-describe) format.
 
+### STATIC_FFI_EXPORTS
+
+A table containing the low-level APIs bound to the Lua environment via LuaJIT's [foreign function interface](http://luajit.org/ext_ffi.html). For details, see [this page](/docs/background-information/luajit/static-ffi-bindings).
+
+You probably don't need to access these manually unless you want to know which libraries are embedded using this method:
+
+```lua title=dump-ffi-exports.lua
+dump(STATIC_FFI_EXPORTS)
+
+-- Result:
+{
+        webview = <userdata 1>
+}
+```
+
+Keep in mind that FFI libraries are generally memory-unsafe, so prefer using the high-level interfaces provided if possible.
+
 ## Functions
 
 ### describe
