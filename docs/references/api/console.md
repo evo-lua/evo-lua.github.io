@@ -24,7 +24,7 @@ Currently only captures [print](https://www.lua.org/manual/5.1/manual.html#pdf-p
 
 ### release
 
-Stops capturing console output, allowing it continue as before the capture. Returns the contents of the internal buffer and then resets it.
+Stops capturing console output, allowing it to be displayed normally again. Returns the contents of the internal buffer and then resets it.
 
 <Function>
 <Returns>
