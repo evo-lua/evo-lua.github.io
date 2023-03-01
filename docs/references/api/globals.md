@@ -11,7 +11,7 @@ Convenient shorthands for some frequently-used functionality
 All functions are made available in the global environment and can be accessed directly:
 
 ```lua
-printf("Hello %s", world) -- Implied global lookup: _G.printf
+printf("Hello %s", "world") -- Implied global lookup: _G.printf
 ```
 
 ## Constants
