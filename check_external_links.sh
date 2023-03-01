@@ -1,7 +1,7 @@
 DOCS_DIR=build/docs
 
 # We want to find all links to code and/or external docs in the organization
-GITHUB_ORGANIZATION_LINK="https://github.com/evo-lua/evo-luvi"
+GITHUB_REPOSITORY_LINK="https://github.com/evo-lua/evo-runtime"
 GITHUB_ERROR_PATTERN="This is not the web page you are looking for."
 
 LOG_FILE=external-links.txt
@@ -26,7 +26,7 @@ find_external_links() {
 		cat $file | \
 		pup 'a[href] attr{href}' | \
 		# We only care about cross-repo links to the organization
-		grep -E $GITHUB_ORGANIZATION_LINK/blob/main/* >> $LOG_FILE
+		grep -E $GITHUB_REPOSITORY_LINK/blob/main/* >> $LOG_FILE
 	done
 	
 	echo
