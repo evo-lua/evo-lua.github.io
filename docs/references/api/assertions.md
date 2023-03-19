@@ -132,7 +132,7 @@ Raises an error if the function passed does not return a "failure" type (`nil` a
 <Function>
 <Parameters>
 <Parameter name="codeUnderTest" type="function"/>
-<Parameter name="errorMessage" type="string"/>
+<Parameter name="expectedErrorMessage" type="string"/>
 </Parameters>
 </Function>
 
