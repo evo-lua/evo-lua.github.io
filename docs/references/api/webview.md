@@ -32,6 +32,12 @@ A pointer to the statically-loaded exports table that exposes the bound function
 
 Initializes the bindings by loading the [C type definitions](#cdefs). Automatically called by the runtime when it sets up the Lua environment
 
+### version
+
+Returns the embedded webview library version as a Lua string.
+
+Mostly equivalent to [bindings.version()](#version-1), but the latter returns a `cdata` object that may include additional versioning information.
+
 ## Native Bindings
 
 All C functions listed here can be accessed via `webview.bindings` and must be called with the appropriate `cdata` values.
