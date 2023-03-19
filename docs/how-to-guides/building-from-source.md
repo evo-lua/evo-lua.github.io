@@ -46,7 +46,7 @@ A complete setup procedure involves the following steps:
 
 1. Download the [Homebrew package manager](https://brew.sh/)
 1. Install Apple's compiler toolchain: `xcode-select --install`
-1. Install the required build tools: `brew install git cmake ninja`
+1. Install the required build tools: `brew install git cmake ninja coreutils`
 
 You should be able to execute `gcc`, `g++`, `cmake`, and `ninja` in your terminal before starting the build.
 
