@@ -30,7 +30,7 @@ A pointer to the statically-loaded exports table that exposes the bound function
 
 ### initialize
 
-Initializes the bindings by loading the [C type definitions](#cdefs). Automatically called by the runtime when it sets up the Lua environment
+Initializes the bindings by loading the [C type definitions](#cdefs). Automatically called by the runtime when it sets up the Lua environment.
 
 ### version
 
