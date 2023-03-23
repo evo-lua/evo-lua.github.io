@@ -124,6 +124,14 @@ You can also move the executable to somewhere in your `PATH`, and then omit the 
 
 ## Troubleshooting
 
+### Windows: Entry Point Not Found
+
+You might see strange popup errors when trying to run the executable outside of a MSYS2 shell (e.g., in the Explorer or via `cmd.exe`):
+
+`The procedure entry point _ZSt28_throw_bad_array_new_lengthv could not be located in the dynamic link library evo.exe`
+
+Solution: Add your MSYS2 installation's MINGW64 binary directory (e.g., `C:\\MSYS2\mingw64\bin`) to the PATH environment variable.
+
 ### Windows Subsystem for Linux
 
 If you just installed WSL and set things up, CMake may fail with an error:
