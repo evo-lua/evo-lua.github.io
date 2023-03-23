@@ -10,7 +10,6 @@
   display: inline-block;
   margin: 0;
   margin-right: 1.5em;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 /* Assumes these won't ever occur without a return or args table*/
