@@ -1,6 +1,6 @@
 # uuid
 
-Lua bindings for the embedded [stduuid](https://github.com/mariusbancila/stduuid) library
+Lua library that allows generating [universally-unique identifiers](https://en.wikipedia.org/wiki/Universally_unique_identifier) (UUIDs)
 
 ## Status
 
