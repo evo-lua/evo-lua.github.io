@@ -1,0 +1,8 @@
+{
+  "label": "Bindings",
+  "position": 0,
+  "link": {
+    "type": "generated-index",
+    "description": "Lua and LuaJIT (FFI) bindings for embedded libraries"
+  }
+}
