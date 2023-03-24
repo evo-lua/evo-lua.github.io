@@ -1,5 +1,5 @@
 ---
-sidebar_position: 20
+sidebar_position: 0
 ---
 
 # Globals
@@ -41,7 +41,7 @@ Keep in mind that FFI libraries are generally memory-unsafe, so prefer using the
 
 ### describe
 
-Alias for [bdd.describe(...)](/docs/references/api/bdd#describe).
+Alias for [bdd.describe(...)](/docs/references/api/libraries/bdd#describe).
 
 ### dump
 
@@ -53,7 +53,7 @@ Alias for [string.format(...)](https://www.lua.org/manual/5.1/manual.html#pdf-st
 
 ### it
 
-Alias for [bdd.it(...)](/docs/references/api/bdd#it).
+Alias for [bdd.it(...)](/docs/references/api/libraries/bdd#it).
 
 ### printf
 
