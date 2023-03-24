@@ -28,7 +28,7 @@ Generates a UUID using the default (basic) random number generator. May produce 
 
 <Function>
 <Returns>
-<Return name="guid" type="string"/>
+<Return name="uuid" type="string"/>
 </Returns>
 </Function>
 
@@ -38,7 +38,7 @@ Generates a UUID using the [mt19937](https://cplusplus.com/reference/random/mt19
 
 <Function>
 <Returns>
-<Return name="guid" type="string"/>
+<Return name="uuid" type="string"/>
 </Returns>
 </Function>
 
@@ -52,7 +52,7 @@ Generates a [name-based](<https://en.wikipedia.org/wiki/Universally_unique_ident
 <Parameter name="name" type="string"/>
 </Parameters>
 <Returns>
-<Return name="guid" type="string"/>
+<Return name="uuid" type="string"/>
 </Returns>
 </Function>
 
@@ -66,7 +66,7 @@ Generates a UUID using a nonstandard, platform-specific random number generator.
 
 <Function>
 <Returns>
-<Return name="guid" type="string"/>
+<Return name="uuid" type="string"/>
 </Returns>
 </Function>
 
