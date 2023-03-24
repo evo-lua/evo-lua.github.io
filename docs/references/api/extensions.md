@@ -10,7 +10,7 @@ Unofficial extensions to the Lua standard libraries
 
 ### debug.dump
 
-Prints a human-readable string representation of the given object. Mostly useful for dumping tables, but unsuitable for serialization purposes. The output format cannot be considered stable. Currently uses [inspect](/docs/references/api/inspect) internally, though this may change in the future.
+Prints a human-readable string representation of the given object. Mostly useful for dumping tables, but unsuitable for serialization purposes. The output format cannot be considered stable. Currently uses [inspect](/docs/references/api/bindings/inspect) internally, though this may change in the future.
 
 <Function>
 <Parameters>

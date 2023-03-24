@@ -47,7 +47,7 @@ The value displayed is also exported globally via [EVO_VERSION](/docs/references
 
 ### RunBasicTests
 
-Starts a [bdd-style unit test runner](/docs/references/api/bdd) in [basic reporting mode](/docs/how-to-guides/unit-testing#basic-reports) with the given list of test files as input and returns the result.
+Starts a [bdd-style unit test runner](/docs/references/api/libraries/bdd) in [basic reporting mode](/docs/how-to-guides/unit-testing#basic-reports) with the given list of test files as input and returns the result.
 
 <Function>
 <Parameters>
@@ -60,7 +60,7 @@ Starts a [bdd-style unit test runner](/docs/references/api/bdd) in [basic report
 
 ### RunDetailedTests
 
-Starts a [bdd-style unit test runner](/docs/references/api/bdd) in [detailed reporting mode](/docs/how-to-guides/unit-testing#detailed-reports) with the given list of test files as input and returns the result.
+Starts a [bdd-style unit test runner](/docs/references/api/libraries/bdd) in [detailed reporting mode](/docs/how-to-guides/unit-testing#detailed-reports) with the given list of test files as input and returns the result.
 
 <Function>
 <Parameters>
@@ -73,7 +73,7 @@ Starts a [bdd-style unit test runner](/docs/references/api/bdd) in [detailed rep
 
 ### RunMinimalTests
 
-Starts a [bdd-style unit test runner](/docs/references/api/bdd) in [minimal reporting mode](/docs/how-to-guides/unit-testing#minimal-reports) with the given list of test files as input and returns the result.
+Starts a [bdd-style unit test runner](/docs/references/api/libraries/bdd) in [minimal reporting mode](/docs/how-to-guides/unit-testing#minimal-reports) with the given list of test files as input and returns the result.
 
 <Function>
 <Parameters>

@@ -60,7 +60,7 @@ The definition for what constitutes a passing or a failing test is quite simple:
 - Any script that deliberately throws an error (e.g., by explicitly calling the [error](https://www.lua.org/manual/5.1/manual.html#pdf-error) or perhaps [assert](https://www.lua.org/manual/5.1/manual.html#pdf-assert) function) _fails_ the test
 - Needless to say, scripts that accidentally cause the interpreter to raise an error will also fail the test (invalid syntax, ...)
 
-The basic idea is that a test exercises your code and uses [assertions](/docs/references/api/assertions) to raise Lua errors if any assumptions it makes are wrong.
+The basic idea is that a test exercises your code and uses [assertions](/docs/references/api/libraries/assertions) to raise Lua errors if any assumptions it makes are wrong.
 
 ### Examples
 
@@ -163,8 +163,8 @@ For that reason, `bdd` (which stands for [behavior-driven development](https://e
 
 Inside any given test file, you can use the following functions to create logically separate blocks:
 
-- [bdd.describe](/docs/references/api/bdd#describe): Shorthand for `bdd.createSection(label, testFunction)`
-- [bdd.it](/docs/references/api/bdd#it): Shorthand for `bdd.createSubsection(label, testFunction)`
+- [bdd.describe](/docs/references/api/libraries/bdd#describe): Shorthand for `bdd.createSection(label, testFunction)`
+- [bdd.it](/docs/references/api/libraries/bdd#it): Shorthand for `bdd.createSubsection(label, testFunction)`
 - Both functions are also available as global aliases, called [describe](/docs/references/api/globals#describe) and [it](/docs/references/api/globals#it)
 
 Using logical partitioning can help you generate more useful reports, but there's no change to how tests are run.
@@ -177,11 +177,11 @@ Test reports can be generated in one of several formats:
 - Basic: Displays the number of test files, a simple pass/fail status for each file, and the time taken
 - Minimal: Displays nothing, unless there are errors or test failures (Unix style)
 
-You can select the reporting mode before calling [bdd.startTestRunner](/docs/references/api/bdd#starttestrunner) with the following APIs:
+You can select the reporting mode before calling [bdd.startTestRunner](/docs/references/api/libraries/bdd#starttestrunner) with the following APIs:
 
-- [bdd.setDetailedReportMode](/docs/references/api/bdd#setdetailedreportmode) enables detailed reports (and disables all other report modes)
-- [bdd.setBasicReportMode](/docs/references/api/bdd#setbasicreportmode) enables basic reports (and disables all other report modes)
-- [bdd.setMinimalReportMode](/docs/references/api/bdd#setminimalreportmode) enables minimal reports (and disables all other report modes)
+- [bdd.setDetailedReportMode](/docs/references/api/libraries/bdd#setdetailedreportmode) enables detailed reports (and disables all other report modes)
+- [bdd.setBasicReportMode](/docs/references/api/libraries/bdd#setbasicreportmode) enables basic reports (and disables all other report modes)
+- [bdd.setMinimalReportMode](/docs/references/api/libraries/bdd#setminimalreportmode) enables minimal reports (and disables all other report modes)
 
 Let's take a look at some examples next; it will become evident quickly what each mode means in practice.
 
@@ -237,7 +237,7 @@ The remaining errors are here omitted for brevity, but all of them will be repor
 
 The test runner accumulates error messages and stack traces for each failing test (and section/subsection).
 
-You can fetch them by calling [bdd.getErrorDetails](/docs/references/api/bdd#geterrordetails) after the test run has finished:
+You can fetch them by calling [bdd.getErrorDetails](/docs/references/api/libraries/bdd#geterrordetails) after the test run has finished:
 
 ```lua title=print-error-details.lua
 local bdd = require("bdd")
