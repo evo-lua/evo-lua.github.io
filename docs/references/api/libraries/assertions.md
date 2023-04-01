@@ -83,12 +83,13 @@ Raises an error if the two passed values do not represent the same `function` va
 
 ### assertEqualNumbers
 
-Raises an error if the two passed values do not represent the same `number` value.
+Raises an error if the two passed values do not represent the same `number` value. The optional `delta` allows for float comparisons.
 
 <Function>
 <Parameters>
 <Parameter name="firstValue"/>
 <Parameter name="secondValue"/>
+<Parameter name="delta" type="number" optional="true"/>
 </Parameters>
 </Function>
 
