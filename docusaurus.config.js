@@ -67,6 +67,11 @@ const config = {
             position: "left",
           },
           {
+            href: "/docs/security-policy",
+            label: "Security Policy",
+            position: "left",
+          },
+          {
             href: "https://github.com/evo-lua",
             label: "GitHub",
             position: "right",
