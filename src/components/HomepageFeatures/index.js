@@ -5,7 +5,6 @@ import styles from "./styles.module.css";
 const FeatureList = [
   {
     title: "What can I do with Evo?",
-    Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
     description: (
       <>
         Evo functions as a substitute for the standard (PUC) Lua interpreter or
@@ -23,7 +22,6 @@ const FeatureList = [
   },
   {
     title: "How does Evo compare to other runtimes?",
-    Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
     description: (
       <>
         Evo may be seen as an extension of both the standard PUC-Lua interpreter
@@ -40,7 +38,6 @@ const FeatureList = [
   },
   {
     title: "What's the project status?",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
     description: (
       <>
         Evo is in its larval stage of development, although it isn't completely
@@ -61,9 +58,7 @@ const FeatureList = [
 function Feature({ Svg, title, description }) {
   return (
     <div className={clsx("col col--4")}>
-      <div className="text--center">
-        {/* <Svg className={styles.featureSvg} role="img" /> */}
-      </div>
+      <div className="text--center"></div>
       <div>
         <h3>{title}</h3>
         <p>{description}</p>
