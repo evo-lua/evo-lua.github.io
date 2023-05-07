@@ -49,7 +49,7 @@ Please open an issue describing your problem _in as much detail as possible_. If
 
 ## How can users contribute?
 
-All contributions are very welcome. Feel free to use GitHub issues to their fullest potential!
+All contributions are very welcome! [This guide](/docs/contributing) can help you get started. If you need assistance, please use GitHub issues deliberately.
 
 ## What is the governance model?
 
