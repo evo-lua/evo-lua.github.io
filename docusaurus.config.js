@@ -72,6 +72,11 @@ const config = {
             position: "left",
           },
           {
+            href: "/docs/contributing",
+            label: "Contributing",
+            position: "left",
+          },
+          {
             href: "https://github.com/evo-lua",
             label: "GitHub",
             position: "right",

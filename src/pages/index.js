@@ -48,10 +48,7 @@ function DownloadArea() {
         >
           Report a Problem
         </Link>
-        <Link
-          className="hero-text"
-          to="/docs/getting-started/evo-in-a-nutshell#how-can-users-contribute"
-        >
+        <Link className="hero-text" to="/docs/contributing">
           Contribute
         </Link>
       </div>
