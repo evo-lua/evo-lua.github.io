@@ -138,10 +138,22 @@ WEBVIEW_API void webview_return(webview_t w, const char *seq, int status,
 
 ### run
 
+This function completely blocks the event loop and should not be used if you need to perform other asynchronous tasks.
+
 ```c
 // Runs the main loop until it's terminated. After this function exits - you
 // must destroy the webview.
 WEBVIEW_API void webview_run(webview_t w);
+```
+
+### run_once
+
+Runs a single iteration of the WebView's update loop. Used to integrate with the event loop, i.e., by polling for updates.
+
+You can turn it into a blocking call with the second argument, but it's better to just use `run` instead if you need that.
+
+```c
+int webview_run_once(webview_t w, int blocking);
 ```
 
 ### set_html
@@ -150,6 +162,24 @@ WEBVIEW_API void webview_run(webview_t w);
 // Set webview HTML directly.
 // Example: webview_set_html(w, "<h1>Hello</h1>");
 WEBVIEW_API void webview_set_html(webview_t w, const char *html);
+```
+
+### set_icon
+
+Sets the WebView window's application icon, which is displayed in the title bar (or in the dock/Finder on Mac OS).
+
+The icon is loaded using platform-specific APIs. This will briefly block the event loop. In case of success the call returns `true`.
+
+Importantly, you must respect the OS-specific icon format for each platform or loading will certainly fail:
+
+- On Windows, icons are expected to be in `ico` format
+- On Mac OS, you should create an `icns` catalog/file using Apple's tools
+- On Linux, GTK APIs are used - they luckily support several common image formats (such as PNG or JPEG)
+
+Needless to say, the image file you submit has to actually exist on disk. Failure to load (or set) the icon results in a `false` return value.
+
+```c
+bool webview_set_icon(webview_t w, const char* file_path);
 ```
 
 ### set_size
@@ -178,6 +208,16 @@ WEBVIEW_API void webview_set_title(webview_t w, const char *title);
 // Stops the main loop. It is safe to call this function from another other
 // background thread.
 WEBVIEW_API void webview_terminate(webview_t w);
+```
+
+### toggle_fullscreen
+
+Toggles fullscreen mode for the native browser window, switching between windowed and fullscreen mode whenever called.
+
+The monitor to be used depends on the platform: It should default to the one that holds the window, but this may not work in WSL.
+
+```c
+void webview_toggle_fullscreen(webview_t w);
 ```
 
 ### unbind
