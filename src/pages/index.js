@@ -1,38 +1,101 @@
 import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 
 import styles from "./index.module.css";
 
-function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
+import LatestRelease from "../components/LatestRelease";
+
+function AboutSection() {
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link className="button button--secondary button--lg" to="/docs">
-            Let's read some documentation! (WIP)
-          </Link>
-        </div>
+    <div>
+      <h1 className="hero__title">
+        <img className="hero-banner-image" src="/img/caterpillar.png" />
+      </h1>
+      <p className="hero__subtitle">
+        Evo is an experimental all-in-one Lua runtime
+      </p>
+      <p className="hero__description">
+        It combines asynchronous I/O, just-in-time compilation, and browser
+        technologies with many general-purpose libraries and other useful tools
+        that can help you create complex Lua-based applications with ease.
+      </p>
+      <p className="hero__subscript">
+        Disclaimer: This website is under construction! Both the documentation
+        and Evo itself are a work in progress. You're welcome to look around,
+        but don't expect too much - yet.
+      </p>
+    </div>
+  );
+}
+
+function DownloadArea() {
+  return (
+    <div className="hero-buttons-container">
+      <LatestRelease />
+      <div>
+        <Link
+          className="hero-text"
+          to="/docs/how-to-guides/building-from-source"
+        >
+          Build from Source
+        </Link>
+        <Link
+          className="hero-text"
+          to="/docs/getting-started/evo-in-a-nutshell#how-can-users-get-support"
+        >
+          Report a Problem
+        </Link>
+        <Link
+          className="hero-text"
+          to="/docs/getting-started/evo-in-a-nutshell#how-can-users-contribute"
+        >
+          Contribute
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function HomepageHeader() {
+  return (
+    <header
+      className={clsx("hero hero--primary", styles.heroBanner)}
+      id="hero-banner"
+    >
+      <div className="hero__container">
+        <AboutSection />
+        <DownloadArea />
       </div>
     </header>
+  );
+}
+
+function QuickstartButton() {
+  return (
+    <div className="hero__container">
+      <a
+        className="hero-button hero__quickstart-button"
+        href="/docs/category/getting-started/"
+      >
+        Get Started in Minutes
+      </a>
+    </div>
   );
 }
 
 export default function Home() {
   return (
     <Layout
-      title={`Welcome`}
-      description="Evo.lua is a highly-experimental Lua runtime based on Luvi (LibUV + LuaJIT)"
+      title=""
+      description="Lua runtime engine powered by LuaJIT and libuv"
     >
       <HomepageHeader />
       <main>
         <HomepageFeatures />
+        <QuickstartButton />
       </main>
     </Layout>
   );
