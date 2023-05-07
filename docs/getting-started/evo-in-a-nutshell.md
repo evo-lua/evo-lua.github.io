@@ -43,11 +43,11 @@ Since documentation like this can easily become outdated, you should check for y
 
 The documentation is right here, so all that's left is to [download Evo](https://github.com/evo-lua/evo-runtime/releases) and give it a spin! If your platform doesn't have release binaries, you can take the code and [build Evo from source](/docs/how-to-guides/building-from-source), provided your platform is already supported. If it is not, please [open an issue](https://github.com/evo-lua/evo-runtime/issues/new) (after checking that none already exists for your platform) and let me know so I can look into what it would take to support it. Please do understand that I can't feasibly support every obscure configuration - or at least not fully - unless users are willing to pitch in and help.
 
-## How can users get support?
+## Where can I get support?
 
 Please open an issue describing your problem _in as much detail as possible_. If you don't provide enough context, I can't assist you.
 
-## How can users contribute?
+## How can I contribute?
 
 All contributions are very welcome. Feel free to use GitHub issues to their fullest potential!
 
