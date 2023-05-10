@@ -20,18 +20,16 @@ Alternatively, and likely preferably for Linux users, you can [build from source
 
 Evo comes with most of its dependencies embedded in the runtime, in order to make it as easy as possible to use.
 
-However, there is one deliberate exception (that mostly affects Linux users):
+However, there is one deliberate exception (that only affects Linux users):
 
 - To avoid shipping a heavy-weight browser engine, Evo uses the operating system's native browser
 - This is Microsoft Edge on Windows, Apple's Safari on Mac OS, and WebKit (via [WebKitGTK](https://webkitgtk.org/)) on Linux
-- Because WebKit isn't really native to Linux in the same way as the others, Linux users must manually install it to use Evo
-  - If you're a Linux user building from source, you just need to follow the steps listed [here](/docs/how-to-guides/building-from-source#linux) and it should "just work"
-  - Otherwise, you can quickly install the library: `apt install libgtk-3-0 libwebkit2gtk-4.0-37` (on Ubuntu/Debian)
-- Windows 10 users may also need to install the [WebView2 runtime](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section) - manually, for the time being
-  - This will likely ship via Windows Updates in a future version of Windows 10
-  - Windows 11 always includes WebView2, so you don't need to do anything here
+- Since WebKit isn't usually delivered to Linux users automatically, you must manually install it
+  - If you're a Linux user building from source, simply follow the installation steps listed [here](/docs/how-to-guides/building-from-source#linux)
+  - Otherwise, you can quickly install the relevant libraries via the package manager:
+    - Debian/Ubuntu: `apt install libgtk-3-0 libwebkit2gtk-4.0-37`
 
-While slightly annoying, getting to use a full browser without embedding ~250 MB of additional libraries is worth the sacrifice.
+This step is required even if you don't want to use WebViews (e.g., for a headless server application).
 
 ## Basic Command-Line Usage
 
