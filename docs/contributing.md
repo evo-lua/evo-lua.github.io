@@ -16,6 +16,7 @@ For code contributions, you need at least working knowledge of the various techn
 - [C++](https://www.learncpp.com/) for the native glue layers
 - [Git](https://git-scm.com/book/en/v2/) for version controlling your changes
 - [Ninja](https://ninja-build.org/) is the build system used, though you probably don't ever need to mess with it
+- [clang-format](https://clang.llvm.org/docs/ClangFormat.html), [luacheck](https://github.com/lunarmodules/luacheck), and [StyLua](https://github.com/JohnnyMorganz/StyLua) help with formatting and static analysis
 
 You can use GitHub's web UI, the GitHub desktop app, or any other method to submit a [Pull Request](https://docs.github.com/en/pull-requests).
 
