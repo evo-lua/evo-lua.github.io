@@ -124,13 +124,11 @@ You can also move the executable to somewhere in your `PATH`, and then omit the 
 
 ## Troubleshooting
 
-### Windows: Entry Point Not Found
+### Windows: Silent Build Failures
 
-You might see strange popup errors when trying to run the executable outside of a MSYS2 shell (e.g., in the Explorer or via `cmd.exe`):
+If you're seeing silent failures (nonzero exit code, but no visible output) or cryptic `make` errors:
 
-`The procedure entry point _ZSt28_throw_bad_array_new_lengthv could not be located in the dynamic link library evo.exe`
-
-Solution: Add your MSYS2 installation's MINGW64 binary directory (e.g., `C:\\MSYS2\mingw64\bin`) to the PATH environment variable.
+Chances are you're using the wrong compiler toolchain. Double-check that `mingw-w64-x86_64-gcc` is being used and not the default `gcc`.
 
 ### Windows Subsystem for Linux
 
