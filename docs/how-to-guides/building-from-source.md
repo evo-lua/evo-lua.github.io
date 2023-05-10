@@ -126,9 +126,24 @@ You can also move the executable to somewhere in your `PATH`, and then omit the 
 
 ### Windows: Silent Build Failures
 
-If you're seeing silent failures (nonzero exit code, but no visible output) or cryptic `make` errors:
+If you're seeing silent failures (nonzero exit code, but no visible output) or cryptic `make` errors: Chances are you're using the wrong compiler toolchain. Double-check that `mingw-w64-x86_64-gcc` is being used and not the default `gcc`, Be aware that both executables may potentially have the same name. Luckily, you can query the package manager to find out where the right version is located:
 
-Chances are you're using the wrong compiler toolchain. Double-check that `mingw-w64-x86_64-gcc` is being used and not the default `gcc`.
+```sh
+$ which gcc
+/mingw64/bin/gcc
+
+$ pacman -Ql mingw-w64-x86_64-gcc | grep gcc.exe
+
+mingw-w64-x86_64-gcc /mingw64/bin/gcc.exe
+mingw-w64-x86_64-gcc /mingw64/bin/x86_64-w64-mingw32-gcc.exe
+
+$ pacman -Ql gcc | grep gcc.exe
+
+gcc /usr/bin/gcc.exe
+gcc /usr/bin/x86_64-pc-msys-gcc.exe
+```
+
+Since packages like `llvm` (for `clang-format`) depend on `gcc`, you may end up with both versions on your system by accident.
 
 ### Windows Subsystem for Linux
 
