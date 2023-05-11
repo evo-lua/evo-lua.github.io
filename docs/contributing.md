@@ -20,6 +20,18 @@ For code contributions, you need at least working knowledge of the various techn
 
 You can use GitHub's web UI, the GitHub desktop app, or any other method to submit a [Pull Request](https://docs.github.com/en/pull-requests).
 
+:::caution Autoformat on Windows
+
+As with the GNU compiler toolchain, there are multiple versions of the `clang` package in MSYS2. You'll need this one:
+
+```sh
+pacman -S mingw-w64-x86_64-clang
+```
+
+If you installed another `clang-format` binary, running `autoformat.sh` may fail with obscure errors.
+
+:::
+
 ### Improving the Documentation
 
 If instead you wish to contribute to the documentation (i.e., these pages), you might need:
