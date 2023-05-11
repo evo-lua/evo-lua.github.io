@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Contributing
 
-Thank you for your interest in helping to improve the project! This section will help you get started.
+Thank you for your interest in helping to improve the project! This section will get you started.
 
 ## Prerequisites
 
