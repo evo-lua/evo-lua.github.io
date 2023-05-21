@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 
 function LatestReleaseButton() {
   const [downloadUrl, setDownloadUrl] = useState(
@@ -51,11 +52,11 @@ function LatestReleaseButton() {
         setAssets(assets);
 
         const humanReadableTimeDifference =
-          getHumanReadableTimeDifference(releaseDate);
+          formatDistanceToNowStrict(releaseDate);
 
         setDownloadUrl(releaseUrl);
         setReleaseInfo(
-          `Latest Release: ${releaseTag} (${humanReadableTimeDifference})`
+          `Latest Release: ${releaseTag} (${humanReadableTimeDifference} ago)`
         );
       })
       .catch((error) => {
