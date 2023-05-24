@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "snippets:update": "node generate-snippets-db.js",
     "checks": "npx prettier --check .",
     "autoformat": "npx prettier --write .",
     "docusaurus": "docusaurus",

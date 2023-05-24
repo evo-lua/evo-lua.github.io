@@ -21,9 +21,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Update the snippets database
-        run: npm run snippets:update
-
       - name: Build website
         run: npm run build
 
