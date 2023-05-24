@@ -4,7 +4,7 @@ sidebar_position: 30
 
 # C_Runtime
 
-Implementation of the runtime's [command-line interface](/docs/references/command-line-interface) (CLI)
+Implementation of the runtime's command-line interface (CLI)
 
 ## Status
 
@@ -20,7 +20,7 @@ C_Runtime.PrintVersionString() -- Implicit global lookup: _G.C_Runtime
 
 ### DisplayHelpText
 
-Displays a text containing versioning information and some basic usage instructions for the runtime's [command-line interface](/docs/references/command-line-interface).
+Displays a text containing versioning information and some basic usage instructions for the runtime's command-line interface.
 
 ### EvaluateString
 
