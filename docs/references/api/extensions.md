@@ -76,6 +76,22 @@ Returns a human-readable representation of the given `fileSizeInBytes` using sta
 </Returns>
 </Function>
 
+## Table Library
+
+### table.contains
+
+Returns `true` if the given `table` contains `value` in the array part of the table, and `false` otherwise. The dictionary part is ignored.
+
+<Function>
+<Parameters>
+<Parameter name="table" type="table"/>
+<Parameter name="value"/>
+</Parameters>
+<Returns>
+<Return name="isValuePresent" type="boolean"/>
+</Returns>
+</Function>
+
 ## Changelog
 
 | Version |     What happened?      |
