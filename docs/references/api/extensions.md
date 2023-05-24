@@ -20,3 +20,10 @@ Prints a human-readable string representation of the given object. Mostly useful
 <Return name="stringifiedObject" type="string"/>
 </Returns>
 </Function>
+
+## Changelog
+
+| Version |     What happened?      |
+| :-----: | :---------------------: |
+| v0.0.2  | Added `string.filesize` |
+| v0.0.1  |     Initial release     |
