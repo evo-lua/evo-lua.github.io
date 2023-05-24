@@ -1,6 +1,6 @@
 # C_Networking
 
-High-level networking primitives for HTTP and WebSocket servers
+High-level networking interface for HTTP and WebSocket servers
 
 ## Status
 
