@@ -26,7 +26,7 @@ This is the message format used by the internal WebServer implementation. Lua ev
 * `clientID` is a unique identifier for the request (or client), which may or may not have become invalid by the time you see the event
 * `message` is a buffer containing the payload data in an event-specific format (encoded as a `string` value; can be the empty string)
 
-You'll have to make sure the message payload is interpreted correctly based on the event that you wish to handle, and check that the request or client identified by the `clientID` is still valid when you actually process the event (the other end might have disconncted).
+You'll have to make sure the message payload is interpreted correctly based on the event that you wish to handle, and check that the request or client identified by the `clientID` is still valid when you actually process the event (as the other end might have disconncted).
 
 <Struct name="WebServerMessage">
 <Member name="eventTypeID" type="number"/>
