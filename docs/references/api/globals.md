@@ -6,6 +6,10 @@ sidebar_position: 0
 
 Convenient shorthands for some frequently-used functionality
 
+## Status
+
+<Experimental/>
+
 ## Availability
 
 All functions are made available in the global environment and can be accessed directly:
