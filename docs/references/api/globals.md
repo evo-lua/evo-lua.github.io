@@ -47,6 +47,17 @@ Alias for [bdd.describe(...)](/docs/references/api/libraries/bdd#describe).
 
 Alias for [debug.dump(...)](/docs/references/api/extensions#debugdump).
 
+### extend
+
+Sets up the metatable of `child` so that it acts as an instance of `parent` (in terms of [object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming)).
+
+<Function>
+<Parameters>
+<Parameter name="parent" type="table"/>
+<Parameter name="child" type="table"/>
+</Parameters>
+</Function>
+
 ### format
 
 Alias for [string.format(...)](https://www.lua.org/manual/5.1/manual.html#pdf-string.format).
