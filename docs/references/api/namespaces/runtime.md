@@ -14,6 +14,8 @@ This is a global namespace and can be accessed directly:
 C_Runtime.PrintVersionString() -- Implicit global lookup: _G.C_Runtime
 ```
 
+## Functions
+
 ### DisplayHelpText
 
 Displays a text containing versioning information and some basic usage instructions for the runtime's command-line interface.
