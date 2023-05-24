@@ -65,6 +65,10 @@ Alias for `print(string.format(...))`.
 
 Alias for `string.buffer` (LuaJIT builtin).
 
+### path
+
+Alias for the preloaded [path library](/docs/references/api/libraries/path).
+
 ## Changelog
 
 | Version | What happened?  |

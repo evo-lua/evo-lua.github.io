@@ -14,7 +14,7 @@ This module is preloaded. You can simply `require` it:
 local path = require("path")
 ```
 
-It's also available as a [global alias](/docs/references/api/globals).
+It's also available as a [global alias](/docs/references/api/globals#path).
 
 ## Functions
 
