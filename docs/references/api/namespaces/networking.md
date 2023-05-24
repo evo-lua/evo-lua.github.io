@@ -44,7 +44,7 @@ Triggers after the runtime has finished polling the WebServer for updates and pr
 
 ##### HTTP_CONNECTION_ABORTED
 
-Triggered when a HTTP connection was dropped by the connected peer. UUID handles will be invalid when this happens.
+Triggered when a HTTP connection was dropped by the connected peer. UUID handles will always be invalid when this happens.
 
 <Function>
 <Parameters>
@@ -55,14 +55,72 @@ Triggered when a HTTP connection was dropped by the connected peer. UUID handles
 
 ##### HTTP_CONNECTION_WRITABLE
 
-Triggered when a HTTP connection that you have streamed data to (via [StreamResponse](#streamresponse))
+Triggered when a HTTP connection that you have streamed data to (via [StreamResponse](#streamresponse)) can accept more data.
+
+The message buffer contains the `offset` (`number` value, starting at `0`) of the first byte that you should send again.
+
+<Function>
+<Parameters>
+<Parameter name="event" type="string"/>
+<Parameter name="payload" type="WebServerMessage"/>
+</Parameters>
+</Function>
 
 ##### HTTP_DATA_RECEIVED
+
+Triggered when a HTTP connection receives an intermittent data chunk (see [Chunked Transfer Encoding](https://en.wikipedia.org/wiki/Chunked_transfer_encoding)). Expect additional chunks.
+
+The message buffer contains the received chunk.
+
 ##### HTTP_REQUEST_FINISHED
+
+Triggered when a HTTP connection receives the final data chunk (see [Chunked Transfer Encoding](https://en.wikipedia.org/wiki/Chunked_transfer_encoding)). There are no more remaining chunks.
+
+The message buffer contains the received chunk.
+
+<Function>
+<Parameters>
+<Parameter name="event" type="string"/>
+<Parameter name="payload" type="WebServerMessage"/>
+</Parameters>
+</Function>
+
 ##### HTTP_REQUEST_STARTED
+
+Triggered when a HTTP connection has been received (at least) up until the end of the [headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) section. The message may or may not have been received completely, but this is when the UUID handle first becomes valid (for the lifetime of the connection only).
+
+<Function>
+<Parameters>
+<Parameter name="event" type="string"/>
+<Parameter name="payload" type="WebServerMessage"/>
+</Parameters>
+</Function>
+
 ##### UNKNOWN_OR_INVALID_WEBSERVER_EVENT
+
+Indicates an error in the internal WebServer which hasn't been properly handled by the runtime. Please open an issue if that happens.
+
 ##### SERVER_STARTED_LISTENING
+
+Triggered when the WebServer has started listening. The message buffer contains the port number (encoded as a `string` value).
+
+<Function>
+<Parameters>
+<Parameter name="event" type="string"/>
+<Parameter name="payload" type="WebServerMessage"/>
+</Parameters>
+</Function>
+
 ##### SERVER_STOPPED_LISTENING
+
+Triggered when the WebServer has stopped listening. The message buffer contains `"Going Away"` if it was a planned shutdown.
+
+<Function>
+<Parameters>
+<Parameter name="event" type="string"/>
+<Parameter name="payload" type="WebServerMessage"/>
+</Parameters>
+</Function>
 
 ### Fields
 
