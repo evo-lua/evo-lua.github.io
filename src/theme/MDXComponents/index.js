@@ -22,6 +22,7 @@ import {
   External,
   FFI,
   Placeholder,
+  Blocking,
 } from "@site/src/components/API/API";
 
 import Admonition from "@theme/Admonition";
@@ -57,5 +58,6 @@ const MDXComponents = {
   External: External,
   FFI: FFI,
   Placeholder: Placeholder,
+  Blocking: Blocking,
 };
 export default MDXComponents;
