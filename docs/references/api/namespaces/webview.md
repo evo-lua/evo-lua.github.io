@@ -18,11 +18,11 @@ C_WebView.CreateWithDevTools() -- Implicit global lookup: _G.C_WebView
 
 ### CreateWithDevTools
 
-Creates a native WebView window, with developer tools disabled. Has no effect if called multiple times.
+Creates a native WebView window, with developer tools enabled. Has no effect if called multiple times.
 
 ### CreateWithoutDevTools
 
-Creates a native WebView window, with developer tools enabled. Has no effect if called multiple times.
+Creates a native WebView window, with developer tools disabled. Has no effect if called multiple times.
 
 ### EvaluateScript
 
