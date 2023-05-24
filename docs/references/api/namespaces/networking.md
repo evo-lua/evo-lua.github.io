@@ -178,6 +178,11 @@ The default port that should be used when none has been specified.
 #### SendCompressedTextMessageToClient
 #### SendTextMessageToClient
 #### SetEchoMode
+
+Toggles echo server mode. Useful only for debugging or protocol compliance testing.
+
+In echo server mode, each incoming WebSocket message will be returned as-is.
+
 #### StartListening
 #### StopListening
 
