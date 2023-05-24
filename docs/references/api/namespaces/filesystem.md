@@ -14,6 +14,8 @@ This is a global namespace and can be accessed directly:
 C_FileSystem.MakeDirectory("test") -- Implicit global lookup: _G.C_FileSystem
 ```
 
+## Functions
+
 ### AppendFile
 
 <Blocking/>
