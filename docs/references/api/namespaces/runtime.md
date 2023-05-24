@@ -1,7 +1,3 @@
----
-sidebar_position: 30
----
-
 # C_Runtime
 
 Implementation of the runtime's command-line interface (CLI)

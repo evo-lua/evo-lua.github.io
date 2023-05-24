@@ -269,6 +269,19 @@ class Placeholder extends React.Component {
   }
 }
 
+class Blocking extends React.Component {
+  render() {
+    return (
+      <>
+        <Admonition type="caution" title="Blocking API">
+          This operation is synchronous; it will prevent the event loop from
+          running while the request is being handled.
+        </Admonition>
+      </>
+    );
+  }
+}
+
 export {
   Parameters,
   Parameter,
@@ -282,4 +295,5 @@ export {
   External,
   FFI,
   Placeholder,
+  Blocking,
 };
