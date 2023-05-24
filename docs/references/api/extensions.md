@@ -6,6 +6,18 @@ sidebar_position: 0
 
 Unofficial extensions to the Lua standard libraries
 
+## Status
+
+<Experimental/>
+
+## Availability
+
+Extensions are added to the existing global standard library tables. You can simply index them:
+
+```lua
+debug.dump({ 1, 2, 3 })
+```
+
 ## Debug Library
 
 ### debug.dump
