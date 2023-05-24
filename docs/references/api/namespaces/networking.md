@@ -16,12 +16,6 @@ local HttpServer = require("HttpServer")
 
 ### HttpServer
 
-#### Fields
-
-##### DEFAULT_PORT
-
-The default port that should be used when none has been specified.
-
 #### Events
 
 ###### ASYNC_POLLING_UPDATE
@@ -30,9 +24,15 @@ The default port that should be used when none has been specified.
 ###### HTTP_DATA_RECEIVED
 ###### HTTP_REQUEST_FINISHED
 ###### HTTP_REQUEST_STARTED
+###### UNKNOWN_OR_INVALID_WEBSERVER_EVENT
 ###### SERVER_STARTED_LISTENING
 ###### SERVER_STOPPED_LISTENING
-###### UNKNOWN_OR_INVALID_WEBSERVER_EVENT
+
+#### Fields
+
+##### DEFAULT_PORT
+
+The default port that should be used when none has been specified.
 
 #### Functions
 
@@ -60,6 +60,34 @@ The default port that should be used when none has been specified.
 ### WebSocketServer
 
 #### Events
+
+##### ASYNC_POLLING_UPDATE
+##### SERVER_STARTED_LISTENING
+##### SERVER_STOPPED_LISTENING
+##### UNKNOWN_OR_INVALID_WEBSERVER_EVENT
+##### WEBSOCKET_CONNECTION_CLOSED
+##### WEBSOCKET_CONNECTION_ESTABLISHED
+##### WEBSOCKET_MESSAGE_RECEIVED
+
+#### Fields
+
+##### DEFAULT_PORT
+
+The default port that should be used when none has been specified.
+
+#### Functions
+
+##### BroadcastBinaryMessage
+##### BroadcastCompressedTextMessage
+##### BroadcastTextMessage
+##### GetNumConnectedClients
+##### ProcessDeferredEvents
+##### SendBinaryMessageToClient
+##### SendCompressedTextMessageToClient
+##### SendTextMessageToClient
+##### SetEchoMode
+##### StartListening
+##### StopListening
 
 ---
 
