@@ -176,7 +176,7 @@ Returns the internal routing table for the given method. Each entry in this tabl
 
 #### ProcessDeferredEvents
 
-Explicitly poll the internal WebServer for new events. The runtime will do this automatically with some predefined frequency (currently about 60 times per second). You can poll more often to increase the responsiveness, at the cost of additional CPU time spent.
+Explicitly polls the internal WebServer for new events. The runtime will do this automatically with some predefined frequency (currently about 60 times per second). You can poll more often to increase the responsiveness, at the cost of additional CPU time spent.
 
 #### StartListening
 
@@ -215,6 +215,9 @@ Attempts to write the given `message` to the HTTP connection identified by `requ
 </Function>
 
 #### WriteHeader
+
+
+
 #### WriteResponse
 
 Writes the given `message` to the HTTP connection identified by `requestID`. You must check that it's still valid first. The HTTP connection remains open, so that you can write more data later. In case of backpressure, the WebServer buffers the message internally until sent.
@@ -229,6 +232,13 @@ Writes the given `message` to the HTTP connection identified by `requestID`. You
 #### WriteStatus
 
 Writes the given HTTP status and message (as one `string` value) to the HTTP connection identified by `requestID`. You must check that it's still valid first. Attempting to write a status to the same response more than once may result in an invalid response.
+
+<Function>
+<Parameters>
+<Parameter name="requestID" type="UUID"/>
+<Parameter name="statusCodeAndText" type="string"/>
+</Parameters>
+</Function>
 
 ## WebSocketServer
 
@@ -257,7 +267,7 @@ The default port that should be used when none has been specified.
 
 #### ProcessDeferredEvents
 
-Explicitly poll the internal WebServer for new events. The runtime will do this automatically with some predefined frequency (currently about 60 times per second). You can poll more often to increase the responsiveness, at the cost of additional CPU time spent.
+Explicitly polls the internal WebServer for new events. The runtime will do this automatically with some predefined frequency (currently about 60 times per second). You can poll more often to increase the responsiveness, at the cost of additional CPU time spent.
 
 #### SendBinaryMessageToClient
 #### SendCompressedTextMessageToClient
