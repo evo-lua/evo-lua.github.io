@@ -141,7 +141,17 @@ The default port that should be used when none has been specified.
 #### GetRequestURL
 #### HasRequestDetails
 #### ProcessDeferredEvents
+
 #### StartListening
+
+Starts listening for new connections on the given port. If `port` is omitted, uses [DEFAULT_PORT](#default_port).
+
+<Function>
+<Parameters>
+<Parameter name="port" type="number" optional/>
+</Parameters>
+</Function>
+
 #### StopListening
 #### SendResponse
 #### StreamResponse
@@ -177,11 +187,19 @@ The default port that should be used when none has been specified.
 #### SendBinaryMessageToClient
 #### SendCompressedTextMessageToClient
 #### SendTextMessageToClient
+
 #### SetEchoMode
 
 Toggles echo server mode. Useful only for debugging or protocol compliance testing.
 
-In echo server mode, each incoming WebSocket message will be returned as-is.
+In echo server mode, each incoming WebSocket message will be returned as-is to the client.
+
+<Function>
+<Parameters>
+<Parameter name="enabledFlag" type="boolean"/>
+</Parameters>
+</Function>
+
 
 #### StartListening
 #### StopListening
