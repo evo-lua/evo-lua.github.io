@@ -132,7 +132,7 @@ The default port that should be used when none has been specified.
 
 #### AddRoute
 
-Registers a new HTTP route for the given `method`. Routes may include wildcards. They're resolved in order of specificity.
+Registers a new HTTP route for the given method. Routes may include wildcards. They're resolved in order of specificity.
 
 <Function>
 <Parameters>
