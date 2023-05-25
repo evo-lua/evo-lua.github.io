@@ -231,13 +231,16 @@ Writes the given `message` to the HTTP connection identified by `requestID`. You
 
 #### WriteStatus
 
-Writes the given HTTP status and message (as one `string` value) to the HTTP connection identified by `requestID`. You must check that it's still valid first. Attempting to write a status to the same response more than once may result in an invalid response.
+Writes the given HTTP status and message (as one `string` value) to the HTTP connection identified by `requestID`. You must check that it's still valid first. Attempting to write a status to the same response more than once will result in undefined behavior.
 
 <Function>
 <Parameters>
 <Parameter name="requestID" type="UUID"/>
 <Parameter name="statusCodeAndText" type="string"/>
 </Parameters>
+<Returns>
+<Return name="success" type="boolean"/>
+</Returns>
 </Function>
 
 ## WebSocketServer
