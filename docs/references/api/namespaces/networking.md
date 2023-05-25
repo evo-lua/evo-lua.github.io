@@ -140,7 +140,10 @@ The default port that should be used when none has been specified.
 #### GetRequestQuery
 #### GetRequestURL
 #### HasRequestDetails
+
 #### ProcessDeferredEvents
+
+Explicitly poll the internal WebServer for new events. This will generally happen automatically with some predefined frequency.
 
 #### StartListening
 
@@ -186,7 +189,11 @@ The default port that should be used when none has been specified.
 #### BroadcastCompressedTextMessage
 #### BroadcastTextMessage
 #### GetNumConnectedClients
+
 #### ProcessDeferredEvents
+
+Explicitly poll the internal WebServer for new events. This will generally happen automatically with some predefined frequency.
+
 #### SendBinaryMessageToClient
 #### SendCompressedTextMessageToClient
 #### SendTextMessageToClient
