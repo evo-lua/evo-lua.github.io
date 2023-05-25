@@ -193,11 +193,31 @@ Starts listening for new HTTP connections on the given port.
 Stops listening for new HTTP connections and shuts down the server. Any pending requests will be cancelled immediately.
 
 #### SendResponse
+
+Writes the given `message` to the HTTP connection identified by `requestID`. You must check that it's still valid first. The HTTP connection will be closed and the response finished (eventually). In case of backpressure, the WebServer buffers the message internally until sent.
+
+<Function>
+<Parameters>
+<Parameter name="requestID" type="UUID"/>
+<Parameter name="message" type="string"/>
+</Parameters>
+</Function>
+
 #### StreamResponse
+
+Attempts to write the given `message` to the HTTP connection identified by `requestID`. You must check that it's still valid first. The HTTP connection will be closed and the response finished (only if sending succeeds). In case of backpressure, the WebServer sends as many bytes as it can and triggers the [HTTP_CONNECTION_WRITABLE](#http_connection_writable) event once more data could be sent, or [HTTP_CONNECTION_ABORTED](#http_connection_aborted) if the peer dropped. This method can be easier on the server's resources as it doesn't consume potentially large amounts of memory on backpressure. You can use this for sending (piecemeal) large amounts of data, but you'll have to keep track of each streaming request.
+
+<Function>
+<Parameters>
+<Parameter name="requestID" type="UUID"/>
+<Parameter name="message" type="string"/>
+</Parameters>
+</Function>
+
 #### WriteHeader
 #### WriteResponse
 
-Write the given `message` to the HTTP connection identified by `requestID`. You must check that it's still valid first. The HTTP connection remains open, so that you can write more data later. In case of backpressure, the WebServer buffers the message internally until sent.
+Writes the given `message` to the HTTP connection identified by `requestID`. You must check that it's still valid first. The HTTP connection remains open, so that you can write more data later. In case of backpressure, the WebServer buffers the message internally until sent.
 
 <Function>
 <Parameters>
@@ -207,6 +227,8 @@ Write the given `message` to the HTTP connection identified by `requestID`. You 
 </Function>
 
 #### WriteStatus
+
+Writes the given HTTP status and message (as one `string` value) to the HTTP connection identified by `requestID`. You must check that it's still valid first. Attempting to write a status to the same response more than once may result in an invalid response.
 
 ## WebSocketServer
 
