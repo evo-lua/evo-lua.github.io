@@ -143,8 +143,7 @@ Registers a new HTTP route for the given `method`. Routes may include wildcards.
 
 #### GetRegisteredRoutes
 
-Returns the internal routing table for the given `method`.
-Each entry in this table contains a list of registered route patterns in the order that they have been added (via [AddRoute](#addroute)), though this list is purely for bookkeeping. You should never modify the result directly.
+Returns the internal routing table for the given method. Each entry in this table contains a list of registered route patterns in the order that they have been added (via [AddRoute](#addroute)), though this list is purely for bookkeeping. You should never modify the result directly.
 
 <Function>
 <Parameters>
