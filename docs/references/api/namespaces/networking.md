@@ -176,7 +176,7 @@ Returns the internal routing table for the given method. Each entry in this tabl
 
 #### ProcessDeferredEvents
 
-Explicitly poll the internal WebServer for new events. This will generally happen automatically with some predefined frequency.
+Explicitly poll the internal WebServer for new events. The runtime will do this automatically with some predefined frequency (currently about 60 times per second). You can poll more often to increase the responsiveness, at the cost of additional CPU time spent.
 
 #### StartListening
 
@@ -225,7 +225,7 @@ The default port that should be used when none has been specified.
 
 #### ProcessDeferredEvents
 
-Explicitly poll the internal WebServer for new events. This will generally happen automatically with some predefined frequency.
+Explicitly poll the internal WebServer for new events. The runtime will do this automatically with some predefined frequency (currently about 60 times per second). You can poll more often to increase the responsiveness, at the cost of additional CPU time spent.
 
 #### SendBinaryMessageToClient
 #### SendCompressedTextMessageToClient
