@@ -144,7 +144,7 @@ The default port that should be used when none has been specified.
 
 #### StartListening
 
-Starts listening for new connections on the given port. If `port` is omitted, uses [DEFAULT_PORT](#default_port).
+Starts listening for new HTTP connections on the given port. If `port` is omitted, uses [DEFAULT_PORT](#default_port).
 
 <Function>
 <Parameters>
@@ -153,6 +153,9 @@ Starts listening for new connections on the given port. If `port` is omitted, us
 </Function>
 
 #### StopListening
+
+Stops listening for new HTTP connections and shuts down the server. Any pending requests will be cancelled immediately.
+
 #### SendResponse
 #### StreamResponse
 #### WriteHeader
@@ -200,9 +203,19 @@ In echo server mode, each incoming WebSocket message will be returned as-is to t
 </Parameters>
 </Function>
 
-
 #### StartListening
+
+Starts listening for new WebSocket connections on the given port. If `port` is omitted, uses [DEFAULT_PORT](#default_port).
+
+<Function>
+<Parameters>
+<Parameter name="port" type="number" optional/>
+</Parameters>
+</Function>
+
 #### StopListening
+
+Stops listening for new WebSocket connections and shuts down the server. All clients will be disconnected immediately.
 
 ## Changelog
 
