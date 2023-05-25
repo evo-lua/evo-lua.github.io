@@ -131,7 +131,41 @@ The default port that should be used when none has been specified.
 ### Functions
 
 #### AddRoute
+
+Registers a new HTTP route for the given `method`. Routes may include wildcards. They're resolved in order of specificity.
+
+<Function>
+<Parameters>
+<Parameter name="route" type="string"/>
+<Parameter name="httpMethod" type="string" fallback="ANY" optional/>
+</Parameters>
+</Function>
+
 #### GetRegisteredRoutes
+
+Returns the internal routing table for the given `method` You should never modify this table directly.
+Each entry in this table contains a list of registered route patterns in the order that they have been added (via [AddRoute](#addroute)), though this list is purely for bookkeeping.
+
+<Function>
+<Parameters>
+<Parameter name="httpMethod" type="string"/>
+</Parameters>
+<Returns>
+<Return name="registeredRoutes" type="RoutingTable"/>
+</Returns>
+</Function>
+
+<Struct name="RoutingTable">
+<Member name="GET" type="table"/>
+<Member name="POST" type="table"/>
+<Member name="OPTIONS" type="table"/>
+<Member name="DELETE" type="table"/>
+<Member name="PATCH" type="table"/>
+<Member name="PUT" type="table"/>
+<Member name="HEAD" type="table"/>
+<Member name="ANY" type="table"/>
+</Struct>
+
 #### GetRequestDetails
 #### GetRequestEndpoint
 #### GetRequestHeader
