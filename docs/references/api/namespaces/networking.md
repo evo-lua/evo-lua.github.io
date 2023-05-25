@@ -30,7 +30,7 @@ You'll have to make sure the message payload is interpreted correctly based on t
 
 <Struct name="WebServerMessage">
 <Member name="eventTypeID" type="number"/>
-<Member name="clientID" type="string"/>
+<Member name="clientID" type="UUID"/>
 <Member name="message" type="string"/>
 </Struct>
 
@@ -87,7 +87,7 @@ The message buffer contains the received chunk.
 
 ##### HTTP_REQUEST_STARTED
 
-Triggered when a HTTP connection has been received (at least) up until the end of the [headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) section. The message may or may not have been received completely, but this is when the UUID handle first becomes valid (for the lifetime of the connection only).
+Triggered when a HTTP request has been received (at least) up until the end of the [headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) section. The message may or may not have been received completely, but this is when the UUID handle first becomes valid (for the lifetime of the connection only).
 
 <Function>
 <Parameters>
@@ -102,7 +102,7 @@ Indicates an error in the internal WebServer which hasn't been properly handled 
 
 ##### SERVER_STARTED_LISTENING
 
-Triggered when the WebServer has started listening. The message buffer contains the port number (encoded as a `string` value).
+Triggered when the WebServer is accepting connections. The message buffer contains the port number (encoded as a `string` value).
 
 <Function>
 <Parameters>
@@ -113,7 +113,7 @@ Triggered when the WebServer has started listening. The message buffer contains 
 
 ##### SERVER_STOPPED_LISTENING
 
-Triggered when the WebServer has stopped listening. The message buffer contains `"Going Away"` if it was a planned shutdown.
+Triggered when the WebServer has shut down. The message buffer contains `"Going Away"` if it was a planned shutdown ([StopListening](#stoplistening)).
 
 <Function>
 <Parameters>
