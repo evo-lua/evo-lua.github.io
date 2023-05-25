@@ -144,11 +144,11 @@ The default port that should be used when none has been specified.
 
 #### StartListening
 
-Starts listening for new HTTP connections on the given port. If `port` is omitted, uses [DEFAULT_PORT](#default_port).
+Starts listening for new HTTP connections on the given port.
 
 <Function>
 <Parameters>
-<Parameter name="port" type="number" optional/>
+<Parameter name="port" type="number" fallback="DEFAULT_PORT" optional/>
 </Parameters>
 </Function>
 
@@ -205,11 +205,11 @@ In echo server mode, each incoming WebSocket message will be returned as-is to t
 
 #### StartListening
 
-Starts listening for new WebSocket connections on the given port. If `port` is omitted, uses [DEFAULT_PORT](#default_port).
+Starts listening for new WebSocket connections on the given port.
 
 <Function>
 <Parameters>
-<Parameter name="port" type="number" optional/>
+<Parameter name="port" type="number" fallback="DEFAULT_PORT" optional/>
 </Parameters>
 </Function>
 
