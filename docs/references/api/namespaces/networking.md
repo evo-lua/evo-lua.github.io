@@ -196,6 +196,16 @@ Stops listening for new HTTP connections and shuts down the server. Any pending 
 #### StreamResponse
 #### WriteHeader
 #### WriteResponse
+
+Write the given `message` to the HTTP connection identified by `requestID`. You must check that it's still valid first. The HTTP connection remains open, so that you can write more data later. In case of backpressure, the WebServer buffers the message internally until sent.
+
+<Function>
+<Parameters>
+<Parameter name="requestID" type="UUID"/>
+<Parameter name="message" type="string"/>
+</Parameters>
+</Function>
+
 #### WriteStatus
 
 ## WebSocketServer
