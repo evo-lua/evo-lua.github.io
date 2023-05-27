@@ -45,7 +45,7 @@ Since documentation like this can easily become outdated, you should check for y
 
 ## How can users get started?
 
-The documentation is right here, so all that's left is to [download Evo](https://github.com/evo-lua/evo-runtime/releases) and give it a spin! If your platform doesn't have release binaries, you can take the code and [build Evo from source](/docs/how-to-guides/building-from-source), provided your platform is already supported. If it is not, please [open an issue](https://github.com/evo-lua/evo-runtime/issues/new) (after checking that none already exists for your platform) and let me know so I can look into what it would take to support it. Please do understand that I can't feasibly support every obscure configuration - or at least not fully - unless users are willing to pitch in and help.
+The documentation is right here, so all that's left is to [install Evo](/docs/getting-started/installation) and give it a spin! If your platform doesn't have release binaries, you can take the code and [build Evo from source](/docs/how-to-guides/building-from-source), provided your platform is already supported. If it is not, please [open an issue](https://github.com/evo-lua/evo-runtime/issues/new) (after checking that none already exists for your platform) and let me know so I can look into what it would take to support it. Please do understand that I can't feasibly support every obscure configuration - or at least not fully - unless users are willing to pitch in and help.
 
 ## Where can I get support?
 
