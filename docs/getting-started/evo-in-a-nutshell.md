@@ -43,7 +43,7 @@ The good news is that you shouldn't really need any of those "problematic" libra
 
 Since documentation like this can easily become outdated, you should check for yourself. Follow the activity of the [evo-lua container organization on GitHub](https://github.com/evo-lua) if you're interested to see where this is going. Even better: You can help propel development forward by giving feedback, making suggestions, or other contributions (including code, testing, and documentation) if you think the effort is worthwhile.
 
-## How can users get started?
+## How do I get started?
 
 The documentation is right here, so all that's left is to [install Evo](/docs/getting-started/installation) and give it a spin! If your platform doesn't have release binaries, you can take the code and [build Evo from source](/docs/how-to-guides/building-from-source), provided your platform is already supported. If it is not, please [open an issue](https://github.com/evo-lua/evo-runtime/issues/new) (after checking that none already exists for your platform) and let me know so I can look into what it would take to support it. Please do understand that I can't feasibly support every obscure configuration - or at least not fully - unless users are willing to pitch in and help.
 
