@@ -120,6 +120,11 @@ Some more basic smoke tests can similarly be run via:
 - `ninjabuild-windows/evo.exe Tests/smoke-test.lua` on Windows
 - `ninjabuild-unix/evo Tests/smoke-test.lua` on other systems
 
+Additionally, there are a number of integration tests that will open some native WebView windows (amongst other things):
+
+- `ninjabuild-windows/evo.exe Tests/integration-test.lua` on Windows
+- `ninjabuild-unix/evo Tests/integration-test.lua` on other systems
+
 You can also move the executable to somewhere in your `PATH`, and then omit the `ninjabuild-*` prefix.
 
 ## Troubleshooting
