@@ -44,7 +44,7 @@ function DownloadArea() {
         </Link>
         <Link
           className="hero-text"
-          to="/docs/getting-started/evo-in-a-nutshell#how-can-users-get-support"
+          to="https://github.com/evo-lua/evo-runtime/issues/new"
         >
           Report a Problem
         </Link>
