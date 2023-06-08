@@ -126,14 +126,35 @@ Creates a new directory with the given `directoryPath` if one doesn't already ex
 
 <Blocking/>
 
-Reads the contents of the given directory, and returns a list of all files found within it. In recursive mode, the entire directory tree (including nested folders and all of their contained files) will be included. Will process only the root directory otherwise.
+Reads the contents of the given directory, and returns a list of all files found within it. Will process only the root directory.
 
 The `isFile` flag is always `true` in the current implementation as directories are removed after their contents have been processed.
 
 <Function>
 <Parameters>
 <Parameter name="directoryPath" type="string"/>
-<Parameter name="isRecursiveMode" type="boolean"/>
+</Parameters>
+<Returns>
+<Return name="directoryContents" type="table"/>
+</Returns>
+</Function>
+
+<Struct name="directoryContents">
+<Member name="absolutePath" type="string"/>
+<Member name="isFile" type="boolean"/>
+</Struct>
+
+### ReadDirectoryTree
+
+<Blocking/>
+
+Reads the contents of the given directory tree (including nested subdirectories), and returns a list of all files found within it.
+
+The `isFile` flag is always `true` in the current implementation as directories are removed after their contents have been processed.
+
+<Function>
+<Parameters>
+<Parameter name="directoryPath" type="string"/>
 </Parameters>
 <Returns>
 <Return name="directoryContents" type="table"/>
@@ -180,5 +201,6 @@ Opens the given `filePath` in write mode and writes `contents` to the file. Over
 
 | Version |      What happened?       |
 | :-----: | :-----------------------: |
+| v0.0.4  | Added `ReadDirectoryTree` |
 | v0.0.3  | Added `MakeDirectoryTree` |
 | v0.0.1  |      Initial release      |
