@@ -36,7 +36,7 @@ Opens the given `filePath` in append mode and writes `contents` to the end of th
 
 <Blocking/>
 
-Irrevocably removes the file or directory referenced by the given `fileSystemPath`. This operation cannot be undone.
+Removes the file or directory referenced by the given `fileSystemPath`. This operation cannot be undone.
 
 <Function>
 <Parameters>
