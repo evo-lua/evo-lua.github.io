@@ -24,7 +24,7 @@ You'll still have to handle these application-specific setup tasks. This is mere
 
 :::note
 
-You only need to do this once (globally) if you want to render to a single window, which is the most common use case.
+You only need to do this once (globally) if you want to use one GPU to render to a single window, which is the most common  case.
 
 :::
 
