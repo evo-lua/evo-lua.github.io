@@ -14,6 +14,16 @@ This module is preloaded. You can simply `require` it:
 local miniz = require("miniz")
 ```
 
+## Compression Levels
+
+Whenever you compress data, you can optionally pass a `compressionLevel`, which must be a `number` value:
+
+- The minimum compression level is zero (meaning "no compression")
+- The highest supported level is nine (meaning "maximum compression")
+- If you don't pass a `compressionLevel`, the maximum compression level of nine will be used
+
+If you pass invalid values, you may get an error or the input may silently be clamped to the nearest possible value.
+
 ## Compressor Flags
 
 Many methods accept an optional `flags` parameter. By setting a nonzero value, you can control advanced compression options such as "write ZIP archives with a zlib-compatible header". Since they aren't part of the Lua bindings, this page doesn't attempt to list them all.
