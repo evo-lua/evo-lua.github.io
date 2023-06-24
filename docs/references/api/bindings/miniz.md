@@ -302,7 +302,7 @@ While you don't need to worry about buffer allocation with either of these, the 
 
 ### deflate
 
-Applies [DEFLATE](https://en.wikipedia.org/wiki/Deflate) to the given `input` and returns the decompressed bytes, or ``""` in case of failure.
+Applies [DEFLATE](https://en.wikipedia.org/wiki/Deflate) to the given `input` and returns the decompressed bytes, or `""` in case of failure.
 
 The `flags` passed to `miniz` control the behavior of the compressor.
 
@@ -318,7 +318,7 @@ The `flags` passed to `miniz` control the behavior of the compressor.
 
 ### inflate
 
-Applies [INFLATE](https://en.wikipedia.org/wiki/Deflate#Decoder/decompressor) to the given (DEFLATE-compressed) `input` and returns the decompressed bytes, or ``""` in case of failure.
+Applies [INFLATE](https://en.wikipedia.org/wiki/Deflate#Decoder/decompressor) to the given (DEFLATE-compressed) `input` and returns the decompressed bytes, or `""` in case of failure.
 
 The `flags` passed to `miniz` control the behavior of the decompressor.
 
