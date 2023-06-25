@@ -27,18 +27,18 @@ The following steps are necessary before you can start the build process:
 
 1. Download and set up a Linux-like [MSYS2](https://www.msys2.org/) environment
 1. Use the provided `mingw64.exe` shell, e.g., via start menu: `MSYS2 MINGW64` (requirement for compiling OpenSSL)
-1. Install build tools: `pacman -S git make mingw-w64-x86_64-gcc ninja mingw-w64-x86_64-cmake --noconfirm`
+1. Install build tools: `pacman -S git make mingw-w64-x86_64-gcc ninja mingw-w64-x86_64-cmake mingw-w64-x86_64-rust --noconfirm`
 
 The above command, when run in a MSYS2 shell, should install all required tools on Windows.
 
 :::caution
 
-The default `gcc`, `g++` and `cmake` cannot be used in MSYS2.
+The default `gcc`, `g++`, `cargo`, and `cmake` cannot be used in MSYS2.
 Instead, you must install the x86_64 variant listed above.
 
 :::
 
-Make sure you have access to the typical Unix tools as well as `ninja`, `cmake`, `gcc`, and `g++` in your terminal before proceeding.
+Make sure you have access to the typical Unix tools as well as `ninja`, `cmake`, `cargo`, `gcc`, and `g++` in your terminal before proceeding.
 
 #### Mac OS
 
@@ -46,9 +46,9 @@ A complete setup procedure involves the following steps:
 
 1. Download the [Homebrew package manager](https://brew.sh/)
 1. Install Apple's compiler toolchain: `xcode-select --install`
-1. Install the required build tools: `brew install git cmake ninja coreutils`
+1. Install the required build tools: `brew install git cmake ninja coreutils rust`
 
-You should be able to execute `gcc`, `g++`, `cmake`, and `ninja` in your terminal before starting the build.
+You should be able to execute `gcc`, `g++`, `cmake`, `cargo`, and `ninja` in your terminal before starting the build.
 
 #### Linux
 
