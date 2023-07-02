@@ -34,7 +34,7 @@ Initializes the bindings by loading the [C type definitions](#cdefs). Automatica
 
 ## Native Bindings
 
-All C functions listed here can be accessed via `webview.bindings` and must be called with the appropriate `cdata` values.
+All C functions listed here can be accessed via `glfw.bindings` and must be called with the appropriate `cdata` values.
 
 ### glfw_create_window
 
