@@ -32,8 +32,36 @@ Stops capturing console output, allowing it to be displayed normally again. Retu
 </Returns>
 </Function>
 
+### startTimer
+
+Starts a console timer with the given `label`, saving the current (high-resolution) time to mark the beginning of a measured code block.
+
+This is a lightweight helper that takes a snapshot in time when called; it doesn't actually start a "real" (libuv/OS) timer.
+
+<Function>
+<Parameters>
+<Parameter name="label" type="string"/>
+</Parameters>
+</Function>
+
+### stopTimer
+
+Stops the console timer with the given `label` if it exists, marking the end of a measured code block.
+
+The computed time delta is returned, but also reported to the console in a human-readable (but otherwise unspecified) format.
+
+<Function>
+<Parameters>
+<Parameter name="label" type="string"/>
+</Parameters>
+<Returns>
+<Return name="elapsedTimeInMilliseconds" type="number"/>
+</Returns>
+</Function>
+
 ## Changelog
 
-| Version | What happened?  |
-| :-----: | :-------------: |
-| v0.0.1  | Initial release |
+| Version |           What happened?           |
+| :-----: | :--------------------------------: |
+| v0.0.7  | Added `startTimer` and `stopTimer` |
+| v0.0.1  |          Initial release           |
