@@ -85,6 +85,14 @@ Returns the embedded stbi library version as a Lua string.
 
 All C functions listed here can be accessed via `stbi.bindings` and must be called with the appropriate `cdata` values.
 
+### stbi_flip_vertically_on_write
+
+Globally toggles the vertical direction that is used when encoding images. A non-zero flag means that the pixel data is inverted.
+
+```cpp
+void stbi_flip_vertically_on_write(int flag);
+```
+
 ### stbi_image_info
 
 Retrieves the metadata for the given image, without actually decoding the pixel buffer or performing color depth conversions.
@@ -195,6 +203,7 @@ const char* stbi_version(void);
 
 ## Changelog
 
-| Version | What happened?  |
-| :-----: | :-------------: |
-| v0.0.4  | Initial release |
+| Version |            What happened?             |
+| :-----: | :-----------------------------------: |
+| v0.0.7  | Added `stbi_flip_vertically_on_write` |
+| v0.0.4  |            Initial release            |
