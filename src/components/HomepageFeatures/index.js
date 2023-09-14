@@ -2,11 +2,44 @@ import React from "react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
+function RectangularCheckboxIcon(props) {
+  return (
+    <>
+      <div className={styles.featureSummaryText}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-px-24"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="#4ade80"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <path d="M9 12l2 2l4 -4"></path>
+        </svg>
+        {props.text}
+      </div>
+    </>
+  );
+}
+
 const FeatureList = [
   {
     title: "What can I do with Evo?",
     description: (
       <>
+        <div className={styles.featureSummaryContainer}>
+          <RectangularCheckboxIcon text="Write multimedia apps and servers" />
+          <RectangularCheckboxIcon text="Create self-contained executables" />
+          <RectangularCheckboxIcon text="Interface with native (C/C++) libraries" />
+          <RectangularCheckboxIcon text="High-performance asynchronous I/O" />
+          <RectangularCheckboxIcon text="Use WebViews to run JavaScript from Lua" />
+        </div>
         Evo functions as a substitute for the standard (PUC) Lua interpreter or
         - more accurately - LuaJIT. It runs your Lua scripts in an enriched
         environment, giving you access to powerful C and C++ libraries wrapped
@@ -24,6 +57,13 @@ const FeatureList = [
     title: "How does Evo compare to other runtimes?",
     description: (
       <>
+        <div className={styles.featureSummaryContainer}>
+          <RectangularCheckboxIcon text="All-in-one standalone executable" />
+          <RectangularCheckboxIcon text="Fully compatible with existing LuaJIT code" />
+          <RectangularCheckboxIcon text="Supports Lua 5.1 and (partially) 5.2" />
+          <RectangularCheckboxIcon text="Includes additional libraries and tools" />
+          <RectangularCheckboxIcon text="Focus on testing and documentation" />
+        </div>
         Evo may be seen as an extension of both the standard PUC-Lua interpreter
         and LuaJIT, in the sense that it's more or less "LuaJIT with extra
         libraries". This means it can do everything they can do, and more. Like
@@ -40,6 +80,13 @@ const FeatureList = [
     title: "What's the project status?",
     description: (
       <>
+        <div className={styles.featureSummaryContainer}>
+          <RectangularCheckboxIcon text="Functional but not feature-complete" />
+          <RectangularCheckboxIcon text="Initial development started in 2021" />
+          <RectangularCheckboxIcon text="Frequently updated (more or less)" />
+          <RectangularCheckboxIcon text="Contributions are always welcome!" />
+          <RectangularCheckboxIcon text="... but don't expect too much (yet)" />
+        </div>
         Evo is in its larval stage of development, although it isn't completely
         new: The first prototypes were developed in 2021, eventually leading to
         the current design. Even if the concept has more than proven itself, the
