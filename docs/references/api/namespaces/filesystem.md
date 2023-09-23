@@ -22,7 +22,7 @@ C_FileSystem.MakeDirectory("test") -- Implicit global lookup: _G.C_FileSystem
 
 Opens the given `filePath` in append mode and writes `contents` to the end of the file.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="filePath" type="string"/>
 <Parameter name="contents" type="string"/>
@@ -38,7 +38,7 @@ Opens the given `filePath` in append mode and writes `contents` to the end of th
 
 Removes the file or directory referenced by the given `fileSystemPath`. This operation cannot be undone.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 </Parameters>
@@ -53,7 +53,7 @@ Removes the file or directory referenced by the given `fileSystemPath`. This ope
 
 Returns `true` if the given `fileSystemPath` exists (can be accessed in read-only mode), and `false` otherwise.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 </Parameters>
@@ -68,7 +68,7 @@ Returns `true` if the given `fileSystemPath` exists (can be accessed in read-onl
 
 Returns `true` if the given `fileSystemPath` refers to a `directory` type entry, and `false` otherwise.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 </Parameters>
@@ -83,7 +83,7 @@ Returns `true` if the given `fileSystemPath` refers to a `directory` type entry,
 
 Returns `true` if the given `fileSystemPath` refers to a `file` type entry, and `false` otherwise.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 </Parameters>
@@ -98,7 +98,7 @@ Returns `true` if the given `fileSystemPath` refers to a `file` type entry, and 
 
 Creates a new directory with the given `directoryPath` if one doesn't already exist. Will not create parent directories automatically.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="directoryPath" type="string"/>
 </Parameters>
@@ -113,7 +113,7 @@ Creates a new directory with the given `directoryPath` if one doesn't already ex
 
 Creates a new directory with the given `directoryPath` if one doesn't already exist. Will create parent directories (recursively) if needed.
 
-<Function>
+<Function since="v0.0.3">
 <Parameters>
 <Parameter name="directoryPath" type="string"/>
 </Parameters>
@@ -130,7 +130,7 @@ Reads the contents of the given directory, and returns a list of all files found
 
 The `isFile` flag is always `true` in the current implementation as directories are removed after their contents have been processed.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="directoryPath" type="string"/>
 </Parameters>
@@ -152,7 +152,7 @@ Reads the contents of the given directory tree (including nested subdirectories)
 
 The `isFile` flag is always `true` in the current implementation as directories are removed after their contents have been processed.
 
-<Function>
+<Function since="v0.0.4">
 <Parameters>
 <Parameter name="directoryPath" type="string"/>
 </Parameters>
@@ -172,7 +172,7 @@ The `isFile` flag is always `true` in the current implementation as directories 
 
 Opens the given `filePath` in read-only mode and returns the file contents as a Lua string.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="filePath" type="string"/>
 </Parameters>
@@ -187,7 +187,7 @@ Opens the given `filePath` in read-only mode and returns the file contents as a 
 
 Opens the given `filePath` in write mode and writes `contents` to the file. Overwrites the file if it already exists.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="filePath" type="string"/>
 <Parameter name="contents" type="string"/>

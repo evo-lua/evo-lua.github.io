@@ -20,15 +20,19 @@ C_WebView.CreateWithDevTools() -- Implicit global lookup: _G.C_WebView
 
 Creates a native WebView window, with developer tools enabled. Has no effect if called multiple times.
 
+<Function since="v0.0.2"/>
+
 ### CreateWithoutDevTools
 
 Creates a native WebView window, with developer tools disabled. Has no effect if called multiple times.
+
+<Function since="v0.0.2"/>
 
 ### EvaluateScript
 
 Sends the encoded JavaScript program `jsCodeString` to the native browser engine for (asynchronous) evaluation.
 
-<Function>
+<Function since="v0.0.2">
 <Parameters>
 <Parameter name="jsCodeString" type="string"/>
 </Parameters>
@@ -38,7 +42,7 @@ Sends the encoded JavaScript program `jsCodeString` to the native browser engine
 
 Returns `true` if a native WebView window has previously been created, and `false` otherwise.
 
-<Function>
+<Function since="v0.0.2">
 <Returns>
 <Return name="isRunning" type="boolean"/>
 </Returns>
@@ -48,7 +52,7 @@ Returns `true` if a native WebView window has previously been created, and `fals
 
 Instructs the native browser engine to (asynchronously) navigate to the given `url`. The browser may fetch additional resources.
 
-<Function>
+<Function since="v0.0.2">
 <Parameters>
 <Parameter name="url" type="string"/>
 </Parameters>
@@ -66,7 +70,7 @@ Sets the application icon for the native window that the WebView is running in. 
 
 Depending on the OS and its version, the icon may appear in different locations (e.g., OSX Dock and Windows task bar).
 
-<Function>
+<Function since="v0.0.2">
 <Parameters>
 <Parameter name="appIconPath" type="string"/>
 </Parameters>
@@ -76,7 +80,7 @@ Depending on the OS and its version, the icon may appear in different locations 
 
 Instructs the native browser engine to (asynchronously) load the given `htmlString`. The browser may _not_ fetch additional resources.
 
-<Function>
+<Function since="v0.0.2">
 <Parameters>
 <Parameter name="htmlString" type="string"/>
 </Parameters>
@@ -86,7 +90,7 @@ Instructs the native browser engine to (asynchronously) load the given `htmlStri
 
 Instructs the native browser engine to inject and execute the given `jsCodeString` on page load. You can't easily unset this currently.
 
-<Function>
+<Function since="v0.0.2">
 <Parameters>
 <Parameter name="jsCodeString" type="string"/>
 </Parameters>
@@ -96,7 +100,7 @@ Instructs the native browser engine to inject and execute the given `jsCodeStrin
 
 Resizes the native window that the WebView is running in. The exact behavior is platform-specific.
 
-<Function>
+<Function since="v0.0.2">
 <Parameters>
 <Parameter name="newWidthInPixels" type="number"/>
 <Parameter name="newHeightInPixels" type="number"/>
@@ -107,7 +111,7 @@ Resizes the native window that the WebView is running in. The exact behavior is 
 
 Updates the `title` of the native window that the WebView is running in. The exact behavior is platform-specific.
 
-<Function>
+<Function since="v0.0.2">
 <Parameters>
 <Parameter name="newWindowTitle" type="string"/>
 </Parameters>
@@ -116,6 +120,8 @@ Updates the `title` of the native window that the WebView is running in. The exa
 ### ToggleFullscreenMode
 
 Sets windowed or fullscreen mode for the native window that the WebView is running in, based on its previous state.
+
+<Function since="v0.0.2"/>
 
 ## Changelog
 
