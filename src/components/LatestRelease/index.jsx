@@ -5,7 +5,9 @@ function LatestReleaseButton() {
   const [downloadUrl, setDownloadUrl] = useState(
     "https://github.com/evo-lua/evo-runtime/releases"
   );
-  const [releaseInfo, setReleaseInfo] = useState("");
+  const [releaseInfo, setReleaseInfo] = useState(
+    "Fetching latest release info..."
+  );
   const [assets, setAssets] = useState([]);
 
   useEffect(() => {
