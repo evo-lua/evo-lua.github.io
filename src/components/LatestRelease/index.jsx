@@ -26,7 +26,7 @@ function LatestReleaseButton() {
 
         setDownloadUrl(releaseUrl);
         setReleaseInfo(
-          `Latest Release: ${releaseTag} (${humanReadableTimeDifference} ago)`
+          `Latest Release: ${releaseTag} (${releaseDate.toDateString()} · ${humanReadableTimeDifference} ago)`
         );
       })
       .catch((error) => {
