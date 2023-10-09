@@ -1,3 +1,5 @@
+set -e
+
 DOCS_DIR=build/docs
 
 # We want to find all links to code and/or external docs in the organization
@@ -17,17 +19,24 @@ then
 	sudo mv $(go env GOPATH)/bin/pup /usr/bin
 fi
 
-find_external_links() {
-	RELEVANT_FILES=$(find $DOCS_DIR -type f)
-	for file in $RELEVANT_FILES
-	do
-		echo
-		echo "Collecting external links: $file"
-		cat $file | \
-		pup 'a[href] attr{href}' | \
-		# We only care about cross-repo links to the organization
-		grep -E $GITHUB_REPOSITORY_LINK/blob/main/* >> $LOG_FILE
-	done
+find_html_links() {
+    RELEVANT_FILES=$(find $DOCS_DIR -type f)
+    for file in $RELEVANT_FILES
+    do
+        echo
+        echo "Collecting external links: $file"
+        cat $file | \
+        pup 'a[href] attr{href}' | \
+        # We only care about cross-repo links to the organization
+        grep -E $GITHUB_REPOSITORY_LINK/blob/main/* >> $LOG_FILE || true
+        # Sanity check: Docusaurus can't find dead links in this case, apparently
+        echo "Checking for accidental relative links in $file"
+        BROKEN_LINK=$(cat $file | pup 'a[href] attr{href}' | grep -E "^/docs/.*docs.*" || true)
+        if [[ ! -z $BROKEN_LINK ]]; then
+            echo "Error: Accidental relative link detected in $file ($BROKEN_LINK)"
+            exit 1
+        fi
+    done
 	
 	echo
 	echo "Dumping results from log file $LOG_FILE..."
@@ -43,6 +52,7 @@ check_link_availability() {
 	for URL in $LINKS_TO_CHECK
 	do
 		echo "Checking availability: $URL"
+		set +e
 		curl $URL --silent | grep "$GITHUB_ERROR_PATTERN" --color
 		if test $? -eq 1 # Found no  match = not a 404 error page
 		then
@@ -56,6 +66,6 @@ check_link_availability() {
 	done
 }
 
-find_external_links
+find_html_links
 check_link_availability
 run_cleanup_tasks
