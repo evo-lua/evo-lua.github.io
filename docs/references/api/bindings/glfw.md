@@ -28,6 +28,169 @@ A pointer to the statically-loaded exports table that exposes the bound function
 
 ## Functions
 
+
+### createWindow
+
+Creates a new native window and returns the platform-agnostic `window` handle.
+
+```cpp
+GLFWwindow* (*glfw_create_window)(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
+```
+
+### window.destroy
+
+Destroys the native window referenced by the given platform-agnostic `window` handle.
+
+```cpp
+void (*glfw_destroy_window)(GLFWwindow* window);
+```
+
+### glfw_find_constant
+
+TODO sentinel value, awkward AF - should return nil / export constants as Lua enum values?
+
+Returns the GLFW `enum` value identified by the given `name`, or `0xdead` (an arbitrary sentinel value) if the name was invalid.
+
+```cpp
+int (*glfw_find_constant)(const char* name);
+```
+
+### window.getFramebufferSize
+
+Stores the dimensions of the underlying framebuffer for the given platform-agnostic `window` handle in the provided `int` values.
+
+```cpp
+void (*glfw_get_framebuffer_size)(GLFWwindow* window, int* width, int* height);
+```
+
+### getMonitors
+
+Returns a list of detected monitors, and stores the size of the list in the provided `count` value.
+
+```cpp
+GLFWmonitor** (*glfw_get_monitors)(int* count);
+```
+
+### getPrimaryMonitor
+
+Returns a reference to the monitor that has been set as primary display on the system.
+
+```cpp
+GLFWmonitor* (*glfw_get_primary_monitor)(void);
+```
+
+### monitor.getVideoMode
+
+Returns the display settings for the display referenced by the given `monitor` handle.
+
+```cpp
+const GLFWvidmode* (*glfw_get_video_mode)(GLFWmonitor* monitor);
+```
+
+### window.getSurface
+
+TODO name, or move to wgpu bindings - obsolete once em PR is merged into GLFW
+
+Returns a WebGPU-compatible surface object for the given platform-agnostic `window` handle. Allows drawing to its framebuffer.
+
+```cpp
+WGPUSurface (*glfw_get_wgpu_surface)(WGPUInstance instance, GLFWwindow* window);
+```
+
+### window.getFullscreenMonitor
+
+Returns the assigned monitor for the window referenced by the given handle, or `NULL` if it's not in fullscreen mode.
+
+```cpp
+GLFWmonitor* (*glfw_get_window_monitor)(GLFWwindow* window);
+```
+
+### window.getSize
+
+TODO ffi metatype for GLFW window
+
+```cpp
+void (*glfw_get_window_size)(GLFWwindow* window, int* width, int* height);
+```
+
+### init
+
+TODO initialize vs init..
+
+Initializes the GLFW windowing context. You must call this once before creating native windows.
+
+```cpp
+int (*glfw_init)(void);
+```
+
+### pollEvents
+
+Continually polls the system for windowing events. This will prevent all asynchronous tasks from completing, and your app from exiting until all windows have been closed. You should set up a render loop (by creating a WebGPU swap chain that presents images at a fixed interval), or create a polling timer and use that to poll manually instead. Otherwise, you'll waste a lot of CPU time (and power) spinning.
+
+```cpp
+void (*glfw_poll_events)(void);
+```
+
+### window.registerEvents
+
+Registers all event listeners for the given `window`, so that the runtime will asynchronously store them in the provided `queue.`
+
+The purpose of this is to forward native events to Lua; you can fetch input events from the queue and handle them asynchronously.
+
+```cpp
+void (*glfw_register_events)(GLFWwindow* window, deferred_event_queue_t queue);
+```
+
+### setFullscreenOnMonitor
+
+Assigns the given `monitor` as the fullscreen display for the native `window`. You can offset the window and set a fixed update interval.
+
+```cpp
+void (*glfw_set_window_monitor)(GLFWwindow* window, GLFWmonitor* monitor, int xpos, int ypos, int width, int height, int refreshRate);
+```
+
+### window.setScreenPosition
+
+Moves the native `window` to the given screen coordinates. You have to manually take care that you aren't moving it offscreen.
+
+```cpp
+void (*glfw_set_window_pos)(GLFWwindow* window, int xpos, int ypos);
+```
+
+### terminate
+
+Destroys the GLFW windowing context. You can't create native windows afterwards unless you re-initialize the context.
+
+```cpp
+void (*glfw_terminate)(void);
+```
+
+### version
+
+Returns the embedded GLFW library version.
+
+```cpp
+const char* (*glfw_version)(void);
+```
+
+### window.hint
+
+Configures the windowing context, controlling the appearance and behavior of all windows that are created after this call.
+
+```cpp
+void (*glfw_window_hint)(int hint, int value);
+```
+
+### window.shouldClose
+
+Returns whether the given `window` has received a request for it to be closed (e.g., user clicked on the "Close" button).
+
+```cpp
+int (*glfw_window_should_close)(GLFWwindow* window);
+```
+
+
+
 ### initialize
 
 Initializes the bindings by loading the [C type definitions](#cdefs). Automatically called by the runtime when it sets up the Lua environment.
