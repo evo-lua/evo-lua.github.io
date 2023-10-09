@@ -14,7 +14,7 @@ The most commonly-used systems should have [binary releases available on GitHub]
 - Mac OS users on an Intel-based machine can download `evo-macos-x64` (rename to `evo` after downloading, if you prefer)
 - Linux (Debian/Ubuntu-likes) can try `evo-linux-x64` (rename to `evo`), though there may be incompatibilities
 
-Alternatively, and likely preferably for Linux users, you can [build from source](docs/how-to-guides/building-from-source) to obtain a fresh binary that way.
+Alternatively, and likely preferably for Linux users, you can [build from source](/docs/how-to-guides/building-from-source) to obtain a fresh binary that way.
 
 ## External Dependencies
 
