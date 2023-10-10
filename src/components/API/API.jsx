@@ -194,6 +194,65 @@ class Member extends React.Component {
   }
 }
 
+class Dictionary extends React.Component {
+  render() {
+    return (
+      <>
+        <table className={styles.dictionaryKeyValuesTable}>
+          <tbody className={styles.dictionaryKeyValuesTableBody}>
+            <tr className={styles.dictionaryKeyValuesFirstRow}>
+              <th colspan="4">{this.props.name}</th>
+            </tr>
+            <tr className={styles.dictionaryKeyValuesHeadRow}>
+              <td colspan="2" className={styles.dictionaryHeadRow}>
+                Keys
+              </td>
+              <td colspan="2" className={styles.dictionaryHeadRow}>
+                Values
+              </td>
+            </tr>
+            <tr className={styles.dictionaryKeyValuesHeadRow}>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Name</th>
+              <th>Type</th>
+            </tr>
+            <tr>{this.props.children}</tr>
+          </tbody>
+        </table>
+      </>
+    );
+  }
+}
+
+class DictionaryKeys extends React.Component {
+  render() {
+    return (
+      <>
+        <td>{this.props.name}</td>
+        <td>
+          {this.props.type ? this.props.type : "any"}
+          {this.props.optional ? <NilableInfo /> : ""}
+        </td>
+      </>
+    );
+  }
+}
+
+class DictionaryValues extends React.Component {
+  render() {
+    return (
+      <>
+        <td>{this.props.name}</td>
+        <td>
+          {this.props.type ? this.props.type : "any"}
+          {this.props.optional ? <NilableInfo /> : ""}
+        </td>
+      </>
+    );
+  }
+}
+
 class Experimental extends React.Component {
   render() {
     return (
@@ -293,6 +352,9 @@ export {
   Return,
   Struct,
   Member,
+  Dictionary,
+  DictionaryKeys,
+  DictionaryValues,
   Experimental,
   Stable,
   Deprecated,
