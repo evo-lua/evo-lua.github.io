@@ -43,6 +43,7 @@ However, there is one deliberate exception (that only affects Linux users):
   - If you're a Linux user building from source, simply follow the installation steps listed [here](/docs/how-to-guides/building-from-source#linux)
   - Otherwise, you can quickly install the relevant libraries via the package manager:
     - Debian/Ubuntu: `apt install libgtk-3-0 libwebkit2gtk-4.0-37`
+    - ArchLinux: `webkit2gtk gtk3`
 
 This step is required even if you don't want to use WebViews (e.g., for a headless server application).
 
