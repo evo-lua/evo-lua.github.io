@@ -139,10 +139,10 @@ The `isFile` flag is always `true` in the current implementation as directories 
 </Returns>
 </Function>
 
-<Struct name="directoryContents">
-<Member name="absolutePath" type="string"/>
-<Member name="isFile" type="boolean"/>
-</Struct>
+<Dictionary name="directoryContents">
+<Keys name="absoluteFilePath" type="string"/>
+<Values name="isFile" type="boolean"/>
+</Dictionary>
 
 ### ReadDirectoryTree
 
@@ -161,10 +161,10 @@ The `isFile` flag is always `true` in the current implementation as directories 
 </Returns>
 </Function>
 
-<Struct name="directoryContents">
-<Member name="absolutePath" type="string"/>
-<Member name="isFile" type="boolean"/>
-</Struct>
+<Dictionary name="directoryContents">
+<Keys name="absoluteFilePath" type="string"/>
+<Values name="isFile" type="boolean"/>
+</Dictionary>
 
 ### ReadFile
 
