@@ -54,7 +54,10 @@ You should be able to execute `gcc`, `g++`, `cmake`, `cargo`, and `ninja` in you
 
 On Ubuntu (and other Debian-derived distributions), this should install all the necessary build tools and development dependencies:
 
-`sudo apt update && sudo apt install make cmake ninja-build binutils build-essential libgtk-3-dev libwebkit2gtk-4.0-dev --yes`
+```sh
+sudo apt update
+sudo apt install make cmake ninja-build cargo binutils build-essential libgtk-3-dev libwebkit2gtk-4.0-dev --yes
+```
 
 The above command works on a fresh Ubuntu system and includes the GNU compiler toolchain as well as the headers for WebViews.
 
