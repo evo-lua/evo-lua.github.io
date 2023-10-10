@@ -2,9 +2,13 @@ import React from "react";
 
 import styles from "./styles.module.css";
 
-export const Function = ({ children }) => (
-  <div className={styles.function}>{children}</div>
-);
+export const Function = ({ since, children }) =>
+  (since && (
+    <>
+      <span className={styles.sinceBlock}>Available since: {since}</span>
+      <div className={styles.function}>{children}</div>
+    </>
+  )) || <></>;
 
 class NilableInfo extends React.Component {
   render() {
