@@ -16,6 +16,21 @@ The most commonly-used systems should have [binary releases available on GitHub]
 
 Alternatively, and likely preferably for Linux users, you can [build from source](/docs/how-to-guides/building-from-source) to obtain a fresh binary that way.
 
+:::caution Linux users beware: glibc incompatibilities
+
+Unfortunately, it's quite likely that you'll see some errors when trying to use the downloaded version from GitHub Releases:
+
+```
+evo: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.34' not found (required by evo)
+evo: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.32' not found (required by evo)
+evo: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.33' not found (required by evo)
+```
+
+This happens when your OS provides older versions of the C and C++ standard libraries than the GitHub Actions environment. As mentioned above, the solution is to simply [build the runtime yourself](/docs/how-to-guides/building-from-source). Thankfully, this is quite easy on Linux systems!
+
+You can also just upgrade the library version installed on your system. This may require adding custom [PPA](https://launchpad.net/ubuntu/+ppas)'s (or similar).
+:::
+
 ## External Dependencies
 
 Evo comes with most of its dependencies embedded in the runtime, in order to make it as easy as possible to use.
