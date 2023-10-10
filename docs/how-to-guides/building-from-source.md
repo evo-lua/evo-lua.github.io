@@ -58,6 +58,12 @@ On Ubuntu (and other Debian-derived distributions), this should install all the 
 
 The above command works on a fresh Ubuntu system and includes the GNU compiler toolchain as well as the headers for WebViews.
 
+For ArchLinux, some package names will be slightly different from both Windows and Ubuntu:
+
+```sh
+pacman -Syu base-devel cmake ninja rust webkit2gtk gtk3
+```
+
 ## Standard Build Workflow
 
 In case of problems: You can always take a look at the [build workflows](https://github.com/evo-lua/evo-runtime/tree/main/.github/workflows) to see all required steps (and the expected results).
