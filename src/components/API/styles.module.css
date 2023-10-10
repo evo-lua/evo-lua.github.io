@@ -4,7 +4,8 @@
 
 .functionParametersTable,
 .functionReturnValuesTable,
-.structMembersTable {
+.structMembersTable,
+.dictionaryKeyValuesTable {
   font-size: 0.85em;
   border-collapse: collapse;
   display: inline-block;
@@ -13,14 +14,20 @@
 }
 
 /* Assumes these won't ever occur without a return or args table*/
-.structMembersTable {
+.structMembersTable,
+.dictionaryKeyValuesTable {
   margin-top: 1.5em;
   margin-bottom: 0;
 }
 
+.dictionaryHeadRow {
+  font-style: italic;
+}
+
 .functionParametersTable * td,
 .functionReturnValuesTable * td,
-.structMembersTable * td {
+.structMembersTable * td,
+.dictionaryKeyValuesTable * td {
   padding: 0.25rem;
   text-align: center;
   width: 7.5rem;
@@ -56,12 +63,24 @@
   color: white;
 }
 
+.dictionaryKeyValuesTableBody {
+  border-left: 0.5ex solid #00aaaa;
+}
+
+.dictionaryKeyValuesFirstRow {
+  background: #00aaaa;
+  text-align: center;
+  color: white;
+}
+
 .functionParametersFirstRow th,
 .functionParametersHeadRow th,
 .functionReturnValuesFirstRow th,
 .functionReturnValuesHeadRow th,
 .structMembersFirstRow th,
-.structMembersHeadRow th {
+.structMembersHeadRow th,
+.dictionaryKeyValuesFirstRow th,
+.dictionaryKeyValuesHeadRow th {
   padding: 0.25rem;
   text-align: center;
 }
