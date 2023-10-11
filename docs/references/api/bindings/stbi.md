@@ -68,6 +68,14 @@ Returns the embedded stbi library version as a Lua string.
 
 All C functions listed here can be accessed via `stbi.bindings` and must be called with the appropriate `cdata` values.
 
+### stbi_abgr_to_rgba
+
+Converts the pixel format of an `image` from ABGR to RGBA (and vice versa), by swapping the first and last byte of each pixel.
+
+```cpp
+void stbi_abgr_to_rgba(stbi_image_t* image)
+```
+
 ### stbi_flip_vertically_on_write
 
 Globally toggles the vertical direction that is used when encoding images. A non-zero flag means that the pixel data is inverted.
@@ -244,6 +252,7 @@ const char* stbi_version(void);
 
 | Version |                                                                            What happened?                                                                             |
 | :-----: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| v0.0.10 |                                                                       Added `stbi_abgr_to_rgba`                                                                       |
 | v0.0.9  | Removed `stbi_max_bitmap_size` in favor of `stbi_get_required_bmp_size`, `stbi_get_required_png_size`, `stbi_get_required_jpg_size`, and `stbi_get_required_tga_size` |
 | v0.0.7  |                                                                 Added `stbi_flip_vertically_on_write`                                                                 |
 | v0.0.4  |                                                                            Initial release                                                                            |
