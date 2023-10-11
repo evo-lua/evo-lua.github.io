@@ -62,7 +62,7 @@ Technically, you can use the FFI with platform-specific APIs, but that's not por
 
 Distributed systems is an area that's usually performance-sensitive, so that it's warranted to consider the lower-level APIs:
 
-- The builtin `HttpServer` and `WebSocket` modules are relatively easy to use, but they do incur some unavoidable overhead
+- The builtin `HttpServer` and `WebSocketServer` modules are relatively easy to use, but they do incur some unavoidable overhead
 - For more fine-grained control, there's two options; the first is using the Lua bindings to libuv and building on top of TCP or UDP
 - However, this is certainly not the fastest approach (and doesn't provide support for HTTP or WS out of the box) - but [uws](/docs/references/api/bindings/uws) does!
 - In this case you'd be responsible for handling events, which can be tricky due to technical constraints, _and_ memory management
