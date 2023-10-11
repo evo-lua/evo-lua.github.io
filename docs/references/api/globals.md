@@ -43,6 +43,18 @@ Keep in mind that FFI libraries are generally memory-unsafe, so prefer using the
 
 ## Functions
 
+### cast
+
+Alias for [ffi.cast(...)](http://luajit.org/ext_ffi_api.html#ffi_cast).
+
+### cdef
+
+Alias for [ffi.cdef(...)](http://luajit.org/ext_ffi_api.html#ffi_cdef).
+
+### define
+
+Alias for [ffi.cdef(...)](http://luajit.org/ext_ffi_api.html#ffi_cdef).
+
 ### describe
 
 Alias for [bdd.describe(...)](/docs/references/api/libraries/bdd#describe).
@@ -70,9 +82,21 @@ Alias for [string.format(...)](https://www.lua.org/manual/5.1/manual.html#pdf-st
 
 Alias for [bdd.it(...)](/docs/references/api/libraries/bdd#it).
 
+### new
+
+Alias for [ffi.new(...)](http://luajit.org/ext_ffi_api.html#ffi_new).
+
 ### printf
 
 Alias for `print(string.format(...))`.
+
+### sizeof
+
+Alias for [ffi.sizeof(...)](http://luajit.org/ext_ffi_api.html#ffi_sizeof).
+
+### typeof
+
+Alias for [ffi.typeof(...)](http://luajit.org/ext_ffi_api.html#ffi_typeof).
 
 ## Tables
 
