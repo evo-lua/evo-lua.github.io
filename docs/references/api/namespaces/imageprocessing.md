@@ -76,8 +76,24 @@ Encodes the given `rgbaPixelArray` as a JPEG image of the provided dimensions, u
 </Returns>
 </Function>
 
+### EncodeTGA
+
+Encodes the given `rgbaPixelArray` as a TGA image of the provided dimensions.
+
+<Function since="v0.0.10">
+<Parameters>
+<Parameter name="rgbaPixelArray" type="table"/>
+<Parameter name="imageWidthInPixels" type="number"/>
+<Parameter name="imageHeightInPixels" type="number"/>
+</Parameters>
+<Returns>
+<Return name="tgaFileContents" type="string"/>
+</Returns>
+</Function>
+
 ## Changelog
 
-| Version | What happened?  |
-| :-----: | :-------------: |
-| v0.0.9  | Initial release |
+| Version |  What happened?   |
+| :-----: | :---------------: |
+| v0.0.10 | Added `EncodeTGA` |
+| v0.0.9  |  Initial release  |
