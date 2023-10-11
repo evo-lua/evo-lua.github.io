@@ -32,23 +32,6 @@ A pointer to the statically-loaded exports table that exposes the bound function
 
 Initializes the bindings by loading the [C type definitions](#cdefs). Automatically called by the runtime when it sets up the Lua environment
 
-### max_bitmap_size
-
-Computes an estimated worst-case output file size for the given image, assuming a primitive BMP format. Uses a simple heuristic that should cover all edge cases, but is a bit wasteful. The result can be used to pre-allocate buffers to perform image conversions.
-
-If you want to encode images in different formats, e.g., using [stbi_encode_bmp](#stbi_encode_bmp), you can use this to determine the buffer size.
-
-<Function>
-<Parameters>
-<Parameter name="width" type="number"/>
-<Parameter name="height" type="number"/>
-<Parameter name="channels" type="number"/>
-</Parameters>
-<Returns>
-<Return name="estimatedWorstCaseFileSize" type="number"/>
-</Returns>
-</Function>
-
 ### replace_pixel_color_rgba
 
 Replaces all pixels using the RGBA values from `sourceColor` with those from `replacementColor`. Accepts `cdata` or `table` values.
@@ -163,7 +146,7 @@ bool stbi_image_free(stbi_image_t* image);
 
 ### stbi_encode_bmp
 
-Encodes the given `image` as a [BMP](https://en.wikipedia.org/wiki/BMP_file_format) file and stores the result in the provided buffer, which you can pre-allocate using [max_bitmap_size](#max_bitmap_size).
+Encodes the given `image` as a [BMP](https://en.wikipedia.org/wiki/BMP_file_format) file and stores the result in the provided buffer, which you can pre-allocate using [stbi_get_required_bmp_size](#stbi_get_required_bmp_size).
 
 ```cpp
 size_t stbi_encode_bmp(stbi_image_t* image, uint8_t* buffer, const size_t buffer_size);
@@ -171,7 +154,7 @@ size_t stbi_encode_bmp(stbi_image_t* image, uint8_t* buffer, const size_t buffer
 
 ### stbi_encode_png
 
-Encodes the given `image` as a [PNG](https://en.wikipedia.org/wiki/PNG) file and stores the result in the provided buffer, which you can pre-allocate using [max_bitmap_size](#max_bitmap_size).
+Encodes the given `image` as a [PNG](https://en.wikipedia.org/wiki/PNG) file and stores the result in the provided buffer, which you can pre-allocate using [stbi_get_required_png_size](#stbi_get_required_png_size).
 
 ```cpp
 size_t stbi_encode_png(stbi_image_t* image, uint8_t* buffer, const size_t buffer_size, const int stride);
@@ -179,7 +162,7 @@ size_t stbi_encode_png(stbi_image_t* image, uint8_t* buffer, const size_t buffer
 
 ### stbi_encode_jpg
 
-Encodes the given `image` as a [JPG](https://en.wikipedia.org/wiki/JPEG) file and stores the result in the provided buffer, which you can pre-allocate using [max_bitmap_size](#max_bitmap_size).
+Encodes the given `image` as a [JPG](https://en.wikipedia.org/wiki/JPEG) file and stores the result in the provided buffer, which you can pre-allocate using [stbi_get_required_jpg_size](#stbi_get_required_jpg_size).
 
 ```cpp
 size_t stbi_encode_jpg(stbi_image_t* image, uint8_t* buffer, const size_t buffer_size, int quality);
@@ -187,10 +170,66 @@ size_t stbi_encode_jpg(stbi_image_t* image, uint8_t* buffer, const size_t buffer
 
 ### stbi_encode_tga
 
-Encodes the given `image` as a [TGA](https://en.wikipedia.org/wiki/Truevision_TGA) file and stores the result in the provided buffer, which you can pre-allocate using [max_bitmap_size](#max_bitmap_size).
+Encodes the given `image` as a [TGA](https://en.wikipedia.org/wiki/Truevision_TGA) file and stores the result in the provided buffer, which you can pre-allocate using [stbi_get_required_tga_size](#stbi_get_required_tga_size).
 
 ```cpp
 size_t stbi_encode_tga(stbi_image_t* image, uint8_t* buffer, const size_t buffer_size);
+```
+
+### stbi_get_required_bmp_size
+
+Returns the number of bytes required to encode the given `image` in BMP format.
+
+:::info
+
+You can use this for (pre-)allocating buffers, but keep in mind that this is still somewhat wasteful as it's effectively encoding the image once just to compute the size, before actually encoding and writing to a buffer the second time around. Depending on the image data you may be able to cache this; i.e., compute the size once and then use the same size/buffer repeatedly.
+
+:::
+
+```cpp
+size_t stbi_get_required_bmp_size(stbi_image_t* image)
+```
+
+### stbi_get_required_png_size
+
+Returns the number of bytes required to encode the given `image` in PNG format.
+
+:::info
+
+You can use this for (pre-)allocating buffers, but keep in mind that this is still somewhat wasteful as it's effectively encoding the image once just to compute the size, before actually encoding and writing to a buffer the second time around. Depending on the image data you may be able to cache this; i.e., compute the size once and then use the same size/buffer repeatedly.
+
+:::
+
+```cpp
+size_t stbi_get_required_png_size(stbi_image_t* image, const int stride)
+```
+
+### stbi_get_required_jpg_size
+
+Returns the number of bytes required to encode the given `image` in JPG format.
+
+:::info
+
+You can use this for (pre-)allocating buffers, but keep in mind that this is still somewhat wasteful as it's effectively encoding the image once just to compute the size, before actually encoding and writing to a buffer the second time around. Depending on the image data you may be able to cache this; i.e., compute the size once and then use the same size/buffer repeatedly.
+
+:::
+
+```cpp
+size_t stbi_get_required_jpg_size(stbi_image_t* image, int quality)
+```
+
+### stbi_get_required_tga_size
+
+Returns the number of bytes required to encode the given `image` in TGA format.
+
+:::info
+
+You can use this for (pre-)allocating buffers, but keep in mind that this is still somewhat wasteful as it's effectively encoding the image once just to compute the size, before actually encoding and writing to a buffer the second time around. Depending on the image data you may be able to cache this; i.e., compute the size once and then use the same size/buffer repeatedly.
+
+:::
+
+```cpp
+size_t stbi_get_required_tga_size(stbi_image_t* image)
 ```
 
 ### stbi_version
@@ -203,7 +242,8 @@ const char* stbi_version(void);
 
 ## Changelog
 
-| Version |            What happened?             |
-| :-----: | :-----------------------------------: |
-| v0.0.7  | Added `stbi_flip_vertically_on_write` |
-| v0.0.4  |            Initial release            |
+| Version |                                                                            What happened?                                                                             |
+| :-----: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| v0.0.9  | Removed `stbi_max_bitmap_size` in favor of `stbi_get_required_bmp_size`, `stbi_get_required_png_size`, `stbi_get_required_jpg_size`, and `stbi_get_required_tga_size` |
+| v0.0.7  |                                                                 Added `stbi_flip_vertically_on_write`                                                                 |
+| v0.0.4  |                                                                            Initial release                                                                            |
