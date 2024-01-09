@@ -56,16 +56,18 @@ On Ubuntu (and other Debian-derived distributions), this should install all the 
 
 ```sh
 sudo apt update
-sudo apt install make cmake ninja-build cargo binutils build-essential libgtk-3-dev libwebkit2gtk-4.0-dev --yes
+sudo apt install make cmake ninja-build cargo binutils build-essential libgtk-3-dev libwebkit2gtk-4.0-dev libpulse-dev --yes
 ```
 
-The above command works on a fresh Ubuntu system and includes the GNU compiler toolchain as well as the headers for WebViews.
+The above command works on a fresh Ubuntu system and includes the GNU compiler toolchain as well as some required development headers.
 
 For ArchLinux, some package names will be slightly different from both Windows and Ubuntu:
 
 ```sh
-pacman -Syu base-devel cmake ninja rust webkit2gtk gtk3
+pacman -Syu base-devel cmake ninja rust webkit2gtk gtk3 pulseaudio
 ```
+
+Development headers don't need to be installed separately here since they're included in the above packages.
 
 ## Standard Build Workflow
 
