@@ -39,13 +39,13 @@ However, there is one deliberate exception (that only affects Linux users):
 
 - To avoid shipping a heavy-weight browser engine, Evo uses the operating system's native browser
 - This is Microsoft Edge on Windows, Apple's Safari on Mac OS, and WebKit (via [WebKitGTK](https://webkitgtk.org/)) on Linux
-- Since WebKit isn't usually delivered to Linux users automatically, you must manually install it
+- Since the required libraries aren't delivered to Linux users automatically, you must manually install them
   - If you're a Linux user building from source, simply follow the installation steps listed [here](/docs/how-to-guides/building-from-source#linux)
   - Otherwise, you can quickly install the relevant libraries via the package manager:
-    - Debian/Ubuntu: `apt install libgtk-3-0 libwebkit2gtk-4.0-37`
-    - ArchLinux: `pacman -S webkit2gtk gtk3`
+    - Debian/Ubuntu: `apt install libgtk-3-0 libwebkit2gtk-4.0-37 pulseaudio`
+    - ArchLinux: `pacman -S webkit2gtk gtk3 pulseaudio`
 
-This step is required even if you don't want to use WebViews (e.g., for a headless server application).
+This step is required even if you don't want to use WebViews or audio (e.g., for a headless server application).
 
 ## Basic Command-Line Usage
 
