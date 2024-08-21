@@ -85,7 +85,7 @@ Applies [INFLATE](https://en.wikipedia.org/wiki/Deflate#Decoder/decompressor) to
 
 ## ZipFileReader
 
-Created by [new_reader](#new_reader). You can use this to get information about the files within a ZIP archive or to extract them (in-memory).
+Created by [new_reader](#new_reader) or [new_reader_memory](#new_reader_memory). You can use this to get information about the files within a ZIP archive or to extract them (in-memory).
 
 ### extract
 
@@ -382,6 +382,20 @@ Creates a new ZIP file reader for the given `fileSystemPath`. The `flags` passed
 <Function>
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
+<Parameter name="flags" type="number" optional/>
+</Parameters>
+<Returns>
+<Return name="reader" type="ZipFileReader"/>
+</Returns>
+</Function>
+
+### new_reader_memory
+
+Creates a new ZIP file reader for the given `fileContents`. The `flags` passed to `miniz` can control the way that the archive is read.
+
+<Function>
+<Parameters>
+<Parameter name="fileContents" type="string"/>
 <Parameter name="flags" type="number" optional/>
 </Parameters>
 <Returns>
