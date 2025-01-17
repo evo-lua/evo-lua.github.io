@@ -48,15 +48,59 @@ In the above example, Evo will load both files from the VFS, if they exist, or u
 1. Whenever a module exists in the VFS and on disk, the VFS takes priority (for security and performance reasons)
 1. All `.` (dots) in the path names are internally replaced by `/` to cleanly map to the VFS paths
 
-This change isn't disruptive; all Evo does is add a custom [searcher](https://www.lua.org/manual/5.2/manual.html#pdf-package.searchers) that looks into the VFS first when it dectects it is running a standalone executable.
+This change isn't disruptive; all Evo does is add a custom [searcher](https://www.lua.org/manual/5.2/manual.html#pdf-package.searchers) that looks into the VFS first when it dectects it is running a standalone executable. You can still add your own searchers to load different versions, or remove them.
 
-There is one limitation that does exist: You can't directly load native libraries from the VFS.
+The path resolution follows all the standard rules. It can be configured with [package.cpath](https://www.lua.org/manual/5.1/manual.html#pdf-package.path) and `LUA_PATH`.
 
-If you want to use `require` (or `ffi.load`) to load a C module, you'll need to provide the DLL/SO files alongside the standalone executable. Alternatively, you can build the DLL/SO files into the app, but then you'll have to extract them from the ZIP archive.
+### Lua C-API Modules
 
-In the future, helpers for this [will likely be added](https://github.com/evo-lua/evo-runtime/issues/488), but it's somewhat difficult to predict what exactly is needed here. For now the runtime only provides the most basic support.
+Because this mechanism makes use of Lua's [`require`](https://www.lua.org/manual/5.1/manual.html#pdf-require) system, you can only load [Lua C modules](https://www.lua.org/manual/5.1/manual.html#3) with it. In order to do so, you should bundle your application with a compatible version of the C module and use it like you would any other module available on the user's system. The `vfs.searcher` will discover it and let Lua handle the rest.
 
-For the time being, you can distribute C modules separetely (on disk) or extract everything to a temporary directory before loading the app.
+The path resolution follows all the standard rules. It can be configured with [package.cpath](https://www.lua.org/manual/5.1/manual.html#pdf-package.cpath) and `LUA_CPATH`.
+
+:::caution
+Although many Lua C modules are available and can be used with `require`, this has a significant impact on performance and often incurs additional maintenance costs. Using the C API is of course supported, but not the recommended approach to loading native libraries in this runtime. If you do want to use them, you must make sure they're built for LuaJIT, which is based on Lua 5.1 and not compatible with more recent C API versions.
+:::
+
+There's another way to get access to C code that you want to ship with your application, described below.
+
+### Shared Libraries and the FFI
+
+Evo allows you to use shared libraries (`.dll`, `.so`, `.dylib` files) using LuaJIT's [foreign function interface](https://luajit.org/ext_ffi_api.html). This introduces potentially unsafe code paths, but has significant performance benefits. It's also a lot easier to create FFI bindings; no glue code is needed beyond the definitions for types and function signatures (called "cdefs").
+
+The `vfs` library supports loading these kinds of modules even from within self-contained app bundles:
+
+```lua title=vfs-dlopen-example.lua
+local ffi = require("ffi")
+local uv = require("uv")
+local vfs = require("vfs")
+
+-- When run from a LUAZIP app, the cache is already populated with the current app itself
+-- Otherwise, you can use vfs.decode to load the app bundle here - but it'll be much slower
+local zipApp = vfs.cachedAppBundles[uv.exepath()]
+
+-- For brevity's sake, export only one function. This could easily cover the entire library interface
+local cdefs = [[
+	const char* zlibVersion(void);
+]]
+
+ffi.cdef(cdefs)
+
+-- Loading may fail for various reasons, so that vfs.dlopen returns a failure tuple (nil, errorMessage)
+-- Given the right paths, this will work when running the script from disk and also when bundled later
+local sharedLibraryPath = "zlib.so" -- ... or .dll, .dylib (platform-specific)
+local zlibShared = vfs.dlopen(zipApp, sharedLibraryPath) or ffi.load(sharedLibraryPath)
+
+-- If loading did succeed, all of the previously defined functions can now be used from Lua
+local versionString = ffi.string(zlibShared.zlibVersion())
+printf("Successfully loaded zlib version %s from the LUAZIP bundle!", versionString)
+```
+
+There is no path resolution or magic search prefixes to configure. The `vfs.dlopen` searcher simply browses the executable's archive for a file with the given path, which is relative to the root directory. It then extracts the shared object file and uses `ffi.load`, which will invoke the operating system's facilities for loading shared libraries.
+
+You can use `vfs.dlname` to get some portability, which is used by default when no file extension was detected.
+
+To see what's inside the archive, use the `miniz` or `vfs` libraries. The system is designed to be transparent.
 
 ## Native Look and Feel
 
@@ -84,9 +128,11 @@ For commercial use cases, however, you may want to consider moving business-crit
 
 Although Evo comes with quite a few "batteries" that you don't need to manually distribute, the builtin APIs don't cover every use case.
 
-Complex programs often require the help of advanced libraries, which are usually bundled alongside the app (as DLL or shared object files). While LuaJIT can easily access these, you will still need to include them. If creating a standalone executable, you'd then have to extract all the needed libraries at runtime before you can dynamically load them. This is what other interpreted languages do, as well.
+Complex programs often require the help of advanced libraries, which are usually bundled alongside the app (as DLL or shared object files). While LuaJIT can easily access these, you will still need to include them. Scripts inside a standalone executable still need to load libraries at runtime. This is what other interpreted languages do, as well.
 
-Unfortunately, shipping binaries to different Linux systems may be troublesome. But at least users there won't necessarily expect it.
+Unfortunately, shipping binaries to different Linux systems may be troublesome. But at least users there won't necessarily expect it. You can call `ffi.load` with just the library name and rely on system libraries installed by the user, which works on any modern distribution with a built-in package manager (such as `apt` or `pacman`).
+
+Both the libraries and the runtime executable included in a self-contained application bundle must be compatible with the architecture of the system that's ultimately meant to run them. Cross-compilation is not supported.
 
 ### Licensing Issues
 
