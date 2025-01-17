@@ -30,13 +30,33 @@ After the process has completed, you will notice the presence of two build artif
 
 The executable is all you need to distribute; it includes the ZIP archive alongside the Evo runtime used to build it (and a signature).
 
-## Extracting Bundled Files
+## Loading Bundled Files
 
-You'll need to create a "loader" called `main.lua`, which initializes the rest of your application. Place it in the directory that you package.
+You'll need to create a "loader" called `main.lua`, which initializes the rest of your application. Place it in the directory that you package. Evo will extract the entry point, `main.lua`, and run it when it detects a self-contained app. Your entry point can `require` modules from within the virtual file system just like any other file:
 
-Evo will by default only extract the entry point, `main.lua`, and run it when it detects a self-contained app. This means that any extra files you might need (such as DLL/SO files or Lua scripts), you'll have to extract from the ZIP archive. In the future, helpers for this could be added, but it's somewhat difficult to predict what exactly is needed here so for now the runtime only provides the most basic support.
+```lua
+-- main.lua
+local someModule = require("someModule")
+dump(someModule)
 
-For the time being, you can distribute other files on disk or extract everything to a temporary directory before loading the app.
+local someOtherModule = require("subdirectory.someOtherModule")
+dump(someOtherModule)
+```
+
+In the above example, Evo will load both files from the VFS, if they exist, or use the default `require` behavior otherwise:
+
+1. Whenever a module exists in the VFS and on disk, the VFS takes priority (for security and performance reasons)
+1. All `.` (dots) in the path names are internally replaced by `/` to cleanly map to the VFS paths
+
+This change isn't disruptive; all Evo does is add a custom [searcher](https://www.lua.org/manual/5.2/manual.html#pdf-package.searchers) that looks into the VFS first when it dectects it is running a standalone executable.
+
+There is one limitation that does exist: You can't directly load native libraries from the VFS.
+
+If you want to use `require` (or `ffi.load`) to load a C module, you'll need to provide the DLL/SO files alongside the standalone executable. Alternatively, you can build the DLL/SO files into the app, but then you'll have to extract them from the ZIP archive.
+
+In the future, helpers for this [will likely be added](https://github.com/evo-lua/evo-runtime/issues/488), but it's somewhat difficult to predict what exactly is needed here. For now the runtime only provides the most basic support.
+
+For the time being, you can distribute C modules separetely (on disk) or extract everything to a temporary directory before loading the app.
 
 ## Native Look and Feel
 
