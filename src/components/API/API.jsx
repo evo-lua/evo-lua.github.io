@@ -73,7 +73,7 @@ class Parameters extends React.Component {
           ].join(" ")}
         >
           <tr className={styles.functionParametersFirstRow}>
-            <th colspan="4">Arguments</th>
+            <th colSpan="4">Arguments</th>
           </tr>
           <tr className={styles.functionParametersHeadRow}>
             <th>#</th>
@@ -99,7 +99,7 @@ class Returns extends React.Component {
           ].join(" ")}
         >
           <tr className={styles.functionReturnValuesFirstRow}>
-            <th colspan="3">Return values</th>
+            <th colSpan="3">Return values</th>
           </tr>
           <tr className={styles.functionReturnValuesHeadRow}>
             <th>#</th>
@@ -166,7 +166,7 @@ class Struct extends React.Component {
             ].join(" ")}
           >
             <tr className={styles.structMembersFirstRow}>
-              <th colspan="3">{this.props.name}</th>
+              <th colSpan="3">{this.props.name}</th>
             </tr>
             <tr className={styles.structMembersHeadRow}>
               <th>Field</th>
@@ -201,13 +201,13 @@ class Dictionary extends React.Component {
         <table className={styles.dictionaryKeyValuesTable}>
           <tbody className={styles.dictionaryKeyValuesTableBody}>
             <tr className={styles.dictionaryKeyValuesFirstRow}>
-              <th colspan="4">{this.props.name}</th>
+              <th colSpan="4">{this.props.name}</th>
             </tr>
             <tr className={styles.dictionaryKeyValuesHeadRow}>
-              <td colspan="2" className={styles.dictionaryHeadRow}>
+              <td colSpan="2" className={styles.dictionaryHeadRow}>
                 Keys
               </td>
-              <td colspan="2" className={styles.dictionaryHeadRow}>
+              <td colSpan="2" className={styles.dictionaryHeadRow}>
                 Values
               </td>
             </tr>
