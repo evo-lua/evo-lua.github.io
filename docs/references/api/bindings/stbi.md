@@ -38,7 +38,7 @@ Replaces all pixels using the RGBA values from `sourceColor` with those from `re
 
 The pixel format used by the given `image` is expected to be in RGBA format; use [stbi_load_rgba](#stbi_load_rgba) to ensure this is always the case.
 
-<Function>
+<Function since="v0.0.19">
 <Parameters>
 <Parameter name="image" type="stbi_image_t"/>
 <Parameter name="sourceColor" type="stbi_color_t"/>
@@ -75,6 +75,8 @@ Converts the pixel format of an `image` from ABGR to RGBA (and vice versa), by s
 ```cpp
 void stbi_abgr_to_rgba(stbi_image_t* image)
 ```
+
+<Function since="v0.0.10"/>
 
 ### stbi_flip_vertically_on_write
 
@@ -252,6 +254,7 @@ const char* stbi_version(void);
 
 | Version |                                                                            What happened?                                                                             |
 | :-----: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| v0.0.19 |                                                                   Added `replace_pixel_color_rgba`                                                                    |
 | v0.0.10 |                                                                       Added `stbi_abgr_to_rgba`                                                                       |
 | v0.0.9  | Removed `stbi_max_bitmap_size` in favor of `stbi_get_required_bmp_size`, `stbi_get_required_png_size`, `stbi_get_required_jpg_size`, and `stbi_get_required_tga_size` |
 | v0.0.7  |                                                                 Added `stbi_flip_vertically_on_write`                                                                 |
