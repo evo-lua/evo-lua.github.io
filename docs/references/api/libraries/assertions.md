@@ -20,7 +20,7 @@ local assertions = require("assertions")
 
 Raises an error if the function passed doesn't call the target function. The function has to be executed in order to determine this fact.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="codeUnderTest" type="function"/>
 <Parameter name="targetFunction" type="function"/>
@@ -31,7 +31,7 @@ Raises an error if the function passed doesn't call the target function. The fun
 
 Raises an error if the function passed throws (raises an error) itself. The purpose of this is to generate standardized error messages.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="codeUnderTest" type="function"/>
 </Parameters>
@@ -41,7 +41,7 @@ Raises an error if the function passed throws (raises an error) itself. The purp
 
 Raises an error if the two passed values are not identical. This is a catch-all handler that uses the more specialized assertions internally.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="firstValue"/>
 <Parameter name="secondValue"/>
@@ -52,7 +52,7 @@ Raises an error if the two passed values are not identical. This is a catch-all 
 
 Raises an error if the two passed values do not represent the same `boolean` value.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="firstValue"/>
 <Parameter name="secondValue"/>
@@ -63,7 +63,7 @@ Raises an error if the two passed values do not represent the same `boolean` val
 
 Raises an error if the two passed values do not represent the same `cdata` bytes. Use [assertEqualPointers](#assertequalpointers) to compare only the pointer.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="firstValue"/>
 <Parameter name="secondValue"/>
@@ -74,7 +74,7 @@ Raises an error if the two passed values do not represent the same `cdata` bytes
 
 Raises an error if the two passed values do not represent the same `function` value.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="firstValue"/>
 <Parameter name="secondValue"/>
@@ -85,7 +85,7 @@ Raises an error if the two passed values do not represent the same `function` va
 
 Raises an error if the two passed values do not represent the same `number` value. The optional `delta` allows for float comparisons.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="firstValue"/>
 <Parameter name="secondValue"/>
@@ -97,7 +97,7 @@ Raises an error if the two passed values do not represent the same `number` valu
 
 Raises an error if the two passed values do not represent the same `cdata` pointer. Use [assertEqualBytes](#assertequalbytes) to compare them by value.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="firstValue"/>
 <Parameter name="secondValue"/>
@@ -108,7 +108,7 @@ Raises an error if the two passed values do not represent the same `cdata` point
 
 Raises an error if the two passed values do not represent the same `string` value. Supports LuaJIT string buffers and `cdata` strings.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="firstValue"/>
 <Parameter name="secondValue"/>
@@ -119,7 +119,7 @@ Raises an error if the two passed values do not represent the same `string` valu
 
 Raises an error if the two passed values do not represent the same `table` value. Supports deep table comparisons.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="firstValue"/>
 <Parameter name="secondValue"/>
@@ -130,7 +130,7 @@ Raises an error if the two passed values do not represent the same `table` value
 
 Raises an error if the function passed does not return a "failure" type (`nil` and an error message).
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="codeUnderTest" type="function"/>
 <Parameter name="expectedErrorMessage" type="string"/>
@@ -141,7 +141,7 @@ Raises an error if the function passed does not return a "failure" type (`nil` a
 
 Raises an error if the value passed is not exactly `false`.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="conditionToCheck"/>
 </Parameters>
@@ -151,7 +151,7 @@ Raises an error if the value passed is not exactly `false`.
 
 Raises an error if the value passed is not exactly `nil`.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="conditionToCheck"/>
 </Parameters>
@@ -161,7 +161,7 @@ Raises an error if the value passed is not exactly `nil`.
 
 Raises an error if the function passed does not itself raise an error (with the expected error message).
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="codeUnderTest" type="function"/>
 <Parameter name="expectedErrorMessage" type="string"/>
@@ -172,7 +172,7 @@ Raises an error if the function passed does not itself raise an error (with the 
 
 Raises an error if the value passed is not exactly `true`.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="conditionToCheck"/>
 </Parameters>

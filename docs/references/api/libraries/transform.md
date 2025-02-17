@@ -20,7 +20,7 @@ local transform = require("transform")
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered black in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -33,7 +33,7 @@ Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered on a black background in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -46,7 +46,7 @@ Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered with bold font in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -59,7 +59,7 @@ Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered bright red in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -72,7 +72,7 @@ Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered on a bright red background in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -85,7 +85,7 @@ Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered cyan in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -106,7 +106,7 @@ Globally disables text transformations. This operation is not applied retroactiv
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered gray in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -119,7 +119,7 @@ Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered green in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -132,7 +132,7 @@ Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered on a green background in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -145,7 +145,7 @@ Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered dark red in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -158,7 +158,7 @@ Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered underlined in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -171,7 +171,7 @@ Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered yellow in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -184,7 +184,7 @@ Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered white in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>
@@ -197,7 +197,7 @@ Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia
 
 Returns the input string wrapped in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) so that it is rendered on a white background in supporting terminals.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="text" type="string"/>
 </Parameters>

@@ -20,7 +20,7 @@ local bdd = require("bdd")
 
 Signals to the test runner that a new [section](/docs/how-to-guides/unit-testing#sections-and-subsections) should be started. You should only ever call this from within a test file.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="label" type="string"/>
 <Parameter name="testFunction" type="function"/>
@@ -31,7 +31,7 @@ Signals to the test runner that a new [section](/docs/how-to-guides/unit-testing
 
 Returns a [human-readable string representation](#gethumanreadabletime) of the elapsed time for the current test run, which is the period between the last call to [startTestRunner](#starttestrunner) and now. If the tests have all been executed, the elapsed time is the total duration of the test run.
 
-<Function>
+<Function since="v0.0.1">
 <Returns>
 <Return name="elapsedTime" type="string"/>
 </Returns>
@@ -41,7 +41,7 @@ Returns a [human-readable string representation](#gethumanreadabletime) of the e
 
 Returns a table containing error information about the last (or current) test run. Errors accumulate in-order; i.e., the table is an array.
 
-<Function>
+<Function since="v0.0.1">
 <Returns>
 <Return name="errorDetails" type="ErrorDetails[]"/>
 </Returns>
@@ -57,7 +57,7 @@ Returns a table containing error information about the last (or current) test ru
 
 This utility method formats a duration, assumed to be given in nanoseconds, for human consumption. You cannot rely on the format being stable, just that it's easy to read (for an arbitrary definition of "easy"). It's intended to format the time for completed test runs.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="highResolutionTime" type="number"/>
 </Parameters>
@@ -70,7 +70,7 @@ This utility method formats a duration, assumed to be given in nanoseconds, for 
 
 Returns the contents of the internal report buffer. You can use this after the test run has finished in order to print a summary.
 
-<Function>
+<Function since="v0.0.1">
 <Returns>
 <Return name="report" type="string"/>
 </Returns>
@@ -80,7 +80,7 @@ Returns the contents of the internal report buffer. You can use this after the t
 
 Returns whether the test runner is set to use the [basic reporting mode](/docs/how-to-guides/unit-testing#basic-reports).
 
-<Function>
+<Function since="v0.0.1">
 <Returns>
 <Return name="enabledFlag" type="boolean"/>
 </Returns>
@@ -90,7 +90,7 @@ Returns whether the test runner is set to use the [basic reporting mode](/docs/h
 
 Returns whether the test runner is set to use the [detailed reporting mode](/docs/how-to-guides/unit-testing#detailed-reports).
 
-<Function>
+<Function since="v0.0.1">
 <Returns>
 <Return name="enabledFlag" type="boolean"/>
 </Returns>
@@ -100,7 +100,7 @@ Returns whether the test runner is set to use the [detailed reporting mode](/doc
 
 Returns whether the test runner is set to use the [minimal reporting mode](/docs/how-to-guides/unit-testing#minimal-reports).
 
-<Function>
+<Function since="v0.0.1">
 <Returns>
 <Return name="enabledFlag" type="boolean"/>
 </Returns>
@@ -110,7 +110,7 @@ Returns whether the test runner is set to use the [minimal reporting mode](/docs
 
 Signals to the test runner that a new [subsection](/docs/how-to-guides/unit-testing#sections-and-subsections) should be started. You should only ever call this from within a test file.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="label" type="string"/>
 <Parameter name="testFunction" type="function"/>
@@ -121,7 +121,7 @@ Signals to the test runner that a new [subsection](/docs/how-to-guides/unit-test
 
 Adds a given message to the internal report buffer, so that it will be included in the final report after all tests have run. Inserts newlines (`\n`) after each message to simulate print-like semantics. Converts non-string values according to the usual LuaJIT conventions.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="message" type="string"/>
 </Parameters>
@@ -155,7 +155,7 @@ Only one test runner can be started at a time. Manipulating its state from insid
 
 :::
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="specFiles" type="table" />
 </Parameters>

@@ -22,7 +22,7 @@ All of the [lua-rapidjson](https://github.com/xpol/lua-rapidjson/blob/master/API
 
 Returns the embedded rapidjson library version as a Lua string. The lua-rapidjson (bindings) version can be queried via `_VERSION`.
 
-<Function>
+<Function since="v0.0.3">
 <Returns>
 <Return name="rapidjsonLibraryVersion" type="string"/>
 </Returns>
@@ -32,7 +32,7 @@ Returns the embedded rapidjson library version as a Lua string. The lua-rapidjso
 
 Parses the given input as a JSON string and returns a Lua table containing the equivalent data. Alias for `json.decode(...)`.
 
-<Function>
+<Function since="v0.0.3">
 <Parameters>
 <Parameter name="jsonString" type="string"/>
 </Parameters>
@@ -45,7 +45,7 @@ Parses the given input as a JSON string and returns a Lua table containing the e
 
 Converts the given input table to a JSON string containing the equivalent data. Alias for `json.encode(...)`.
 
-<Function>
+<Function since="v0.0.3">
 <Parameters>
 <Parameter name="luaTable" type="table"/>
 </Parameters>
@@ -58,7 +58,7 @@ Converts the given input table to a JSON string containing the equivalent data. 
 
 Identical to `json.encode(...)`, but accepts both strings and tables. Returns a human-readable JSON string with indentation and key sorting enabled. Indentation uses four spaces (lua-rapidjson default). You probably don't want to use this for performance-critical code.
 
-<Function>
+<Function since="v0.0.3">
 <Parameters>
 <Parameter name="jsonStringOrTable"/>
 </Parameters>
@@ -71,7 +71,7 @@ Identical to `json.encode(...)`, but accepts both strings and tables. Returns a 
 
 Identical to `json.pretty`, but uses tabs for indentation (instead of four spaces). This saves some space, but is still unsuitable for performance-critical code paths due to the overhead of sorting and possibly redundantly re-encoding the provided string value.
 
-<Function>
+<Function since="v0.0.3">
 <Parameters>
 <Parameter name="jsonStringOrTable"/>
 </Parameters>

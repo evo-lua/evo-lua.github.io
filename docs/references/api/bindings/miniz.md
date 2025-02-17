@@ -54,7 +54,7 @@ Most of the time, you'll want to pass `"no"` or `"finish"` for asynchronous and 
 
 :::
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="self" type="Deflator"/>
 <Parameter name="input" type="string"/>
@@ -73,7 +73,7 @@ Created by [new_inflator](#new_inflator). You can use this to decompress large a
 
 Applies [INFLATE](https://en.wikipedia.org/wiki/Deflate#Decoder/decompressor) to the given (DEFLATE-compressed) `input` and returns the decompressed bytes as a Lua string.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="self" type="Inflator"/>
 <Parameter name="input" type="string"/>
@@ -91,7 +91,7 @@ Created by [new_reader](#new_reader) or [new_reader_memory](#new_reader_memory).
 
 Extracts the file referenced by the given `fileTableIndex` and returns the file contents (or `""` on failure). The `flags` are passed to `miniz` directly. Since the extraction happens entirely in memory, this method may not be well-suited for extracting very large files.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="self" type="ZipFileReader"/>
 <Parameter name="fileTableIndex" type="number"/>
@@ -105,7 +105,7 @@ Extracts the file referenced by the given `fileTableIndex` and returns the file 
 
 Returns the file name referenced by the given `fileTableIndex`, or `nil` and an error message if the given index was invalid.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="self" type="ZipFileReader"/>
 <Parameter name="fileTableIndex" type="number"/>
@@ -120,7 +120,7 @@ Returns the file name referenced by the given `fileTableIndex`, or `nil` and an 
 
 Returns the total number of files within the ZIP archive. This is the maximum `fileTableIndex` that you can pass to other functions.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="self" type="ZipFileReader"/>
 </Parameters>
@@ -139,7 +139,7 @@ This offset is likely zero for normal archives, but the file format allows stori
 
 :::
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="self" type="ZipFileReader"/>
 </Parameters>
@@ -152,7 +152,7 @@ This offset is likely zero for normal archives, but the file format allows stori
 
 Returns `true` if the entry referenced by the given `fileTableIndex` is a directory entry, and `false` otherwise.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="self" type="ZipFileReader"/>
 <Parameter name="fileTableIndex" type="number"/>
@@ -166,7 +166,7 @@ Returns `true` if the entry referenced by the given `fileTableIndex` is a direct
 
 Searches the internal file system table of the given ZIP archive for an entry that matches `fileSystemPath` and returns the corresponding `fileTableIndex`, or `nil` and an error message if no match was found. It uses a simple linear search method that might have to iterate over the entire table, which is slow for very large files. The `flags` passed to `miniz` can control the way that the search is performed.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 <Parameter name="flags" type="number" optional/>
@@ -180,7 +180,7 @@ Searches the internal file system table of the given ZIP archive for an entry th
 
 Returns a list of attributes for the entry referenced by the given `fileTableIndex`, or `nil` and an error message if the index was invalid.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="self" type="ZipFileReader"/>
 <Parameter name="fileTableIndex" type="number"/>
@@ -215,7 +215,7 @@ Created by [new_writer](#new_writer). You can use this to add files to a ZIP arc
 
 Adds (in-memory) a new file entry referenced by `fileSystemPath` with the given `fileContents` to the archive. The `flags` passed to `miniz` control the compression level and settings for this specific entry; it's a bitfield with the level being stored in the lowest byte.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="self" type="ZipFileWriter"/>
 <Parameter name="fileSystemPath" type="string"/>
@@ -227,7 +227,7 @@ Adds (in-memory) a new file entry referenced by `fileSystemPath` with the given 
 
 Adds (in-memory) the contents of the entry referenced by the given `fileTableIndex` from another ZIP archive to the archive.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="self" type="ZipFileWriter"/>
 <Parameter name="reader" type="ZipFileReader"/>
@@ -245,7 +245,7 @@ Once the archive has been finalized, you can no longer add new entries to it. Yo
 
 :::
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="self" type="ZipFileWriter"/>
 </Parameters>
@@ -260,7 +260,7 @@ Once the archive has been finalized, you can no longer add new entries to it. Yo
 
 Returns the [Adler-32](https://en.wikipedia.org/wiki/Adler-32) checksum for the given `input`. Supplying an `initialValue` allows processing multiple chunks as they arrive.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="input" type="string"/>
 <Parameter name="initialValue" type="string" optional/>
@@ -274,7 +274,7 @@ Returns the [Adler-32](https://en.wikipedia.org/wiki/Adler-32) checksum for the 
 
 Returns the [CRC-32](https://en.wikipedia.org/wiki/Cyclic_redundancy_check) checksum for the given `input`. Supplying an `initialValue` allows processing multiple chunks as they arrive.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="input" type="string"/>
 <Parameter name="initialValue" type="string" optional/>
@@ -300,7 +300,7 @@ While you don't need to worry about buffer allocation with either of these, the 
 
 :::
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="input" type="string"/>
 <Parameter name="compressionLevel" type="number" optional/>
@@ -316,7 +316,7 @@ Applies [DEFLATE](https://en.wikipedia.org/wiki/Deflate) to the given `input` an
 
 The `flags` passed to `miniz` control the behavior of the compressor.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="input" type="string"/>
 <Parameter name="flags" type="number" optional/>
@@ -332,7 +332,7 @@ Applies [INFLATE](https://en.wikipedia.org/wiki/Deflate#Decoder/decompressor) to
 
 The `flags` passed to `miniz` control the behavior of the decompressor.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="input" type="string"/>
 <Parameter name="flags" type="number" optional/>
@@ -346,7 +346,7 @@ The `flags` passed to `miniz` control the behavior of the decompressor.
 
 Returns the last compression or decompression error (as a human-readable string) if any was encountered, or `nil` otherwise.
 
-<Function>
+<Function since="v0.0.5">
 <Returns>
 <Return name="errorString" type="string" optional/>
 </Returns>
@@ -356,7 +356,7 @@ Returns the last compression or decompression error (as a human-readable string)
 
 Creates a new [Deflator](#deflator) object and returns a `userdata` reference to it. If you set `compressionLevel`, it must be a valid value (0 to 9).
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="compressionLevel" type="number" optional/>
 </Parameters>
@@ -369,7 +369,7 @@ Creates a new [Deflator](#deflator) object and returns a `userdata` reference to
 
 Creates a new [Inflator](#inflator) object and returns a `userdata` reference to it.
 
-<Function>
+<Function since="v0.0.5">
 <Returns>
 <Return name="inflator" type="Inflator"/>
 </Returns>
@@ -385,7 +385,7 @@ This function is suitable if loading the entire file into memory is acceptable. 
 
 Returns `nil` and an error message in case of failure. Otherwise the ZIP [reader](#ZipFileReader) should be ready to use.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 <Parameter name="flags" type="number" optional/>
@@ -406,7 +406,7 @@ This function is suitable if loading the entire file into memory is acceptable. 
 
 Returns `nil` and an error message in case of failure. Otherwise the ZIP [reader](#ZipFileReader) should be ready to use.
 
-<Function>
+<Function since="v0.0.20">
 <Parameters>
 <Parameter name="fileContents" type="string"/>
 <Parameter name="flags" type="number" optional/>
@@ -421,7 +421,7 @@ Returns `nil` and an error message in case of failure. Otherwise the ZIP [reader
 
 Creates a new ZIP file writer for the given `fileSystemPath`. The `flags` passed to `miniz` can control the way that the archive is written.
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 <Parameter name="flags" type="number" optional/>
@@ -449,7 +449,7 @@ While you don't need to worry about buffer allocation with either of these, the 
 
 :::
 
-<Function>
+<Function since="v0.0.5">
 <Parameters>
 <Parameter name="input" type="string"/>
 <Parameter name="initialOutputBufferSize" type="number" optional/>
@@ -463,7 +463,7 @@ While you don't need to worry about buffer allocation with either of these, the 
 
 Returns the version number of the embedded `miniz` library as a Lua string.
 
-<Function>
+<Function since="v0.0.5">
 <Returns>
 <Return name="version" type="string"/>
 </Returns>

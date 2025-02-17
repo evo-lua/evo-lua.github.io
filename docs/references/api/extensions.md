@@ -24,7 +24,7 @@ debug.dump({ 1, 2, 3 })
 
 Prints a human-readable string representation of the given object. Mostly useful for dumping tables, but unsuitable for serialization purposes. The output format cannot be considered stable. Currently uses [inspect](/docs/references/api/bindings/inspect) internally, though this may change in the future.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="object"/>
 </Parameters>
@@ -39,7 +39,7 @@ Prints a human-readable string representation of the given object. Mostly useful
 
 Returns a string representing the difference between `firstValue` and `secondValue`. The exact format is subject to change.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="firstValue" type="string"/>
 <Parameter name="firstValue" type="string"/>
@@ -53,7 +53,7 @@ Returns a string representing the difference between `firstValue` and `secondVal
 
 Tokenizes the given `inputString` based on a configurable `delimiter` character, which is stripped from the output.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="inputString" type="string"/>
 <Parameter name="delimiter" type="string" optional fallback="'%s' (whitespace)"/>
@@ -67,7 +67,7 @@ Tokenizes the given `inputString` based on a configurable `delimiter` character,
 
 Returns a human-readable representation of the given `fileSizeInBytes` using standard units. The exact format is subject to change.
 
-<Function>
+<Function since="v0.0.2">
 <Parameters>
 <Parameter name="fileSizeInBytes" type="number"/>
 </Parameters>
@@ -82,7 +82,7 @@ Returns a human-readable representation of the given `fileSizeInBytes` using sta
 
 Returns `true` if the given `table` contains `value` in the array part of the table, and `false` otherwise. The dictionary part is ignored.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="table" type="table"/>
 <Parameter name="value"/>
