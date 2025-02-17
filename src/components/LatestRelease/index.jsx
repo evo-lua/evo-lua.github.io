@@ -6,7 +6,11 @@ function LatestReleaseButton() {
     "https://github.com/evo-lua/evo-runtime/releases"
   );
   const [releaseInfo, setReleaseInfo] = useState(
-    "Fetching latest release info..."
+    <>
+      Fetching latest release info...
+      <br />
+      (JavaScript must be enabled for this to work)
+    </>
   );
   const [assets, setAssets] = useState([]);
 
@@ -26,7 +30,12 @@ function LatestReleaseButton() {
 
         setDownloadUrl(releaseUrl);
         setReleaseInfo(
-          `Latest Release: ${releaseTag} (${releaseDate.toDateString()} · ${humanReadableTimeDifference} ago)`
+          <>
+            Latest Release:
+            <br />
+            {releaseTag} ({releaseDate.toDateString()} ·{" "}
+            {humanReadableTimeDifference} ago)
+          </>
         );
       })
       .catch((error) => {
