@@ -68,6 +68,9 @@ function LatestReleaseButton() {
         <a className="hero-button" href={getAssetDownloadUrl("macos-x64")}>
           Download for Mac OS (x64)
         </a>
+        <a className="hero-button" href={getAssetDownloadUrl("macos-M1")}>
+          Download for Mac OS (M1)
+        </a>
       </div>
     </div>
   );
