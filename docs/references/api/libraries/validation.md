@@ -20,7 +20,7 @@ local validation = require("validation")
 
 Raises an error if the given argument is not a `boolean` value.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="value"/>
 <Parameter name="name" type="string"/>
@@ -31,7 +31,7 @@ Raises an error if the given argument is not a `boolean` value.
 
 Raises an error if the given argument is not a `function` value.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="value"/>
 <Parameter name="name" type="string"/>
@@ -42,7 +42,7 @@ Raises an error if the given argument is not a `function` value.
 
 Raises an error if the given argument is not a `number` value.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="value"/>
 <Parameter name="name" type="string"/>
@@ -53,7 +53,7 @@ Raises an error if the given argument is not a `number` value.
 
 Raises an error if the given argument is not a `string` value.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="value"/>
 <Parameter name="name" type="string"/>
@@ -64,7 +64,7 @@ Raises an error if the given argument is not a `string` value.
 
 Raises an error if the given argument is not a `cdata` value. The exact `ctype` is not checked in any way.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="value"/>
 <Parameter name="name" type="string"/>
@@ -75,7 +75,7 @@ Raises an error if the given argument is not a `cdata` value. The exact `ctype` 
 
 Raises an error if the given argument is not a `table` value.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="value"/>
 <Parameter name="name" type="string"/>
@@ -86,7 +86,7 @@ Raises an error if the given argument is not a `table` value.
 
 Raises an error if the given argument is not a `thread` value (coroutine).
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="value"/>
 <Parameter name="name" type="string"/>
@@ -97,7 +97,7 @@ Raises an error if the given argument is not a `thread` value (coroutine).
 
 Raises an error if the given argument is not a `userdata` value.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="value"/>
 <Parameter name="name" type="string"/>
