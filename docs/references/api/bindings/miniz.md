@@ -379,6 +379,10 @@ Creates a new [Inflator](#inflator) object and returns a `userdata` reference to
 
 Creates a new ZIP file reader for the given `fileSystemPath`. The `flags` passed to `miniz` can control the way that the archive is read.
 
+:::info
+This function is suitable if loading the entire file into memory is acceptable. Use a [deflator](#deflator) for streaming.
+:::
+
 <Function>
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
@@ -392,6 +396,10 @@ Creates a new ZIP file reader for the given `fileSystemPath`. The `flags` passed
 ### new_reader_memory
 
 Creates a new ZIP file reader for the given `fileContents`. The `flags` passed to `miniz` can control the way that the archive is read.
+
+:::info
+This function is suitable if loading the entire file into memory is acceptable. Use a [deflator](#deflator) for streaming.
+:::
 
 <Function>
 <Parameters>
