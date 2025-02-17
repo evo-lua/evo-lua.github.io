@@ -16,9 +16,13 @@ class Function extends React.Component {
       if (!since) throw new Error(message);
     }
 
+    // All of this should later be automated. For now, bite the bullet and do it manually...
+    const releaseLink = `https://github.com/evo-lua/evo-runtime/releases/tag/${since}`;
     const sinceBlock = (since && (
       <>
-        <span className={styles.sinceBlock}>Available since: {since}</span>
+        <span className={styles.sinceBlock}>
+          Available since: <a href={releaseLink}>{since}</a>
+        </span>
       </>
     )) || (
       <>
