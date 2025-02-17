@@ -24,7 +24,7 @@ Returns the filename and extension of the given `fileSystemPath` (ignoring trail
 
 If an extension is also given, the matched component (case-sensitive) will be stripped from the result before returning it.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 <Parameter name="extensionToRemove" type="string" optional/>
@@ -38,7 +38,7 @@ If an extension is also given, the matched component (case-sensitive) will be st
 
 Returns the directory path of the given `fileSystemPath` (ignoring trailing separators), similar to the Unix [dirname](https://en.wikipedia.org/wiki/Dirname) command.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 </Parameters>
@@ -51,7 +51,7 @@ Returns the directory path of the given `fileSystemPath` (ignoring trailing sepa
 
 Returns the file extension of the given `fileSystemPath`. This is an empty string if the given file has no extension (or is a directory).
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 </Parameters>
@@ -64,7 +64,7 @@ Returns the file extension of the given `fileSystemPath`. This is an empty strin
 
 Returns `true` if the given `fileSystemPath` is an absolute (fully-qualified) path, and `false` otherwise.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 </Parameters>
@@ -77,7 +77,7 @@ Returns `true` if the given `fileSystemPath` is an absolute (fully-qualified) pa
 
 Returns the normalized `fileSystemPath` constructed from the given path segments and the platform-specific path separator.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter varargs/>
 </Parameters>
@@ -90,7 +90,7 @@ Returns the normalized `fileSystemPath` constructed from the given path segments
 
 Returns the normalized `fileSystemPath` after resolving `.` and `..` segments. Preserves trailing separators, but removes duplicates.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 </Parameters>
@@ -103,7 +103,7 @@ Returns the normalized `fileSystemPath` after resolving `.` and `..` segments. P
 
 Returns the relative path from `from` to `to` based on the current working directory.
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="from" type="string"/>
 <Parameter name="to" type="string"/>
@@ -119,7 +119,7 @@ Returns the `fileSystemPath` constructed by resolving a sequence of paths (or pa
 
 This is conceptually similar to running a sequence of `cd` commands and writing down the end result (i.e., where you landed).
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter varargs/>
 </Parameters>
