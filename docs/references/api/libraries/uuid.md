@@ -26,7 +26,7 @@ A Lua string pattern that can be used to [match](https://www.lua.org/manual/5.1/
 
 Generates a UUID using the default (basic) random number generator. May produce inferior randomness ([see details here](https://github.com/mariusbancila/stduuid#random-uuids)).
 
-<Function>
+<Function since="v0.0.1">
 <Returns>
 <Return name="uuid" type="string"/>
 </Returns>
@@ -36,7 +36,7 @@ Generates a UUID using the default (basic) random number generator. May produce 
 
 Generates a UUID using the [mt19937](https://cplusplus.com/reference/random/mt19937/) random number generator. Produces high-quality randomness via [Mersenne Twister Engine](https://cplusplus.com/reference/random/mersenne_twister_engine/).
 
-<Function>
+<Function since="v0.0.1">
 <Returns>
 <Return name="uuid" type="string"/>
 </Returns>
@@ -46,7 +46,7 @@ Generates a UUID using the [mt19937](https://cplusplus.com/reference/random/mt19
 
 Generates a [name-based](<https://en.wikipedia.org/wiki/Universally_unique_identifier#Versions_3_and_5_(namespace_name-based)>) UUID using SHA-1 hashing to deterministically produce an identifier based on a given [namespace-name-pair](https://stackoverflow.com/questions/10867405/generating-v5-uuid-what-is-name-and-namespace).
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="namespace" type="string"/>
 <Parameter name="name" type="string"/>
@@ -64,7 +64,7 @@ Generates a UUID using a nonstandard, platform-specific random number generator.
 - Linux: [uuid_generate](https://man7.org/linux/man-pages/man3/uuid_generate.3.html)
 - Mac OS: [CFUUIDCreate](https://developer.apple.com/documentation/corefoundation/1542906-cfuuidcreate?language=objc)
 
-<Function>
+<Function since="v0.0.1">
 <Returns>
 <Return name="uuid" type="string"/>
 </Returns>
@@ -74,7 +74,7 @@ Generates a UUID using a nonstandard, platform-specific random number generator.
 
 Returns whether or not the given value is a valid RFC UUID string, i.e., whether it matches the [RFC_STRING_PATTERN](#rfc_string_pattern).
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="input" type="any"/>
 </Parameters>
