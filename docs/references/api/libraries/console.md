@@ -26,7 +26,7 @@ Currently only captures [print](https://www.lua.org/manual/5.1/manual.html#pdf-p
 
 Stops capturing console output, allowing it to be displayed normally again. Returns the contents of the internal buffer and then resets it.
 
-<Function>
+<Function since="v0.0.1">
 <Returns>
 <Return name="capturedOutput" type="string"/>
 </Returns>
@@ -38,7 +38,7 @@ Starts a console timer with the given `label`, saving the current (high-resoluti
 
 This is a lightweight helper that takes a snapshot in time when called; it doesn't actually start a "real" (libuv/OS) timer.
 
-<Function>
+<Function since="v0.0.7">
 <Parameters>
 <Parameter name="label" type="string"/>
 </Parameters>
@@ -50,7 +50,7 @@ Stops the console timer with the given `label` if it exists, marking the end of 
 
 The computed time delta is returned, but also reported to the console in a human-readable (but otherwise unspecified) format.
 
-<Function>
+<Function since="v0.0.7">
 <Parameters>
 <Parameter name="label" type="string"/>
 </Parameters>
