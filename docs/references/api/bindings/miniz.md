@@ -471,6 +471,7 @@ Returns the version number of the embedded `miniz` library as a Lua string.
 
 ## Changelog
 
-| Version | What happened?  |
-| :-----: | :-------------: |
-| v0.0.5  | Initial release |
+| Version |      What happened?       |
+| :-----: | :-----------------------: |
+| v0.0.20 | Added `new_reader_memory` |
+| v0.0.5  |      Initial release      |
