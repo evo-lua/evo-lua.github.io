@@ -377,7 +377,7 @@ Creates a new [Inflator](#inflator) object and returns a `userdata` reference to
 
 ### new_reader
 
-Creates a new ZIP file reader for the given `fileSystemPath`. The `flags` passed to `miniz` can control the way that the archive is read.
+Creates a new ZIP file reader for the given `fileSystemPath`. The `flags` passed to `miniz` can control the way that the archive is read. This method will automatically load the ZIP file from disk and attempt to decode it.
 
 :::info
 This function is suitable if loading the entire file into memory is acceptable. Use a [deflator](#deflator) for streaming.
@@ -395,7 +395,7 @@ This function is suitable if loading the entire file into memory is acceptable. 
 
 ### new_reader_memory
 
-Creates a new ZIP file reader for the given `fileContents`. The `flags` passed to `miniz` can control the way that the archive is read.
+Creates a new ZIP file reader for the given `fileContents`. The `flags` passed to `miniz` can control the way that the archive is read. You must handle reading the file from disk yourself, however you see fit.
 
 :::info
 This function is suitable if loading the entire file into memory is acceptable. Use a [deflator](#deflator) for streaming.
