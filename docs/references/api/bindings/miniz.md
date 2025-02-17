@@ -383,13 +383,16 @@ Creates a new ZIP file reader for the given `fileSystemPath`. The `flags` passed
 This function is suitable if loading the entire file into memory is acceptable. Use a [deflator](#deflator) for streaming.
 :::
 
+Returns `nil` and an error message in case of failure. Otherwise the ZIP [reader](#ZipFileReader) should be ready to use.
+
 <Function>
 <Parameters>
 <Parameter name="fileSystemPath" type="string"/>
 <Parameter name="flags" type="number" optional/>
 </Parameters>
 <Returns>
-<Return name="reader" type="ZipFileReader"/>
+<Return name="reader" type="ZipFileReader" optional/>
+<Return name="errorMessage" type="string" optional/>
 </Returns>
 </Function>
 
@@ -401,13 +404,16 @@ Creates a new ZIP file reader for the given `fileContents`. The `flags` passed t
 This function is suitable if loading the entire file into memory is acceptable. Use a [deflator](#deflator) for streaming.
 :::
 
+Returns `nil` and an error message in case of failure. Otherwise the ZIP [reader](#ZipFileReader) should be ready to use.
+
 <Function>
 <Parameters>
 <Parameter name="fileContents" type="string"/>
 <Parameter name="flags" type="number" optional/>
 </Parameters>
 <Returns>
-<Return name="reader" type="ZipFileReader"/>
+<Return name="reader" type="ZipFileReader" optional/>
+<Return name="errorMessage" type="string" optional/>
 </Returns>
 </Function>
 
