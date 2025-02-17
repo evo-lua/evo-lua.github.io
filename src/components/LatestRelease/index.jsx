@@ -51,7 +51,7 @@ function LatestReleaseButton() {
       </a>
       <div>
         <a className="hero-button" href={getAssetDownloadUrl("exe")}>
-          Download for Windows (x64)
+          Download for Windows
         </a>
         <a className="hero-button" href={getAssetDownloadUrl("linux-x64")}>
           Download for Linux (x64)
