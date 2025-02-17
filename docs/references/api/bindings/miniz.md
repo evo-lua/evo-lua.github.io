@@ -85,7 +85,7 @@ Applies [INFLATE](https://en.wikipedia.org/wiki/Deflate#Decoder/decompressor) to
 
 ## ZipFileReader
 
-Created by [new_reader](#new_reader). You can use this to get information about the files within a ZIP archive or to extract them (in-memory).
+Created by [new_reader](#new_reader) or [new_reader_memory](#new_reader_memory). You can use this to get information about the files within a ZIP archive or to extract them (in-memory).
 
 ### extract
 
@@ -377,7 +377,13 @@ Creates a new [Inflator](#inflator) object and returns a `userdata` reference to
 
 ### new_reader
 
-Creates a new ZIP file reader for the given `fileSystemPath`. The `flags` passed to `miniz` can control the way that the archive is read.
+Creates a new ZIP file reader for the given `fileSystemPath`. The `flags` passed to `miniz` can control the way that the archive is read. This method will automatically load the ZIP file from disk and attempt to decode it.
+
+:::info
+This function is suitable if loading the entire file into memory is acceptable. Use a [deflator](#deflator) for streaming.
+:::
+
+Returns `nil` and an error message in case of failure. Otherwise the ZIP [reader](#ZipFileReader) should be ready to use.
 
 <Function>
 <Parameters>
@@ -385,7 +391,29 @@ Creates a new ZIP file reader for the given `fileSystemPath`. The `flags` passed
 <Parameter name="flags" type="number" optional/>
 </Parameters>
 <Returns>
-<Return name="reader" type="ZipFileReader"/>
+<Return name="reader" type="ZipFileReader" optional/>
+<Return name="errorMessage" type="string" optional/>
+</Returns>
+</Function>
+
+### new_reader_memory
+
+Creates a new ZIP file reader for the given `fileContents`. The `flags` passed to `miniz` can control the way that the archive is read. You must handle reading the file from disk yourself, however you see fit.
+
+:::info
+This function is suitable if loading the entire file into memory is acceptable. Use a [deflator](#deflator) for streaming.
+:::
+
+Returns `nil` and an error message in case of failure. Otherwise the ZIP [reader](#ZipFileReader) should be ready to use.
+
+<Function>
+<Parameters>
+<Parameter name="fileContents" type="string"/>
+<Parameter name="flags" type="number" optional/>
+</Parameters>
+<Returns>
+<Return name="reader" type="ZipFileReader" optional/>
+<Return name="errorMessage" type="string" optional/>
 </Returns>
 </Function>
 
@@ -443,6 +471,7 @@ Returns the version number of the embedded `miniz` library as a Lua string.
 
 ## Changelog
 
-| Version | What happened?  |
-| :-----: | :-------------: |
-| v0.0.5  | Initial release |
+| Version |      What happened?       |
+| :-----: | :-----------------------: |
+| v0.0.20 | Added `new_reader_memory` |
+| v0.0.5  |      Initial release      |
