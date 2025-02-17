@@ -6,7 +6,11 @@ function LatestReleaseButton() {
     "https://github.com/evo-lua/evo-runtime/releases"
   );
   const [releaseInfo, setReleaseInfo] = useState(
-    "Fetching latest release info..."
+    <>
+      Fetching latest release info...
+      <br />
+      (JavaScript must be enabled for this to work)
+    </>
   );
   const [assets, setAssets] = useState([]);
 
@@ -26,7 +30,12 @@ function LatestReleaseButton() {
 
         setDownloadUrl(releaseUrl);
         setReleaseInfo(
-          `Latest Release: ${releaseTag} (${releaseDate.toDateString()} · ${humanReadableTimeDifference} ago)`
+          <>
+            Latest Release:
+            <br />
+            {releaseTag} ({releaseDate.toDateString()} ·{" "}
+            {humanReadableTimeDifference} ago)
+          </>
         );
       })
       .catch((error) => {
@@ -51,13 +60,16 @@ function LatestReleaseButton() {
       </a>
       <div>
         <a className="hero-button" href={getAssetDownloadUrl("exe")}>
-          Download for Windows (x64)
+          Download for Windows
         </a>
         <a className="hero-button" href={getAssetDownloadUrl("linux-x64")}>
           Download for Linux (x64)
         </a>
         <a className="hero-button" href={getAssetDownloadUrl("macos-x64")}>
           Download for Mac OS (x64)
+        </a>
+        <a className="hero-button" href={getAssetDownloadUrl("macos-M1")}>
+          Download for Mac OS (M1)
         </a>
       </div>
     </div>
