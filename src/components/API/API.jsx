@@ -2,13 +2,40 @@ import React from "react";
 
 import styles from "./styles.module.css";
 
-export const Function = ({ since, children }) =>
-  (since && (
-    <>
-      <span className={styles.sinceBlock}>Available since: {since}</span>
-      <div className={styles.function}>{children}</div>
-    </>
-  )) || <></>;
+class Function extends React.Component {
+  render() {
+    const since = this.props.since;
+    const children = this.props.children;
+
+    const isRunningInDevelopmentMode = process.env.NODE_ENV !== "production";
+    if (isRunningInDevelopmentMode) {
+      // Doesn't look like more context can easily be obtained, so let's leave it at that...
+      const where = location;
+      const what = `Missing property (since) for (Function) imported from ${where}`;
+      const message = `${what}`;
+      if (!since) throw new Error(message);
+    }
+
+    const sinceBlock = (since && (
+      <>
+        <span className={styles.sinceBlock}>Available since: {since}</span>
+      </>
+    )) || (
+      <>
+        <span className={styles.sinceBlock}>
+          Available since: ¯\_(ツ)_/¯ (Missing availability data - sorry about
+          that)
+        </span>
+      </>
+    );
+    return (
+      <>
+        {sinceBlock}
+        <div className={styles.function}>{children}</div>
+      </>
+    );
+  }
+}
 
 class NilableInfo extends React.Component {
   render() {
@@ -346,6 +373,7 @@ class Blocking extends React.Component {
 }
 
 export {
+  Function,
   Parameters,
   Parameter,
   Returns,
