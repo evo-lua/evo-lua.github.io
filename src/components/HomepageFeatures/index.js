@@ -8,15 +8,15 @@ function RectangularCheckboxIcon(props) {
       <div className={styles.featureSummaryText}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="w-px-24"
+          className="w-px-24"
           width="24"
           height="24"
           viewBox="0 0 24 24"
-          stroke-width="2"
+          strokeWidth="2"
           stroke="#4ade80"
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -108,7 +108,7 @@ function Feature({ Svg, title, description }) {
       <div className="text--center"></div>
       <div>
         <h3>{title}</h3>
-        <p>{description}</p>
+        <div>{description}</div>
       </div>
     </div>
   );
