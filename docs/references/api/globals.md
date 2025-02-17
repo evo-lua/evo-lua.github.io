@@ -67,7 +67,7 @@ Alias for [debug.dump(...)](/docs/references/api/extensions#debugdump).
 
 Sets up the metatable of `child` so that it acts as an instance of `parent` (in terms of [object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming)).
 
-<Function>
+<Function since="v0.0.1">
 <Parameters>
 <Parameter name="parent" type="table"/>
 <Parameter name="child" type="table"/>
