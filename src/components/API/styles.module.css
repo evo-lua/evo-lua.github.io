@@ -136,7 +136,8 @@ body {
 }
 
 .descriptionBox {
-  padding: 1rem 1rem;
+  padding: 0rem 1rem;
+  margin-top: 1rem;
 }
 .sinceBlock {
   border: 1px solid var(--ifm-color-primary-darkest);
