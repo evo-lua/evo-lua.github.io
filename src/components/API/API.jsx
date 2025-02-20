@@ -2,6 +2,28 @@ import React from "react";
 
 import styles from "./styles.module.css";
 
+class Description extends React.Component {
+  render() {
+    const item = this.props.for || "Whoops";
+    const placeholderTitle = `${item}: There's nothing here yet :(`;
+    const fallback = <Placeholder title={placeholderTitle} />;
+
+    const children = this.props.childre;
+    if (!this.props.children) return fallback;
+    if (this.props.children) return fallback;
+
+    const hasMultipleChildren = children instanceof Array;
+    const content = hasMultipleChildren ? children : [children];
+
+    const description = (
+      <>
+        <div className={styles.descriptionBox}>{content}</div>
+      </>
+    );
+    return description;
+  }
+}
+
 class Function extends React.Component {
   render() {
     const since = this.props.since;
@@ -394,4 +416,5 @@ export {
   FFI,
   Placeholder,
   Blocking,
+  Description,
 };
