@@ -2,10 +2,52 @@ import React from "react";
 
 import styles from "./styles.module.css";
 
+class Description extends React.Component {
+  render() {
+    const fallback = (
+      <>
+        <div className={styles.descriptionBox}></div>
+      </>
+    );
+
+    const children = this.props.children;
+    if (!this.props.children) return fallback;
+
+    const hasMultipleChildren =
+      children instanceof Array && children.length > 0;
+    const content = hasMultipleChildren ? children : [children];
+    const description = (
+      <>
+        <div className={styles.descriptionBox}>{content}</div>
+      </>
+    );
+    return description;
+  }
+}
+
 class Function extends React.Component {
+  mdxTypeToPlaceholderComponent(mdxType) {
+    const placeholdersByType = {
+      Description: <Description for={mdxType} />,
+      Parameters: <Description for={mdxType} />,
+      Returns: <Description for={mdxType} />,
+      Structures: <Description for={mdxType} />,
+    };
+    return placeholdersByType[mdxType];
+  }
+  findFirstChildByType(mdxType) {
+    const fallback = this.mdxTypeToPlaceholderComponent(mdxType);
+    const children =
+      this.props.children instanceof Array ? this.props.children : [];
+    if (!children || children.length === 0) return fallback;
+    return children.find((child) => child.props.mdxType == mdxType) || fallback;
+  }
   render() {
     const since = this.props.since;
-    const children = this.props.children;
+    const description = this.findFirstChildByType("Description");
+    const parameters = this.findFirstChildByType("Parameters");
+    const returnValues = this.findFirstChildByType("Returns");
+    const structs = this.findFirstChildByType("Structures");
 
     const isRunningInDevelopmentMode = process.env.NODE_ENV !== "production";
     if (isRunningInDevelopmentMode) {
@@ -35,9 +77,23 @@ class Function extends React.Component {
     return (
       <>
         {sinceBlock}
-        <div className={styles.function}>{children}</div>
+        <div className={styles.flexColumn}>
+          <div className={styles.flexRow}>{description}</div>
+          <div className={styles.flexRow}>
+            {parameters}
+            {returnValues}
+          </div>
+          {structs}
+        </div>
+        <hr />
       </>
     );
+  }
+}
+
+class Structures extends React.Component {
+  render() {
+    return <>{this.props.children}</>;
   }
 }
 
@@ -394,4 +450,6 @@ export {
   FFI,
   Placeholder,
   Blocking,
+  Description,
+  Structures,
 };
